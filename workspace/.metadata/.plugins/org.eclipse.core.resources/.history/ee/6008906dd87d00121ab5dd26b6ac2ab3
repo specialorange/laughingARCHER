@@ -1,0 +1,13 @@
+package wordProcessor;
+
+public class MainClass {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] cheese) {
+		System.out.println("cheese");
+
+	}
+
+}

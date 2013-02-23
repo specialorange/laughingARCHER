@@ -1,0 +1,51 @@
+package wordProcessor;
+
+public class MainClass {
+
+	/**
+	 * @param args
+	 */
+	public static void main (String[] cheese) {
+		if (cheese.length == 1)
+			System.out.println(wordsInArray(cheese));
+        else
+			System.out.println("Illegal no of arguments:" + cheese.length + ". Terminating program");
+	}
+	
+	public static String[] wordsInArray (String[] args) {
+		String[] words = null;
+		Boolean prevBlank = false;
+		int index = 0;
+		while ( index < args[0].length() ) {
+			if ( prevBlank == false ) { //start of string or middle of word
+				if ( Character.isLetter(index) ) {
+					
+					index++;
+				} else {
+					prevBlank = true;
+					index++;
+				}
+			} else { //previous char was a blank
+				if ( Character.isLetter(index) ) { //starting  of a string/word
+					prevBlank = false;
+					//START NEW WORD
+					index++;
+				} else { //two or more blanks
+					prevBlank = true;
+					index++;
+				}
+			}
+		}
+		return reverseArray(words);		
+	}
+
+	public static String[] reverseArray (String[] args) {
+		String[] reversedArray = new String[args.length];
+		for (int i = 1; i < args.length + 1; i++) {
+			reversedArray[i] = args[(args.length -i)];
+		}
+		return reversedArray;
+	}
+	
+
+}

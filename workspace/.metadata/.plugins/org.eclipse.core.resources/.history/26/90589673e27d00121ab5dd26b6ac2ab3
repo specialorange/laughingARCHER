@@ -1,0 +1,14 @@
+package wordProcessor;
+
+public class MainClass {
+
+	/**
+	 * @param args
+	 */
+	public static void main (String[] cheese) {
+		if (cheese.length == 1)
+			System.out.println (cheese[0]);
+        else
+			System.out.println("Illegal no of arguments:" + cheese.length + ". Terminating program");
+	}
+}
