@@ -8,6 +8,7 @@ public class MainClass {
 	 * @param args
 	 */
 	public static void main(String[] cheese) {
+		System.out.println(cheese[0]);
 		if (cheese.length == 1)	
 			printArray(wordsInArray(cheese[0]));
 		else
