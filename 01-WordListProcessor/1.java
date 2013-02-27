@@ -14,6 +14,11 @@ public class MainClass {
   
   public static String[] wordsInArray (String[] args) {
     String[] words = null;   //I dont know how to declare an arraylist which causes problems at line 27
+    /** 
+     * MAW: Here's a big clue on this: you don't need to save off the words.
+     *      Check prof's solution on slide 35 of the PPT. 
+     *      Then consider: if you're printing in reverse, how can you approach the reading of the string differently?
+     */
     Boolean prevBlank = false;
     int index = 0;
     String word = null;
