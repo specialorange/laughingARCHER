@@ -19,6 +19,19 @@ public class MainClass {
      *      Check prof's solution on slide 35 of the PPT. 
      *      Then consider: if you're printing in reverse, how can you approach the reading of the string differently?
      */
+
+    // CSF
+    // I am a little confused how to accomplish this without storing the words , i must being missing the simple way
+    // 1: parse through args[0] in reverse, and store the end and start indices of each word
+    //    then print the words?  This would involve storing these vars or pairs, and i dont think
+    //    that is what you were asking for....
+    // 2: parse through args[0] in normal order and print the last word, then increase the word count
+    //    or some other higher scoped variable and call the function recursively
+    // 3: reverse parse args[0] and find the 'first' (which is the last) char, temporarily store that index,
+    //    then find the 'next' (which is the first of the word) char that precedes a space (if not the first char of 
+    //    args[0]), and print that, and continue through the for or while parse block  
+
+
     Boolean prevBlank = false;
     int index = 0;
     String word = null;
