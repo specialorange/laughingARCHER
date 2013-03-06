@@ -2,19 +2,40 @@ package wordProcessor;
 
 public class MainClass {
 
-  /**
-   * @param args
-   */
   public static void main (String[] cheese) {
-    if (cheese.length == 1)
-      printArray(wordsInArray(cheese));
-        else
+    if (cheese.length == 1) {
+      wordsInArray(cleanseFirstBlanks(cheese));
+    } else {
       System.out.println("Illegal no of arguments:" + cheese.length + ". Terminating program");
+    }
   }
   
-  public static String[] wordsInArray (String[] args) {
-    String[] words = null;   //I dont know how to declare an arraylist which causes problems at line 27
-    /** 
+  public static void wordsInArray (String[] args) {
+    Boolean inAWord = false;
+    int index = args[0].length()-1;
+    int endMarker = 0;
+    while ( index >= 0 ) {
+      if (Character.isLetter(args[0].charAt(index))) { //letter
+        if (inAWord == true) { //in a current word
+          if (index == 0 ) {System.out.println(args[0].substring(index, endMarker));}
+          index--;
+        } else { //start the end
+          endMarker = index+1;
+          inAWord = true;
+          index--;          
+        }
+      } else { //space
+        if (inAWord == true) { //no current word
+          System.out.println(args[0].substring(index+1, endMarker));
+          index--;
+          inAWord = false;
+        } else { //completed finding a word
+          index--;          
+        }
+      }
+    }
+
+   /** 
      * MAW: Here's a big clue on this: you don't need to save off the words.
      *      Check prof's solution on slide 35 of the PPT. 
      *      Then consider: if you're printing in reverse, how can you approach the reading of the string differently?
@@ -30,48 +51,23 @@ public class MainClass {
     // 3: reverse parse args[0] and find the 'first' (which is the last) char, temporarily store that index,
     //    then find the 'next' (which is the first of the word) char that precedes a space (if not the first char of 
     //    args[0]), and print that, and continue through the for or while parse block  
+  }
 
-
+public static String[] cleanseFirstBlanks(String[] args) {
+    String[] cleansedArray = null;
     Boolean prevBlank = false;
-    int index = 0;
-    String word = null;
-    while ( index < args[0].length() ) {
-      if ( prevBlank == false ) { //start of string or middle of word
-        if ( Character.isLetter(index) ) {
-          word += args[0].charAt(index); //add the index to the current word
-          index++;
-        } else { //char is blank
-          prevBlank = true;
-          words[words.length] = word;
-          word = null; //reset word to blank
-          index++;
+    for ( int i = 0 ; i<args[0].length() ; i++ ) {
+      if ( Character.isLetter(args[0].charAt(i)) ) { //current index is a letter
+        if (prevBlank == true) { //previous char was a space
+           cleansedArray[0] = args[0].substring(i, args[0].length());
+           return cleansedArray;
+        } else {  //if the first char is a letter, it is already cleansed
+            return args;
         }
-      } else { //previous char was a blank
-        if ( Character.isLetter(index) ) { //starting  of a string/word
-          prevBlank = false;
-          //START NEW WORD
-          index++;
-        } else { //two or more blanks
-          prevBlank = true;
-          index++;
-        }
+      } else { // still a blank
+        prevBlank = true;
       }
     }
-    return reverseArray(words);   //Not sure if this is POssible, but I dont know how to call a function in Java.
+    return cleansedArray;
   }
-
-  public static String[] reverseArray (String[] args) {
-    String[] reversedArray = new String[args.length];
-    for (int i = 1; i < args.length + 1; i++) {
-      reversedArray[i] = args[(args.length -i)];
-    }
-    return reversedArray;
-  }
-
-  public static void printArray (String[] args) {
-    for ( int i=0 ; i <args.length ; i++ ) {
-      System.out.println(args[i]);
-    }
-  }
-
 }
