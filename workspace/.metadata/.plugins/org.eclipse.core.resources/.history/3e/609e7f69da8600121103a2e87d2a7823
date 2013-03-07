@@ -53,11 +53,11 @@ public class MainClass {
     //    args[0]), and print that, and continue through the for or while parse block  
   }
 
-public static String cleanseFirstBlanks(String cheese) {
+public static String cleanseFirstBlanks(String[] args) {
     String cleansedString = null;
-    for ( int i = 0 ; i<cheese.length() ; i++ ) {
-    	if ( Character.isLetter(cheese.charAt(i)) ) { //current index is a letter
-    			 cleansedString = cheese.substring(i, cheese.length());
+    for ( int i = 0 ; i<args[0].length() ; i++ ) {
+    	if ( Character.isLetter(args[0].charAt(i)) ) { //current index is a letter
+    			 cleansedString = args[0].substring(i, args[0].length());
     			 return cleansedString;
     	}
     }

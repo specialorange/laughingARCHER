@@ -4,20 +4,20 @@ public class MainClass {
 
   public static void main (String[] cheese) {
     if (cheese.length == 1) {
-      wordsInArray(cleanseFirstBlanks(cheese[0]));
+      wordsInArray(cleanseFirstBlanks(cheese));
     } else {
       System.out.println("Illegal no of arguments:" + cheese.length + ". Terminating program");
     }
   }
   
-  public static void wordsInArray (String string) {
+  public static void wordsInArray (String[] args) {
 	  Boolean inAWord = false;
-	  int index = string.length()-1;
+	  int index = args[0].length()-1;
 	  int endMarker = 0;
 	  while ( index >= 0 ) {
-		  if (Character.isLetter(string.charAt(index))) { //letter
+		  if (Character.isLetter(args[0].charAt(index))) { //letter
 			  if (inAWord == true) { //in a current word
-				  if (index == 0 ) {System.out.println(string.substring(index, endMarker));}
+				  if (index == 0 ) {System.out.println(args[0].substring(index, endMarker));}
 				  index--;
 			  } else { //start the end
 				  endMarker = index+1;
@@ -26,7 +26,7 @@ public class MainClass {
 			  }
 		  } else { //space
 			  if (inAWord == true) { //no current word
-				  System.out.println(string.substring(index+1, endMarker));
+				  System.out.println(args[0].substring(index+1, endMarker));
 				  index--;
 				  inAWord = false;
 			  } else { //completed finding a word
@@ -53,16 +53,21 @@ public class MainClass {
     //    args[0]), and print that, and continue through the for or while parse block  
   }
 
-public static String cleanseFirstBlanks(String cheese) {
-    String cleansedString = null;
-    for ( int i = 0 ; i<cheese.length() ; i++ ) {
-    	if ( Character.isLetter(cheese.charAt(i)) ) { //current index is a letter
-    			 cleansedString = cheese.substring(i, cheese.length());
-    			 return cleansedString;
+public static String[] cleanseFirstBlanks(String[] args) {
+    String[] cleansedArray = null;
+    Boolean prevBlank = false;
+    for ( int i = 0 ; i<args[0].length() ; i++ ) {
+    	if ( Character.isLetter(args[0].charAt(i)) ) { //current index is a letter
+    		if (prevBlank == true) { //previous char was a space
+    			 cleansedArray[0] = args[0].substring(i, args[0].length());
+    			 return cleansedArray;
+    		} else {  //if the first char is a letter, it is already cleansed
+        		return args;
+    		}
+    	} else { // still a blank
+    		prevBlank = true;
     	}
     }
-    return "";
+    return cleansedArray;
+  }
 }
-
-}
-
