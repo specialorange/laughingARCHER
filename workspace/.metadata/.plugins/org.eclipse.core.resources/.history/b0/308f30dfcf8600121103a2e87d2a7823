@@ -2,6 +2,9 @@ package main;
 
 public class wordNumberProcessor {
 
+  /**
+   * @param args
+   */
   public static void main(String[] cheese) {
 	  if (cheese.length == 1) {
     	  tokensInArray(cheese);
@@ -17,22 +20,28 @@ public class wordNumberProcessor {
     for ( int index = 0; index < args[0].length(); index++ ) {
       char tokenChar = args[0].charAt(index);
       if (Character.isDigit(tokenChar)) {
-		  if (!inAToken) { 
+		  if (inAToken == true) { 
+			  //in a current word token, keep going
+		  } else { //start the beginning
 			  startMarker = index;
 			  tokenType = "Number: ";
 			  inAToken = true;	  
 		  }
       } else if (Character.isLetter(tokenChar)) {
-		  if (!inAToken) { 
+		  if (inAToken == true) { 
+			  //in a current number token, keep going
+		  } else { //start the beginning
 			  startMarker = index;
 			  tokenType = "Word: ";
 			  inAToken = true;				  
 		  }    	  
       } else { //blank
-		  if (inAToken) { 
+		  if (inAToken == true) { 
 			  System.out.println(tokenType + args[0].substring(startMarker, index));
 			  inAToken = false;
 			  tokenType = "";
+		  } else { 
+			  //still a blank, keep going
 		  }
       }
     }

@@ -23,13 +23,13 @@ public class wordNumberProcessor {
 			  inAToken = true;	  
 		  }
       } else if (Character.isLetter(tokenChar)) {
-		  if (!inAToken) { 
+		  if (!(inAToken)) { 
 			  startMarker = index;
 			  tokenType = "Word: ";
 			  inAToken = true;				  
 		  }    	  
       } else { //blank
-		  if (inAToken) { 
+		  if (inAToken == true) { 
 			  System.out.println(tokenType + args[0].substring(startMarker, index));
 			  inAToken = false;
 			  tokenType = "";

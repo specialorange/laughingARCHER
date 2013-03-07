@@ -6,8 +6,8 @@ public class wordNumberProcessor {
    * @param args
    */
   public static void main(String[] cheese) {
-      if (cheese.length == 1) {
-      tokensInArray(cheese);
+	  if (cheese.length == 1) {
+    	  tokensInArray(cheese);
       } else {
         System.out.println("Illegal no of arguments:" + cheese.length + ". Terminating program");
       }
@@ -16,10 +16,9 @@ public class wordNumberProcessor {
   public static void tokensInArray (String[] args) {
     Boolean inAToken = false;
     int endMarker = 0;
-    for ( int index = 0; index < args[0].length; i++ ) {
+    for ( int index = 0; index < args[0].length(); index++ ) {
       char tokenChar = args[0].charAt(index);
       System.out.println(tokenChar);
     }
   }
-
 }

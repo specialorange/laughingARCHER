@@ -29,7 +29,7 @@ public class wordNumberProcessor {
 			  inAToken = true;				  
 		  }    	  
       } else { //blank
-		  if (inAToken) { 
+		  if (inAToken == true) { 
 			  System.out.println(tokenType + args[0].substring(startMarker, index));
 			  inAToken = false;
 			  tokenType = "";
