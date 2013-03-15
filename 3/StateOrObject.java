@@ -1,6 +1,6 @@
 package ass3;
 
-import ass3.State;
+import ass3.Stateless;
 import ass3.Object;
 
 public class StateOrObject {

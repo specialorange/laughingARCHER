@@ -1,0 +1,3 @@
+So I think the assignment wants to create an Interface called Token, which has two properties, string and description.
+This Interface will be implemented by two (maybe one) class which has the constructor, which will set the string and description by getter/setters.   The types are to be immutable, and I am not quite sure how to instantiate them.
+The driver class should call the parsing method, and the parsing method should create a new Token for each token it finds, whether it is a WordToken or a NumberToken (again I am not sure if it is one class and the description changes, or two separate classes).
