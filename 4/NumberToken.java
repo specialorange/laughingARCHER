@@ -6,17 +6,14 @@ public class NumberToken implements Token {
     private final String stringValue = substring.toLowerCase();
     private final String description = "Number";
     
-    //StringValue
-    public void setStringValue(String string) {
-      stringValue = string;
-    }
-    public String getStringValue() {
-      return this.stringValue;
-    }
+  }
+  //StringValue
+  public String getStringValue() {
+    return this.stringValue;
+  }
 
-    //Description
-    public String getDescription() {
-      return this.description;
-    }
+  //Description
+  public String getDescription() {
+    return this.description;
   }
 }

@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="ass3.State"/>
+<fullyQualifiedTypeName name="ass3.Object"/>
+<fullyQualifiedTypeName name="ass4.Tokenizer"/>
+<fullyQualifiedTypeName name="ass4.StringToken"/>
+<fullyQualifiedTypeName name="ass4.WordToken"/>
+<fullyQualifiedTypeName name="ass4.NumberToken"/>
 </qualifiedTypeNameHistroy>
