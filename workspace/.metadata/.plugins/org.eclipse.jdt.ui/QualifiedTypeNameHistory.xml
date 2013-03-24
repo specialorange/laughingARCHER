@@ -7,5 +7,7 @@
 <fullyQualifiedTypeName name="ass4.Tokenizer"/>
 <fullyQualifiedTypeName name="ass4.StringToken"/>
 <fullyQualifiedTypeName name="ass4.WordToken"/>
+<fullyQualifiedTypeName name="ass4.TokenInterface"/>
 <fullyQualifiedTypeName name="ass4.NumberToken"/>
+<fullyQualifiedTypeName name="ass4.TokenizerInterface"/>
 </qualifiedTypeNameHistroy>

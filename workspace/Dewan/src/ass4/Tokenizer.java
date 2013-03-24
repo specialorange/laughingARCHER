@@ -3,13 +3,16 @@ package ass4;
 import ass4.NumberToken;
 import ass4.WordToken;
 
-public class Tokenizer {
-	public static TokenInterface tokensInArray (String cheese) {
+public class Tokenizer implements TokenizerInterface {
+	private String originalString = "";
+	private String concatenation = "";
+	
+	private void tokensInArray() {
 		boolean inAToken = false;
 		int startMarker = 0;
 		String tokenType = new String();
-		for ( int index = 0; index < cheese.length(); index++ ) {
-			char tokenChar = cheese.charAt(index);
+		for ( int index = 0; index < originalString.length(); index++ ) {
+			char tokenChar = originalString.charAt(index);
 			if (Character.isDigit(tokenChar)) {
 				if (!inAToken) {
 					startMarker = index;
@@ -25,21 +28,27 @@ public class Tokenizer {
 			} else { //blank
 				if (inAToken) { 
 					if (tokenType == "Word") {
-						WordToken token = new WordToken(cheese.substring(startMarker, index));
+			            WordToken token = new WordToken(originalString.substring(startMarker, index));
+			            concatenation += token.getDescription() + ": " + token.getStringValue() + " ";
 						inAToken = false;
 						tokenType = "";
-						return token;
 					} else { //Number
-						NumberToken token = new NumberToken(cheese.substring(startMarker, index));						
+			            NumberToken token = new NumberToken(originalString.substring(startMarker, index));            
+						concatenation += token.getDescription() + ": " + token.getStringValue() + " ";						
 						inAToken = false;
 						tokenType = "";
-						return token;
 					}
 				}
 			}
 		}
-		NumberToken token = new NumberToken(cheese.substring(startMarker, cheese.length()));
-		System.out.println("Here");
-		return token;
+	}
+
+	public void setOriginalString(String input) {
+		this.originalString = input;
+		this.tokensInArray();
+	}
+	
+	public String getConcatenation() {
+		return this.concatenation;
 	}
 }

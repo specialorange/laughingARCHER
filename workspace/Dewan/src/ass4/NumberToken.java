@@ -3,9 +3,10 @@ package ass4;
 public class NumberToken implements TokenInterface {
 
 	private String stringValue;
-	private String description = "Number";
+	private final String description = "Number";
 
 	public NumberToken(String substring) {	
+		this.setStringValue(substring);
 	}
 	
 	//StringValue
@@ -17,11 +18,9 @@ public class NumberToken implements TokenInterface {
 	}
 	
 	//Description
-	public void setDescription(String string) {
-		this.description = string;
-	}
 	public String getDescription() {
 		return this.description;
 	}
 
 }
+
