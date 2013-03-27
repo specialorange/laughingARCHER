@@ -11,27 +11,21 @@ public class Rectangle implements RectangleInterface {
 		setHeight(height);
 		setPoint(x, y);
 	}
-	
 	public PointInterface getPoint() {
 		return this.point;
 	}
-	
 	public void setPoint(int x, int y) {
 		this.point = new Point(x,y);
 	}
-
 	public int getWidth() {
 		return this.width;
 	}
-
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
 	public int getHeight() {
 		return this.height;
 	}
-
 	public void setHeight(int height) {
 		this.height = height;
 	}

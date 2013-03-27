@@ -1,32 +1,24 @@
 package ass5;
+import ass5.Point;
 
 public class Line implements LineInterface{
 
-	private int x;
-	private int y; 
+	private Point origin;
 	private int width;
 	private int height;
 	
-	public Line () {
-		
+	public Line (int x, int y, int width, int height) {
+		this.setPoint(x, y);
+		this.setWidth(width);
+		this.setHeight(height);
 	}
 	
-	public int getX() {
-		return this.x;
+	public Point getPoint() {
+		return this.origin;
 	}
-
-	public void setX(int newX) {
-		this.x = newX;
+	public void setPoint(int x, int y) {
+		this.origin = new Point(x, y);
 	}
-
-	public int getY() {
-		return this.y;
-	}
-
-	public void setY(int newY) {
-		this.y = newY;
-	}
-
 	public int getWidth() {
 		return this.width;
 	}

@@ -17,7 +17,7 @@ public class WordToken implements TokenInterface {
 	public String getStringValue() {
 		return this.stringValue;
 	}
-	public void setStringValue(String string) {
+	private void setStringValue(String string) {
 		this.stringValue= string.toLowerCase();
 	}
 	

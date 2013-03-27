@@ -10,4 +10,8 @@
 <fullyQualifiedTypeName name="ass4.TokenInterface"/>
 <fullyQualifiedTypeName name="ass4.NumberToken"/>
 <fullyQualifiedTypeName name="ass4.TokenizerInterface"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="ass5.RectangleInterface"/>
+<fullyQualifiedTypeName name="ass5.LineInterface"/>
+<fullyQualifiedTypeName name="ass5.PointInterface"/>
 </qualifiedTypeNameHistroy>
