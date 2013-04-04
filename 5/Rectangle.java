@@ -1,21 +1,22 @@
 package ass5;
+import ass5.Location;
 
-public class Rectangle implements RectangleInterface {
+public class Rectangle implements IRectangle {
 
-	private PointInterface point;
+	private Location point;
 	private int width;
 	private int height;
 	
 	public Rectangle (int x, int y, int width, int height) {
-		setWidth(width);
-		setHeight(height);
-		setPoint(x, y);
+		this.setPoint(x, y);
+		this.setWidth(width);
+		this.setHeight(height);
 	}
-	public PointInterface getPoint() {
+	public Location getPoint() {
 		return this.point;
 	}
 	public void setPoint(int x, int y) {
-		this.point = new Point(x,y);
+		this.point = new Location(x,y);
 	}
 	public int getWidth() {
 		return this.width;

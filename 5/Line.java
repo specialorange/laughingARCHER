@@ -1,9 +1,9 @@
 package ass5;
-import ass5.Point;
+import ass5.Location;
 
-public class Line implements LineInterface{
+public class Line implements ILine{
 
-	private Point origin;
+	private Location origin;
 	private int width;
 	private int height;
 	
@@ -13,11 +13,11 @@ public class Line implements LineInterface{
 		this.setHeight(height);
 	}
 	
-	public Point getPoint() {
+	public Location getPoint() {
 		return this.origin;
 	}
 	public void setPoint(int x, int y) {
-		this.origin = new Point(x, y);
+		this.origin = new Location(x, y);
 	}
 	public int getWidth() {
 		return this.width;

@@ -13,5 +13,16 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="ass5.RectangleInterface"/>
 <fullyQualifiedTypeName name="ass5.LineInterface"/>
+<fullyQualifiedTypeName name="ass5.HomeClass"/>
+<fullyQualifiedTypeName name="ass5.Line"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="org.eclipse.swt.graphics.Image"/>
 <fullyQualifiedTypeName name="ass5.PointInterface"/>
+<fullyQualifiedTypeName name="ass5.SpecImageInterface"/>
+<fullyQualifiedTypeName name="ass5.SpecImage"/>
+<fullyQualifiedTypeName name="ass5.MailboxClass"/>
+<fullyQualifiedTypeName name="ass5.Rectangle"/>
+<fullyQualifiedTypeName name="bus.uigen.ObjectEditor"/>
+<fullyQualifiedTypeName name="ass5.HouseClass"/>
+<fullyQualifiedTypeName name="ass5.Point"/>
 </qualifiedTypeNameHistroy>
