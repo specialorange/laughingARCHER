@@ -1,17 +1,17 @@
 package ass5;
 
-public class Circle implements ICircle {
+public class Oval implements IOval {
 	private int width;
 	private int height;
 	private Location point;
 	
-	public Circle() {
-		this.setPoint(new Location(5,5));
-		this.setWidth(30);
-		this.setHeight(30);
+	public Oval() {
+		this.setPoint(new Location(100,100));
+		this.setWidth(100);
+		this.setHeight(100);
 	}
 	
-	public Circle(int x, int y, int width, int height) {
+	public Oval(int x, int y, int width, int height) {
 		this.setPoint(new Location(x,y));
 		this.setWidth(width);
 		this.setHeight(height);

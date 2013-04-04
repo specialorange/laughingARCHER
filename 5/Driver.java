@@ -8,7 +8,9 @@ public class Driver {
 		Home home1 = new Home();
 //		ObjectEditor.edit(home1);
 //		HomeClass home2 = new HomeClass();
-		ObjectEditor.edit(home1);		
+//		ObjectEditor.edit(home1);
+		Oval circle = new Oval();
+		ObjectEditor.edit(circle);
 //   test
 	}
 

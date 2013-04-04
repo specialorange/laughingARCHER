@@ -1,6 +1,6 @@
 package ass5;
 
-public interface ICircle {
+public interface IOval {
 	public Location getPoint();
 	public int getWidth();
 	public int getHeight();
