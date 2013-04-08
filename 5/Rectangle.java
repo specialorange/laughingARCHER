@@ -1,22 +1,22 @@
 package ass5;
-import ass5.Location;
+import ass5.Point;
 
 public class Rectangle implements IRectangle {
 
-	private Location point;
+	private Point point;
 	private int width;
 	private int height;
 	
 	public Rectangle (int x, int y, int width, int height) {
-		this.setPoint(x, y);
+		this.setLocation(new Point(x,y));
 		this.setWidth(width);
 		this.setHeight(height);
 	}
-	public Location getPoint() {
+	public Point getLocation() {
 		return this.point;
 	}
-	public void setPoint(int x, int y) {
-		this.point = new Location(x,y);
+	public void setLocation(Point point) {
+		this.point = point;
 	}
 	public int getWidth() {
 		return this.width;

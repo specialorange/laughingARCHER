@@ -1,23 +1,23 @@
 package ass5;
-import ass5.Location;
+import ass5.Point;
 
 public class Line implements ILine{
 
-	private Location origin;
+	private Point origin;
 	private int width;
 	private int height;
 	
 	public Line (int x, int y, int width, int height) {
-		this.setPoint(x, y);
+		this.setLocation(x, y);
 		this.setWidth(width);
 		this.setHeight(height);
 	}
 	
-	public Location getPoint() {
+	public Point getLocation() {
 		return this.origin;
 	}
-	public void setPoint(int x, int y) {
-		this.origin = new Location(x, y);
+	public void setLocation(int x, int y) {
+		this.origin = new Point(x, y);
 	}
 	public int getWidth() {
 		return this.width;

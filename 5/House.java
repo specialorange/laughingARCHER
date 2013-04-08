@@ -1,10 +1,10 @@
 package ass5;
-import ass5.Location;
+import ass5.Point;
 
-public class House implements IHouse {
+public class House implements IHouseLabel {
 
 	private String imageFile;
-	private Location point;
+	private Point point;
 	private int width, height;
 	private String text;
 	
@@ -12,7 +12,7 @@ public class House implements IHouse {
 		this.setImageFileName("../Dewan/src/ass5/house.jpeg");
 		this.setHeight(203);
 		this.setWidth(203);
-		this.setLocation(new Location(10,10));
+		this.setLocation(new Point(10,10));
 		this.setText("house");
 	}
 	
@@ -20,18 +20,18 @@ public class House implements IHouse {
 		this.setImageFileName(path);
 		this.setHeight(203);
 		this.setWidth(203);
-		this.setLocation(new Location(10,10));
+		this.setLocation(new Point(10,10));
 		this.setText("house");
 	}
 
 	public String getImageFileName() {return imageFile;}
 	public void setImageFileName(String newVal) {imageFile = newVal;}
 
-	public Location getLocation() {
+	public Point getLocation() {
 		return this.point;
 	}
 
-	public void setLocation(Location newVal) {
+	public void setLocation(Point newVal) {
 		this.point = newVal;
 	}
 

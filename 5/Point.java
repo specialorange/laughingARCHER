@@ -1,13 +1,13 @@
 package ass5;
 
-public class Location implements IPoint {
+public class Point implements IPoint {
 
 	private int x;
 	private int y;
 //	private int angle;
 //	private int radius;
 	
-	public Location (int x, int y) {
+	public Point (int x, int y) {
 		setX(x);
 		setY(y);
 	}

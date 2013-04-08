@@ -1,8 +1,8 @@
 package ass5;
 
 public interface ILabel {
-    public Location getLocation();
-    public void setLocation(Location newVal);
+    public Point getLocation();
+    public void setLocation(Point newVal);
     public int getWidth();
     public void setWidth(int newVal);
     public int getHeight() ;

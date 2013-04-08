@@ -1,6 +1,6 @@
 package ass5;
 import ass5.ISpecificImage;
-import ass5.Location;
+import ass5.Point;
 
 
 public class SpecificImage implements ISpecificImage{
@@ -8,16 +8,16 @@ public class SpecificImage implements ISpecificImage{
 	private String imageFileName = "/Dewan/src/ass5/house.jpeg";
 	private int width = 204;
 	private int height = 204;
-	private Location point;
+	private Point point;
 	
 	public SpecificImage(int placementX, int placementY) {
-		Location location = new Location(placementX, placementY);
+		Point location = new Point(placementX, placementY);
 		this.setLocation(location);
 	}
-	public void setLocation(Location newVal) {
+	public void setLocation(Point newVal) {
 		this.point = newVal;
 	}
-	public Location getLocation() {
+	public Point getLocation() {
 		return this.point;
 	}
 	public int getWidth() {
