@@ -8,6 +8,15 @@ public class Driver {
 		Home home1 = new Home();
 //		ObjectEditor.edit(home1);
 //		HomeClass home2 = new HomeClass();
+
+//		move the avatar relative
+//		moveTO
+		home1.getAvatar().changeLocation(15, -15);
+//		test the avatar
+		AvatarTester aT = new AvatarTester();
+		aT.test(home1.getAvatar());
+		
+		
 		ObjectEditor.edit(home1);
 //		Oval circle = new Oval();
 //		ObjectEditor.edit(circle);

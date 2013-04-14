@@ -1,5 +1,4 @@
 package ass5;
-import ass5.HomeTester;
 public class Avatar implements IAvatar{
 
 	private Oval circle;
@@ -25,10 +24,13 @@ public class Avatar implements IAvatar{
 //	}
 	public void setLocation(int x, int y) {
 	}
-	public void changeLocaiton(int x, int y) {
+	public void changeLocation(int x, int y) {
 		this.setCircle(new Oval(this.getCircle().getLocation().getX()+x, this.getCircle().getLocation().getY()+y, this.getCircle().getWidth(), this.getCircle().getHeight()));
-		//call the test
-		HomeTester.test(this);
+		this.setPost(new Line(this.getPost().getLocation().getX()+x,  this.getPost().getLocation().getY()+y, this.getPost().getWidth(), this.getPost().getHeight()));
+	}
+	public void changeBadXLocation(int x, int y) {
+		this.setCircle(new Oval(this.getCircle().getLocation().getX()+x, this.getCircle().getLocation().getY()+y, this.getCircle().getWidth(), this.getCircle().getHeight()));
+		this.setPost(new Line(this.getPost().getLocation().getX()+x-30,  this.getPost().getLocation().getY()+y, this.getPost().getWidth(), this.getPost().getHeight()));
 	}
 	public void setCircle(Oval circle) {
 		this.circle = circle;

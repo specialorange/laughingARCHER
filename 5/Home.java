@@ -1,6 +1,6 @@
 package ass5;
 import ass5.HouseLabel;
-import ass5.HomeTester;
+import ass5.AvatarTester;
 import ass5.Mailbox;
 
 public class Home implements IHome {
@@ -17,8 +17,10 @@ public class Home implements IHome {
 	
 	//may need to move the avatar from here, to reference it....
 	public void moveAvatar() {
-		this.getAvatar().changeLocaiton(15, -15);
-		HomeTester.test(this.getAvatar());
+		this.getAvatar().changeLocation(15, -15);
+//		this.getAvatar().changeBadXLocation(15, -15);
+		AvatarTester AT = new AvatarTester();
+		AT.test(this.getAvatar());
 	}
 	
 	public Home(String path) {	
