@@ -25,4 +25,14 @@
 <fullyQualifiedTypeName name="bus.uigen.ObjectEditor"/>
 <fullyQualifiedTypeName name="ass5.HouseClass"/>
 <fullyQualifiedTypeName name="ass5.Point"/>
+<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="ass5.AvatarTester"/>
+<fullyQualifiedTypeName name="ass5.Avatar"/>
+<fullyQualifiedTypeName name="java.beans.PropertyVetoException"/>
+<fullyQualifiedTypeName name="ass5.IWalkway"/>
+<fullyQualifiedTypeName name="ass6.IOval"/>
+<fullyQualifiedTypeName name="ass6.ICandyContainer"/>
+<fullyQualifiedTypeName name="ass6.Point"/>
+<fullyQualifiedTypeName name="ass6.Line"/>
+<fullyQualifiedTypeName name="ass6.Candy"/>
 </qualifiedTypeNameHistroy>
