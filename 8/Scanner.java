@@ -1,5 +1,9 @@
 package eight;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class Scanner implements IScanner {
   
@@ -8,6 +12,13 @@ public class Scanner implements IScanner {
   private String originalString;
   private String concatenation = "";
   private ITokenCollection tokenCollection;
+  private Set<String> wordMoveTokens = new HashSet<String>(Arrays.asList("move", "mv", "moov"));
+  private Set<String> wordRedoTokens = new HashSet<String>(Arrays.asList("redo", "rd", "reedoo"));
+  private Set<String> wordGiveTokens = new HashSet<String>(Arrays.asList("give", "gv"));
+  private Set<String> wordUndoTokens = new HashSet<String>(Arrays.asList("undo", "ud", "undoo"));
+  private Set<String> wordAddHouseTokens = new HashSet<String>(Arrays.asList("addhouse", "ah"));
+  private Set<String> wordAnimateTokens = new HashSet<String>(Arrays.asList("animate", "a", "am"));
+  private Set<String> wordTakeTokens = new HashSet<String>(Arrays.asList("take", "tk"));
   
   private void tokensInArray() {
 	tokenCollection = new TokenCollection();
@@ -33,25 +44,25 @@ public class Scanner implements IScanner {
           if (tokenType == "Word") {
             String substr = originalString.substring(startMarker, index).toLowerCase();
             System.out.println("|" + substr + "|");
-            if (substr.equals("move") || substr.equals("mv") || substr.equals("moov") ) {
+            if (wordMoveTokens.contains(substr) ) {
               tokenCollection.addToken(new MoveWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
-            } else if (substr.equals("redo") || substr.equals("rd") || substr.equals("reedoo") ) {
+            } else if (wordRedoTokens.contains(substr) ) {
               tokenCollection.addToken(new RedoWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
-            } else if (substr.equals("give") || substr.equals("gv") ) {
+            } else if (wordGiveTokens.contains(substr) ) {
               tokenCollection.addToken(new GiveWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
-            } else if (substr.equals("undo") || substr.equals("ud") || substr.equals("undoo") ) {
+            } else if (wordUndoTokens.contains(substr) ) {
               tokenCollection.addToken(new UndoWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
-            } else if (substr.equals("addhouse") || substr.equals("ah") ) {
+            } else if (wordAddHouseTokens.contains(substr) ) {
               tokenCollection.addToken(new AddHouseWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
-            } else if (substr.equals("animate") || substr.equals("a") ) {
+            } else if (wordAnimateTokens.contains(substr) ) {
               tokenCollection.addToken(new AnimateWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
-            } else if (substr.equals("take") || substr.equals("t") || substr.equals("tk") ) {
+            } else if (wordTakeTokens.contains(substr) ) {
               tokenCollection.addToken(new TakeWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
             } else {
