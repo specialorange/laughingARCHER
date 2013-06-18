@@ -12,13 +12,13 @@ public class Scanner implements IScanner {
   private String originalString;
   private String concatenation = "";
   private ITokenCollection tokenCollection;
-  private Set<String> wordMoveTokens = new HashSet<String>(Arrays.asList("move", "mv", "moov"));
-  private Set<String> wordRedoTokens = new HashSet<String>(Arrays.asList("redo", "rd", "reedoo"));
-  private Set<String> wordGiveTokens = new HashSet<String>(Arrays.asList("give", "gv"));
-  private Set<String> wordUndoTokens = new HashSet<String>(Arrays.asList("undo", "ud", "undoo"));
-  private Set<String> wordAddHouseTokens = new HashSet<String>(Arrays.asList("addhouse", "ah"));
-  private Set<String> wordAnimateTokens = new HashSet<String>(Arrays.asList("animate", "a", "am"));
-  private Set<String> wordTakeTokens = new HashSet<String>(Arrays.asList("take", "tk"));
+  private final Set<String> wordMoveTokens = new HashSet<String>(Arrays.asList("move", "mv", "moov"));
+  private final Set<String> wordRedoTokens = new HashSet<String>(Arrays.asList("redo", "rd", "reedoo"));
+  private final Set<String> wordGiveTokens = new HashSet<String>(Arrays.asList("give", "gv"));
+  private final Set<String> wordUndoTokens = new HashSet<String>(Arrays.asList("undo", "ud", "undoo"));
+  private final Set<String> wordAddHouseTokens = new HashSet<String>(Arrays.asList("addhouse", "ah"));
+  private final Set<String> wordAnimateTokens = new HashSet<String>(Arrays.asList("animate", "a", "am"));
+  private final Set<String> wordTakeTokens = new HashSet<String>(Arrays.asList("take", "tk"));
   
   private void tokensInArray() {
 	tokenCollection = new TokenCollection();
