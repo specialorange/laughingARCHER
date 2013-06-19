@@ -5,13 +5,13 @@ public class Home implements IHome {
 	private IWalkway walkway;
 	private IMailbox mailbox;
 	private IHouseLabel house;
-	private IAvatar avatar;
+	private IChild child;
 	
 	public Home() {	
 		this.setWalkway(new Walkway());
 		this.setHouse(new HouseLabel());
 		this.setMailbox(new Mailbox(200, 200, 0, 30, 20, 20));
-		this.setAvatar(new Avatar(225, 225, 0, 30, 50, 50));
+		this.setChild(new Child(225, 225, 0, 30, 50, 50));
 	}
 	public Home(String path) {	
 		this.mailbox= new Mailbox(100, 100, 0, 30, 20, 20);
@@ -44,9 +44,9 @@ public class Home implements IHome {
 		this.house = house;
 	}
 	public IAvatar getAvatar() {
-		return this.avatar;
+		return this.child;
 	}
-	public void setAvatar(Avatar avatar) {
-		this.avatar = avatar;
+	public void setChild(IChild child) {
+		this.child = child;
 	}
 }

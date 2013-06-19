@@ -1,4 +1,7 @@
 package eight.graphics;
+
+import util.annotations.Visible;
+
 public class Avatar implements IAvatar{
 
 	private IOval circle;
@@ -37,6 +40,7 @@ public class Avatar implements IAvatar{
 	public void setPost(ILine post) {
 		this.post = post;
 	}
+	@Visible(false)
 	public IPoint getLocation() {
 		return this.location;
 	}

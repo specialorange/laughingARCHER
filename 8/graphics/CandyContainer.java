@@ -1,8 +1,10 @@
 package eight.graphics;
 
+import util.annotations.Visible;
+
 public class CandyContainer implements ICandyContainer {
 
-	private IPoint 	location = new Point();
+	private IPoint 	location;
 	private ILine 	left, right, bottom;
 	private int 	width, height;
 	private ICandyList candyList;
@@ -14,22 +16,25 @@ public class CandyContainer implements ICandyContainer {
 		this.setBottom(new Line(x, y+height, width, 0));
 		this.setCandyList(new CandyList(width, height, this.getLocation(), 2));
 	}
-	
+
+	@Visible(false)
 	public IPoint getLocation() {
 		return this.location;
 	}
-	public void setLocation(Point point) {
+	public void setLocation(IPoint point) {
 		this.location = point;
 	}
 	public void changeLocation(int x, int y) {
 		this.location = new Point(x,y);
 	}
+	@Visible(false)
 	public int getWidth() {
 		return this.width;
 	}
 	public void setWidth(int width) {
 		this.width = width;
 	}
+	@Visible(false)
 	public int getHeight() {
 		return this.height;
 	}

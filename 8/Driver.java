@@ -13,14 +13,11 @@ public class Driver {
 		IScanner scanner = new Scanner();
 		scanner.setOriginalString(args[0]);
 		System.out.println(scanner.getConcatenation());
+				
+		IHalloween neighborhood = new Halloween();
+		neighborhood.addHome();
 		
-		IChild child = new Child(25, 25);
-		
-		IHalloween house1 = new Halloween();
-		house1.addHome();
-		
-		ObjectEditor.edit(child);
-//		ObjectEditor.edit(cS);
+		ObjectEditor.edit(neighborhood);
 	}
 }
 
