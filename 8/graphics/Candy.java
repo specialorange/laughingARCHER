@@ -7,10 +7,14 @@ public class Candy implements IOval {
 	
 	public Candy() {
 		this.setLocation(new Point(100,100));
-		this.setWidth(100);
-		this.setHeight(100);
+		this.setWidth(10);
+		this.setHeight(10);
 	}
-	
+	public Candy(int x, int y) {
+		this.setLocation(new Point(x,y));
+		this.setWidth(10);
+		this.setHeight(10);
+	}	
 	public Candy(int x, int y, int width, int height) {
 		this.setLocation(new Point(x,y));
 		this.setWidth(width);
@@ -20,7 +24,7 @@ public class Candy implements IOval {
 	public IPoint getLocation() {
 		return this.location;
 	}
-	public void setLocation(Point location) {
+	public void setLocation(IPoint location) {
 		this.location = location;
 	}
 	public void setWidth(int width) {

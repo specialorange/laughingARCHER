@@ -2,7 +2,7 @@ package eight.graphics;
 
 public interface ILabel {
     public IPoint getLocation();
-    public void setLocation(Point newVal);
+    public void setLocation(IPoint newVal);
     public int getWidth();
     public void setWidth(int newVal);
     public int getHeight() ;

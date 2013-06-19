@@ -2,7 +2,7 @@ package eight.graphics;
 
 public interface IMailbox {
 	public IPoint getLocation(); 
-	public void setLocation(Point point);
+	public void setLocation(IPoint point);
 	public int getWidth();
 	public void setWidth(int newVal);
 	public int getHeight() ;

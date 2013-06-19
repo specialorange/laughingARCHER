@@ -93,7 +93,6 @@ public class Scanner implements IScanner {
     return this.concatenation;
   }
   public void addConcatenation() {
-//	  TODO  I am unsure of the error "The method getLastTokenStringConcatenation() is undefined for the type ArrayList<Token>" when the line below is uncommented I tried to work this out, but couldn't get it
       this.concatenation += this.tokenCollection.getLastTokenStringConcatenation();
   }
 }

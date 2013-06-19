@@ -3,7 +3,7 @@ package eight.graphics;
 public class House implements IHouseLabel {
 
 	private String imageFile;
-	private Point point;
+	private IPoint point;
 	private int width, height;
 	private String text;
 	
@@ -26,11 +26,11 @@ public class House implements IHouseLabel {
 	public String getImageFileName() {return imageFile;}
 	public void setImageFileName(String newVal) {imageFile = newVal;}
 
-	public Point getLocation() {
+	public IPoint getLocation() {
 		return this.point;
 	}
 
-	public void setLocation(Point newVal) {
+	public void setLocation(IPoint newVal) {
 		this.point = newVal;
 	}
 

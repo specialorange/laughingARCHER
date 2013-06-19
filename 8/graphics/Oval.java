@@ -3,7 +3,7 @@ package eight.graphics;
 public class Oval implements IOval {
 	private int width;
 	private int height;
-	private Point location;
+	private IPoint location;
 	
 	public Oval() {
 		this.setLocation(new Point(100,100));
@@ -17,10 +17,10 @@ public class Oval implements IOval {
 		this.setHeight(height);
 	}
 
-	public Point getLocation() {
+	public IPoint getLocation() {
 		return this.location;
 	}
-	public void setLocation(Point location) {
+	public void setLocation(IPoint location) {
 		this.location = location;
 	}
 	public void setWidth(int width) {

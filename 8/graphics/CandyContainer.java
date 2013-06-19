@@ -5,12 +5,14 @@ public class CandyContainer implements ICandyContainer {
 	private IPoint 	location = new Point();
 	private ILine 	left, right, bottom;
 	private int 	width, height;
+	private ICandyList candyList;
 	
 	public CandyContainer(int x, int y, int width, int height) {
 		this.setLocation(new Point(x, y));
 		this.setLeft(new Line(x, y, 0, height));
 		this.setRight(new Line(x+width, y, 0, height));
 		this.setBottom(new Line(x, y+height, width, 0));
+		this.setCandyList(new CandyList(width, height, this.getLocation(), 2));
 	}
 	
 	public IPoint getLocation() {
@@ -48,5 +50,11 @@ public class CandyContainer implements ICandyContainer {
 	}
 	public void setBottom(Line bottom) {
 		this.bottom = bottom;
+	}
+	public ICandyList getCandyList() {
+		return this.candyList;
+	}
+	public void setCandyList(ICandyList candyList) {
+		this.candyList = candyList;
 	}
 }

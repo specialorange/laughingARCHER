@@ -2,7 +2,7 @@ package eight.graphics;
 
 public class Rectangle implements IRectangle {
 
-	private Point point;
+	private IPoint point;
 	private int width;
 	private int height;
 	
@@ -11,10 +11,10 @@ public class Rectangle implements IRectangle {
 		this.setWidth(width);
 		this.setHeight(height);
 	}
-	public Point getLocation() {
+	public IPoint getLocation() {
 		return this.point;
 	}
-	public void setLocation(Point point) {
+	public void setLocation(IPoint point) {
 		this.point = point;
 	}
 	public int getWidth() {

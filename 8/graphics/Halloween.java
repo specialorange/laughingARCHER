@@ -4,18 +4,20 @@ import java.util.ArrayList;
 
 public class Halloween implements IHalloween {
 
-	private ArrayList<House> houseCollection;
+	private ArrayList<Home> neighborhood;
 
-	public void addHouse() {
-		houseCollection.add(new House());
+	public Halloween() {
+		this.neighborhood = new ArrayList<Home>();
 	}
-
-	public void moveChild(int x, int y) {
-		
+	
+	public void addHome() {
+		neighborhood.add(new Home());
 	}
-
-	public void removeLastHouse() {
-		houseCollection.remove(houseCollection.size()-1);
+	public void moveChild(Home home, int x, int y) {
+		home.getAvatar().changeLocation(x, y);
+	}
+	public void removeLastHome() {
+		neighborhood.remove(neighborhood.size()-1);
 	}		
 
 }

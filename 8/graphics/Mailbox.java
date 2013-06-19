@@ -40,7 +40,7 @@ public class Mailbox implements IMailbox {
 	public IPoint getLocation() {
 		return this.location;
 	}
-	public void setLocation(Point point) {	
+	public void setLocation(IPoint point) {	
 		this.location = point;
 	}
 	@Visible(false)

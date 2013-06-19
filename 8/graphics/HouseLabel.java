@@ -21,7 +21,7 @@ public class HouseLabel implements IHouseLabel {
      }
     
      public IPoint getLocation() {return this.location;}
-     public void setLocation(Point newVal) {this.location = newVal;}
+     public void setLocation(IPoint newVal) {this.location = newVal;}
      public int getWidth() { return this.width;}
      public void setWidth(int newVal) {this.width = newVal;}
      public int getHeight() {return this.height;}

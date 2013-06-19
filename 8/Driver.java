@@ -1,7 +1,9 @@
 package eight;
 import eight.graphics.Child;
+import eight.graphics.Halloween;
 import eight.graphics.Home;
 import eight.graphics.IChild;
+import eight.graphics.IHalloween;
 import eight.graphics.IHome;
 import bus.uigen.ObjectEditor;
 
@@ -14,9 +16,10 @@ public class Driver {
 		
 		IChild child = new Child(25, 25);
 		
-		IHome home = new Home();
+		IHalloween house1 = new Halloween();
+		house1.addHome();
 		
-		ObjectEditor.edit(home);
+		ObjectEditor.edit(child);
 //		ObjectEditor.edit(cS);
 	}
 }

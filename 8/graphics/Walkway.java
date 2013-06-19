@@ -1,7 +1,7 @@
 package eight.graphics;
 
 public class Walkway implements IRectangle, IWalkway {
-	private Point point;
+	private IPoint point;
 	private int width;
 	private int height;
 
@@ -22,10 +22,10 @@ public class Walkway implements IRectangle, IWalkway {
 	private void setHeight(int height) {
 		this.height = height;
 	}
-	public Point getLocation() {
+	public IPoint getLocation() {
 		return this.point;
 	}
-	public void setLocation(Point point) {
+	public void setLocation(IPoint point) {
 		this.point = point;
 	}
 	public int getWidth() {

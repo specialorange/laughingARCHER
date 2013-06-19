@@ -1,8 +1,8 @@
 package eight.graphics;
 
 public interface IWalkway {
-	public Point getLocation();
-	public void setLocation(Point point);
+	public IPoint getLocation();
+	public void setLocation(IPoint point);
 	public int getWidth();
 	public int getHeight();
 }
