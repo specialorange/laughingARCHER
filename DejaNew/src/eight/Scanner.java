@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-
 public class Scanner implements IScanner {
   
 private String originalString;
@@ -14,11 +13,16 @@ private String originalString;
   private final Set<String> wordRedoTokens = new HashSet<String>(Arrays.asList("redo", "rd", "reedoo"));
   private final Set<String> wordGiveTokens = new HashSet<String>(Arrays.asList("give", "gv"));
   private final Set<String> wordUndoTokens = new HashSet<String>(Arrays.asList("undo", "ud", "undoo"));
-  private final Set<String> wordAddHouseTokens = new HashSet<String>(Arrays.asList("addhouse", "ah"));
-  private final Set<String> wordAnimateTokens = new HashSet<String>(Arrays.asList("animate", "a", "am"));
+  private final Set<String> wordAddHouseTokens = new HashSet<String>(Arrays.asList("addhouse", "ah", "add"));
+  private final Set<String> wordRemoveHouseTokens = new HashSet<String>(Arrays.asList("removehouse", "rm", "remove"));
+  private final Set<String> wordAnimateTokens = new HashSet<String>(Arrays.asList("animate", "am"));
   private final Set<String> wordTakeTokens = new HashSet<String>(Arrays.asList("take", "tk"));
   
-  private void tokensInArray() {
+  public void setOriginalString(String input) {
+	  this.originalString = input;
+	  this.tokensInArray();
+  }  
+  protected void tokensInArray() {
 	tokenCollection = new TokenCollection();
     boolean inAToken = false;
     int startMarker = 0;
@@ -45,6 +49,9 @@ private String originalString;
             if (wordMoveTokens.contains(substr) ) {
               tokenCollection.addToken(new MoveWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
+            } else if (wordRemoveHouseTokens.contains(substr) ) {
+                tokenCollection.addToken(new RemoveHouseWordToken(originalString.substring(startMarker, index)));
+                this.addConcatenation();
             } else if (wordRedoTokens.contains(substr) ) {
               tokenCollection.addToken(new RedoWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();
@@ -81,17 +88,13 @@ private String originalString;
       }
     }
   }
-
-
-public void setOriginalString(String input) {
-    this.originalString = input;
-    this.tokensInArray();
-  }
-  
   public String getConcatenation() {
     return this.concatenation;
   }
   public void addConcatenation() {
       this.concatenation += this.tokenCollection.getLastTokenStringConcatenation();
+  }
+  public ITokenCollection getTokenCollection() {
+	  return this.tokenCollection;
   }
 }

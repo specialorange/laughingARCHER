@@ -12,9 +12,6 @@ public class Child extends Avatar implements IChild{
 	
 	public Child(int x, int y) {
 		this.setLocation(new Point(x,y));
-//		TODO Since I am extending avatar, I think I am doing this wrong, by using an avatar here
-//		A Child is an avatar and has a candy container
-//		I think this is why the avatar circle is so large
 		a = new Avatar();
 		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
 	}
@@ -27,8 +24,8 @@ public class Child extends Avatar implements IChild{
 	}
 
 	public void changeLocation(int x, int y){
-		this.setLocation(new Point(x,y));
-		this.a.changeLocation(x, y);
+		super.setLocation(new Point(x,y));
+		super.changeLocation(x, y);
 		this.cC.changeLocation(x, y);
 	}
 	@Visible(false)

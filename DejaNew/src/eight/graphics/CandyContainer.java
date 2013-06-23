@@ -58,6 +58,7 @@ public class CandyContainer implements ICandyContainer {
 	}
 //	TODO
 //	@Visible(false)
+//	AWAITING REPSONSE FROM Dewan
 //	If I put `@Visible(false)` here, it removes the empty text declarations in Object editor, but it also removes the Candies in the CandyList
 	public ICandyList getCandyList() {
 		return this.candyList;

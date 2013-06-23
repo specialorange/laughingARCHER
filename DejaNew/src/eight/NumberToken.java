@@ -15,11 +15,9 @@ public class NumberToken extends Token implements IToken {
 	public String getStringValue() {
 		return super.getStringValue();
 	}
-	
 	public int getInteger() {
 		return Integer.parseInt(super.getStringValue());	
 	}
-	
 	public String getDescription() {
 		return this.description;
 	}

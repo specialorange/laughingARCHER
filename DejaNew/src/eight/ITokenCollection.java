@@ -13,4 +13,6 @@ public interface ITokenCollection {
 	public Token getToken(int i);
 
 	public String getLastTokenStringConcatenation();
+
+	public int size();
 }
