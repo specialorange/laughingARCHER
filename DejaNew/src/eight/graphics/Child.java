@@ -23,10 +23,15 @@ public class Child extends Avatar implements IChild{
 		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
 	}
 
-	public void changeLocation(int x, int y){
+	public void changeLocationTo(int x, int y){
 		super.setLocation(new Point(x,y));
-		super.changeLocation(x, y);
-		this.cC.changeLocation(x, y);
+		super.changeLocationTo(x, y);
+		this.cC.changeLocationTo(x, y);
+	}
+	public void changeLocationBy(int x, int y){
+		super.setLocation(new Point(x,y));
+		super.changeLocationBy(x, y);
+		this.cC.changeLocationBy(x, y);
 	}
 	@Visible(false)
 	public IPoint getLocation() {

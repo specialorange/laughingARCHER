@@ -27,7 +27,6 @@ public class Parser extends Scanner implements IParser {
 	    int startMarker = 0;
 	    if (!inACommand) {
 	    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
-	    		System.out.println("Token: " + tokenCollection.getToken(index).toString());
 	    		if (tokenCollection.getToken(index) instanceof MoveWordToken ){
 	    			System.out.println("Its a move: ");
 	    			NumberToken number1 = (NumberToken) tokenCollection.getToken(index+1);
@@ -37,8 +36,8 @@ public class Parser extends Scanner implements IParser {
 	    			} else {
 	    				int n1 = Integer.parseInt(number1.toString());
 	    				int n2 = Integer.parseInt(number2.toString());
-	    				getHalloweenNeighborhood().moveChild(n1, n2);
-	    				System.out.println("moved child");
+	    				getHalloweenNeighborhood().moveChildBy(n1, n2);
+	    				System.out.println("moved child by : "+ n1 + " x " + n2);
 	    				startMarker = index+2;
 	    			}
 	    		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {

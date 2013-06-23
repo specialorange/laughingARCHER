@@ -24,9 +24,13 @@ public class Avatar implements IAvatar{
 
 	public void setLocation(int x, int y) {
 	}
-	public void changeLocation(int x, int y) {
+	public void changeLocationTo(int x, int y) {
 		this.setHead(new Oval(x, y, this.getHead().getWidth(), this.getHead().getHeight()));
 		this.setBody(new Line(x, y, this.getBody().getWidth(), this.getBody().getHeight()));
+	}
+	public void changeLocationBy(int x, int y) {
+		this.setHead(new Oval(x+this.getHead().getLocation().getX(), y+this.getHead().getLocation().getY(), this.getHead().getWidth(), this.getHead().getHeight()));
+		this.setBody(new Line(x+this.getBody().getLocation().getX(), y+this.getBody().getLocation().getY(), this.getBody().getWidth(), this.getBody().getHeight()));
 	}
 	public void setHead(IOval circle) {
 		this.head = circle;

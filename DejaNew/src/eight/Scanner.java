@@ -45,7 +45,6 @@ private String originalString;
         if (inAToken) { //and end of a token 
           if (tokenType == "Word") {
             String substr = originalString.substring(startMarker, index).toLowerCase();
-            System.out.println("|" + substr + "|");
             if (wordMoveTokens.contains(substr) ) {
               tokenCollection.addToken(new MoveWordToken(originalString.substring(startMarker, index)));
               this.addConcatenation();

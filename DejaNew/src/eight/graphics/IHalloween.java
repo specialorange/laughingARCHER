@@ -4,5 +4,6 @@ public interface IHalloween {
 
 	public void addHome();
 	public void removeLastHome();
-	public void moveChild(int x, int y);
+	public void moveChildTo(int x, int y);
+	public void moveChildBy(int x, int y);
 }

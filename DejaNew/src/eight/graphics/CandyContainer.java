@@ -24,8 +24,13 @@ public class CandyContainer implements ICandyContainer {
 	public void setLocation(IPoint point) {
 		this.location = point;
 	}
-	public void changeLocation(int x, int y) {
-		this.location = new Point(x,y);
+	public void changeLocationTo(int x, int y) {
+		this.setLocation(new Point(x,y));
+		this.candyList.changeLocationTo(x, y);
+	}
+	public void changeLocationBy(int x, int y) {
+		this.setLocation(new Point(x + this.getLocation().getX(), y + this.getLocation().getY()));
+		this.candyList.changeLocationBy(x,y);
 	}
 	@Visible(false)
 	public int getWidth() {

@@ -27,8 +27,11 @@ public class Halloween implements IHalloween {
 	public void addHome() {		
 		neighborhood.add(new Home(350*neighborhood.size()));
 	}
-	public void moveChild(int x, int y) {
-		child.changeLocation(x, y);
+	public void moveChildBy(int x, int y) {
+		child.changeLocationBy(x, y);
+	}
+	public void moveChildTo(int x, int y) {
+		child.changeLocationTo(x, y);
 	}
 	public void removeLastHome() {
 		neighborhood.remove(neighborhood.size()-1);

@@ -20,6 +20,18 @@ public class CandyList implements ICandyList {
 		}
 	};
 	
+	public void changeLocationTo(int x, int y){
+		this.setCandyContainerLocation(new Point(x,y));
+		for (int i = 0 ; i < this.candyList.size() ; i++) {
+			this.candyList.get(i).changeLocationTo(x, y);
+		}
+	}
+	public void changeLocationBy(int x, int y){
+		this.setCandyContainerLocation(new Point(this.getCandyContainerLocation().getX()+ x, this.getCandyContainerLocation().getY()+ y));
+		for (int i = 0 ; i < this.candyList.size() ; i++) {
+			this.candyList.get(i).changeLocationBy(x, y);
+		}
+	}
 	public void addCandy(Candy candy){
 		this.candyList.add(candy);
 	}

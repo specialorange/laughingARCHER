@@ -24,6 +24,12 @@ public class Candy implements IOval {
 	public IPoint getLocation() {
 		return this.location;
 	}
+	public void changeLocationTo(int x, int y) {
+		this.setLocation(new Point(x,y));
+	}
+	public void changeLocationBy(int x, int y){
+		this.setLocation(new Point(x+ this.getLocation().getX(), y+ this.getLocation().getY()));
+	}
 	public void setLocation(IPoint location) {
 		this.location = location;
 	}
