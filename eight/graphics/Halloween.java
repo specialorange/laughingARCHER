@@ -1,19 +1,21 @@
 package eight.graphics;
 
 import java.util.ArrayList;
+
 import util.annotations.Visible;
 
 public class Halloween implements IHalloween {
 
 	private ArrayList<Home> neighborhood;
+	private IChild child;
 	
 	public Halloween() {
 		neighborhood = new ArrayList<Home>();
-//		this.addHome();
+		this.setChild(new Child(250,150,1,30,20,20));
 	}
 
 //	@Visible(false)
-//	Same problem with not showing and it doesnt show the homes in the neighborhood
+//	Same problem with not showing and it doesn't show the homes in the neighborhood
 	public ArrayList<Home> getNeighborhood() {
 		return this.neighborhood;
 	}
@@ -23,17 +25,17 @@ public class Halloween implements IHalloween {
 	public void addHome() {		
 		neighborhood.add(new Home(350*neighborhood.size()));
 	}
-	public void moveChild(Home home, int x, int y) {
-		home.getAvatar().changeLocation(x, y);
+	public void moveChild(int x, int y) {
+		child.changeLocation(x, y);
 	}
 	public void removeLastHome() {
 		neighborhood.remove(neighborhood.size()-1);
 	}
-//	public IHome getHome() {
-//		return this.home;
-//	}
-//	public void setHome(IHome home) {
-//		this.home = home;
-//	}		
-
+	public IAvatar getAvatar() {
+		return this.child;
+	}
+	@Visible(false)
+	public void setChild(IChild child) {
+		this.child = child;
+	}
 }

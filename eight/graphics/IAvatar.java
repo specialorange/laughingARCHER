@@ -1,9 +1,9 @@
 package eight.graphics;
 
 public interface IAvatar {
-	public IOval getCircle();
-	public void setCircle(IOval circle);
-	public ILine getPost();
-	public void setPost(ILine post);
+	public IOval getHead();
+	public void setHead(IOval circle);
+	public ILine getBody();
+	public void setBody(ILine post);
 	public void changeLocation(int x, int y);
 }

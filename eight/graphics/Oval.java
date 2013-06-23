@@ -17,6 +17,9 @@ public class Oval implements IOval {
 		this.setHeight(height);
 	}
 
+	public void changeLocation(int x, int y) {
+		this.location = new Point(x,y);
+	}
 	public IPoint getLocation() {
 		return this.location;
 	}

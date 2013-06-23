@@ -7,15 +7,6 @@ import java.util.Set;
 
 public class Scanner implements IScanner {
   
-//  How to import or access the Inherited attributes 
-
-	public class Parser {
-
-		public Parser() {
-			// TODO Auto-generated constructor stub
-		}
-
-	}
 private String originalString;
   private String concatenation = "";
   private ITokenCollection tokenCollection;
@@ -34,7 +25,7 @@ private String originalString;
     String tokenType = new String();
     for ( int index = 0; index < originalString.length(); index++ ) {
       char tokenChar = originalString.charAt(index);
-      if (Character.isDigit(tokenChar)) {
+      if (Character.isDigit(tokenChar) || tokenChar == "+".charAt(0) || tokenChar == "-".charAt(0)) {
         if (!inAToken) {
           startMarker = index;
           tokenType = "Number";
@@ -91,7 +82,8 @@ private String originalString;
     }
   }
 
-  public void setOriginalString(String input) {
+
+public void setOriginalString(String input) {
     this.originalString = input;
     this.tokensInArray();
   }

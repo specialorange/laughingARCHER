@@ -8,4 +8,10 @@ public class Parser extends Scanner implements IParser {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void setOriginalString(String input) {
+	  super.setOriginalString(input);
+	  super.tokensInArray();
+//	  extra stuff
+	}
 }

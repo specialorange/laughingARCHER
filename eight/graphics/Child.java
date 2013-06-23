@@ -4,7 +4,7 @@ import util.annotations.Visible;
 
 public class Child extends Avatar implements IChild{
 
-	private int xDelta = 50;
+	private int xDelta = 30;
 	private int yDelta = -35;
 	private ICandyContainer cC;
 	private IAvatar a;
@@ -13,16 +13,16 @@ public class Child extends Avatar implements IChild{
 	public Child(int x, int y) {
 		this.setLocation(new Point(x,y));
 //		TODO Since I am extending avatar, I think I am doing this wrong, by using an avatar here
-//		A Child has an avatar and a candy container
-//		I think this is why the avatar circle is soooo large
-		a = new Avatar(x, y, 1, 25, 15, 15);
+//		A Child is an avatar and has a candy container
+//		I think this is why the avatar circle is so large
+		a = new Avatar();
 		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
 	}
 	
-	public Child(int originX, int originY, int postWidth, int postHeight, int circleWidth, int circleHeight) {
-		this.setLocation(new Point(originX, originY));
-		this.setCircle(new Oval(originX, originY, circleWidth, circleHeight));
-		this.setPost(new Line(originX+(circleWidth/2), originY+circleHeight, postWidth, postHeight));
+	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight) {
+		super.setLocation(new Point(originX, originY));
+		super.setHead(new Oval(originX, originY, headWidth, headHeight));
+		super.setBody(new Line(originX+(headWidth/2), originY+headHeight, bodyWidth, bodyHeight));
 		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
 	}
 
@@ -65,19 +65,4 @@ public class Child extends Avatar implements IChild{
 	public void setA(IAvatar a) {
 		this.a = a;
 	}
-//	Avatar and CandyContainer still need these granular functions to accomplish these methods
-//	public void moveLeft(int x){
-//		this.setLocation(new Point(this.location.getX()-x, this.location.getY()));
-//	}
-//	public void moveRight(int x){
-//		this.setLocation(new Point(this.location.getX()+x, this.location.getY()));		
-//	}
-//	public void moveUp(int y){
-//		this.setLocation(new Point(this.location.getX(), this.location.getY()-y));
-//	}
-//	public void moveDown(int y){
-//		this.setLocation(new Point(this.location.getX(), this.location.getY()+y));		
-//	}
-
-
 }

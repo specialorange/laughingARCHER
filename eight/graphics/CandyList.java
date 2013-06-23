@@ -24,14 +24,10 @@ public class CandyList implements ICandyList {
 		this.candyList.add(candy);
 	}
 	public void addCandy(){
-//		if ( heighter < this.getCandyHeight()) {
-			int verticalSpaceLeft = candyContainerHeight - candyHeight;
-			int newYLocation = candyContainerLocation.getY()+verticalSpaceLeft;
-			this.setCandyHeight(this.getCandyHeight()+(new Candy().getHeight()));
-			this.candyList.add(new Candy(this.getCandyContainerLocation().getX(), newYLocation));
-//		} else {
-//			System.out.println("Wonka says no!");
-//		}
+		int verticalSpaceLeft = candyContainerHeight - candyHeight;
+		int newYLocation = candyContainerLocation.getY()+verticalSpaceLeft;
+		this.setCandyHeight(this.getCandyHeight()+(new Candy().getHeight()));
+		this.candyList.add(new Candy(this.getCandyContainerLocation().getX(), newYLocation));
 	}	
 	public void removeLastCandy(){
 		this.setCandyHeight(this.getCandyHeight()-candyList.get(candyList.size()-1).getHeight());
