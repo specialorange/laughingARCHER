@@ -17,7 +17,7 @@ public class Driver {
 		IHalloween neighborhood = new Halloween();
 		neighborhood.addHome();
 		
-		ObjectEditor.edit(neighborhood);
+//		ObjectEditor.edit(neighborhood);
 	}
 }
 
