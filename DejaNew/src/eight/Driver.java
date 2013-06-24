@@ -13,7 +13,7 @@ public class Driver {
 		IHalloween neighborhood = new Halloween();
 		neighborhood.addHome();
 
-		//		IScanner scanner = new Scanner();
+//		IScanner scanner = new Scanner();
 //		scanner.setOriginalString(args[0]);
 //		System.out.println(scanner.getConcatenation());
 				
@@ -28,3 +28,5 @@ public class Driver {
 
 // TODO
 // Private vs protected vs public:   Is protected the better one to go with in general than private, esp in large programs that use inheritance?
+//
+// Can't figure out why the Candy conatainer of the child isn't moving on the moveChildBy(x,y) method in Halloween
