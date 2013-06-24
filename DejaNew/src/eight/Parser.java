@@ -13,8 +13,6 @@ public class Parser extends Scanner implements IParser {
 	}
 
 	@Override
-//	TODO
-//	Why is changing this method to private require adjusting the security scope of the Parent Class Scanner as well?
 	public void setOriginalString(String input) {
 	  super.setOriginalString(input);
 	  super.tokensInArray();
@@ -28,14 +26,13 @@ public class Parser extends Scanner implements IParser {
 	    if (!inACommand) {
 	    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
 	    		if (tokenCollection.getToken(index) instanceof MoveWordToken ){
-	    			System.out.println("Its a move: ");
-	    			NumberToken number1 = (NumberToken) tokenCollection.getToken(index+1);
-	    			NumberToken number2 = (NumberToken) tokenCollection.getToken(index+2);
-	    			if ( !(number1 instanceof NumberToken) || !(number2 instanceof NumberToken)){
+	    			System.out.println("Move: ");
+	    			if ( tokenCollection.size() <= index+2 ) {System.out.println("You need 2 arguments after the (last)move command");break;}
+	    			if ( !(tokenCollection.getToken(index+1) instanceof NumberToken) || !(tokenCollection.getToken(index+2) instanceof NumberToken)){
 	    				System.out.println("You have an incomplete parameter in the Move Command");
 	    			} else {
-	    				int n1 = Integer.parseInt(number1.toString());
-	    				int n2 = Integer.parseInt(number2.toString());
+	    				int n1 = Integer.parseInt(tokenCollection.getToken(index+1).toString());
+	    				int n2 = Integer.parseInt(tokenCollection.getToken(index+2).toString());
 	    				getHalloweenNeighborhood().moveChildBy(n1, n2);
 	    				System.out.println("moved child by : "+ n1 + " x " + n2);
 	    				startMarker = index+2;

@@ -8,7 +8,6 @@ public class Home implements IHome {
 	private IWalkway walkway;
 	private IMailbox mailbox;
 	private IHouseLabel house;
-//	private IChild child;
 	private ICandyContainer cC;
 	
 	public Home() {	
@@ -16,7 +15,6 @@ public class Home implements IHome {
 		this.setWalkway(new Walkway(87,205,30,75));
 		this.setHouse(new HouseLabel(0,0));
 		this.setMailbox(new Mailbox(25, 250, 0, 20, 10, 10));
-//		this.setChild(new Child(225, 225, 0, 30, 50, 50));
 		this.setcC(new CandyContainer(95, 145, 15, 51, 3));
 	}
 	public Home(int x) {	
@@ -24,7 +22,6 @@ public class Home implements IHome {
 		this.setWalkway(new Walkway(x+87,205,30,75));
 		this.setHouse(new HouseLabel(x,0));
 		this.setMailbox(new Mailbox(x+25, 250, 0, 20, 10, 10));
-//		this.setChild(new Child(x+225, 225, 0, 30, 50, 50));
 		this.setcC(new CandyContainer(x+95, 145, 15, 51, 3));
 	}
 	
@@ -46,12 +43,6 @@ public class Home implements IHome {
 	public void setHouse(HouseLabel house) {
 		this.house = house;
 	}
-//	public IAvatar getAvatar() {
-//		return this.child;
-//	}
-//	public void setChild(IChild child) {
-//		this.child = child;
-//	}
 	public ICandyContainer getcC() {
 		return cC;
 	}

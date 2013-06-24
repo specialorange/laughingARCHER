@@ -27,6 +27,5 @@ public class Driver {
 }
 
 // TODO
-// Private vs protected vs public:   Is protected the better one to go with in general than private, esp in large programs that use inheritance?
-//
-// Can't figure out why the Candy conatainer of the child isn't moving on the moveChildBy(x,y) method in Halloween
+
+//fix parser to handle out of bounds issue with mv command

@@ -9,10 +9,12 @@ public class Avatar implements IAvatar{
 	private IPoint location;
 	
 	public Avatar() {
+		this.setLocation(new Point(100, 100));
 		this.setHead(new Oval());
 		this.setBody(new Line(110, 120, 0, 30));
 	}
 	public Avatar(int x, int y) {
+		this.setLocation(new Point(x, y));
 		this.setHead(new Oval(x, y, this.getHead().getWidth(), this.getHead().getHeight()));
 		this.setBody(new Line(x+(this.getHead().getWidth()/2), y+this.getHead().getHeight(), 1, 15));
 	}
@@ -50,5 +52,9 @@ public class Avatar implements IAvatar{
 	}
 	public void setLocation(IPoint location) {
 		this.location = location;
+	}
+	@Override
+	public void setLocation(Point point) {
+		this.location = point;
 	}
 }

@@ -36,7 +36,7 @@ public class Halloween implements IHalloween {
 	public void removeLastHome() {
 		neighborhood.remove(neighborhood.size()-1);
 	}
-	public IAvatar getAvatar() {
+	public IChild getPerson() {
 		return this.child;
 	}
 	@Visible(false)

@@ -12,7 +12,10 @@ public class Line implements ILine{
 		this.setHeight(height);
 	}
 	
-	public void changeLocation(int x, int y) {
+	public void changeLocationBy(int x, int y) {
+		this.location = new Point(x+ this.getLocation().getX(), y+this.getLocation().getY());
+	}
+	public void changeLocationTo(int x, int y) {
 		this.location = new Point(x, y);
 	}
 	public IPoint getLocation() {

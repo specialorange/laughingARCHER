@@ -21,6 +21,14 @@ public class CandyContainer implements ICandyContainer {
 	public IPoint getLocation() {
 		return this.location;
 	}
+	@Visible(false)
+	public int getWidth() {
+		return this.width;
+	}
+	@Visible(false)
+	public int getHeight() {
+		return this.height;
+	}
 	public void setLocation(IPoint point) {
 		this.location = point;
 	}
@@ -30,18 +38,13 @@ public class CandyContainer implements ICandyContainer {
 	}
 	public void changeLocationBy(int x, int y) {
 		this.setLocation(new Point(x + this.getLocation().getX(), y + this.getLocation().getY()));
+		this.left.changeLocationBy(x, y);
+		this.right.changeLocationBy(x, y);
+		this.bottom.changeLocationBy(x, y);
 		this.candyList.changeLocationBy(x,y);
-	}
-	@Visible(false)
-	public int getWidth() {
-		return this.width;
 	}
 	public void setWidth(int width) {
 		this.width = width;
-	}
-	@Visible(false)
-	public int getHeight() {
-		return this.height;
 	}
 	public ILine getLeft() {
 		return this.left;
