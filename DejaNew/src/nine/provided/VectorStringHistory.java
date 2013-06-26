@@ -1,9 +1,9 @@
-package stringhistory;
+package nine.provided;
 
 import java.util.List;
 import java.util.Vector;
 
-public class VectorStringHistory implements StringHistory{
+public class VectorStringHistory implements IStringHistory{
 
   private List history;
 

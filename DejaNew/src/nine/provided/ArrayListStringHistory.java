@@ -1,9 +1,9 @@
-package stringhistory;
+package nine.provided;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayListStringHistory implements StringHistory{
+public class ArrayListStringHistory implements IStringHistory{
   
   private List history;
 
