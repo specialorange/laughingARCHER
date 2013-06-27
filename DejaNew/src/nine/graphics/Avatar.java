@@ -43,6 +43,9 @@ public class Avatar implements IAvatar{
 	public ILine getBody() {
 		return this.body;
 	}
+	public IPoint getFeet() {
+		return this.body.getBottomLocation();
+	}
 	public void setBody(ILine post) {
 		this.body = post;
 	}

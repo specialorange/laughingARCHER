@@ -1,7 +1,7 @@
 package nine.graphics;
 
 public class Walkway implements IRectangle, IWalkway {
-	private IPoint point;
+	private IPoint location, upperLeft, upperRight, lowerLeft, lowerRight;
 	private int width;
 	private int height;
 
@@ -16,6 +16,18 @@ public class Walkway implements IRectangle, IWalkway {
 		this.setHeight(50);
 	}
 	
+	public IPoint getUpperLeftLocation() {
+		return this.location;
+	}
+	public IPoint getUpperRightLocation() {
+		return this.location;
+	}
+	public IPoint getLowerLeftLocation() {
+		return this.location;
+	}
+	public IPoint getLowerRightLocation() {
+		return this.location;
+	}
 	private void setWidth(int width) {
 		this.width = width;
 	}
@@ -23,10 +35,10 @@ public class Walkway implements IRectangle, IWalkway {
 		this.height = height;
 	}
 	public IPoint getLocation() {
-		return this.point;
+		return this.location;
 	}
 	public void setLocation(IPoint point) {
-		this.point = point;
+		this.location = point;
 	}
 	public int getWidth() {
 		return this.width;

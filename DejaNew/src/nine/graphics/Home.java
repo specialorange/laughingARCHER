@@ -9,6 +9,7 @@ public class Home implements IHome {
 	private IMailbox mailbox;
 	private IHouseLabel house;
 	private ICandyContainer cC;
+	private boolean hasChildOnWalkway;
 	
 	public Home() {	
 		this.setLocation(new Point(0,0));
@@ -55,5 +56,11 @@ public class Home implements IHome {
 	}
 	public void setLocation(IPoint location) {
 		this.location = location;
+	}
+	public boolean isHasChildOnWalkway() {
+		return this.hasChildOnWalkway;
+	}
+	public void setHasChildOnWalkway(boolean hasChildOnWalkway) {
+		this.hasChildOnWalkway = hasChildOnWalkway;
 	}
 }

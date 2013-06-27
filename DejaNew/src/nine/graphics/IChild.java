@@ -1,5 +1,7 @@
 package nine.graphics;
 
+import java.util.ArrayList;
+
 public interface IChild {
 	public void changeLocationTo(int x, int y);
 	public void changeLocationBy(int x, int y);
@@ -15,4 +17,5 @@ public interface IChild {
 //	public void moveRight(int x);
 //	public void moveUp(int y);
 //	public void moveDown(int y);
+	public void checkIfInWalkway(ArrayList<Home> neighborhood);
 }

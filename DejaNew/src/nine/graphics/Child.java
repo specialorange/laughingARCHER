@@ -1,5 +1,7 @@
 package nine.graphics;
 
+import java.util.ArrayList;
+
 import util.annotations.Visible;
 
 public class Child implements IChild{
@@ -35,6 +37,21 @@ public class Child implements IChild{
 		return this.yDelta;
 	}
 
+	public void checkIfInWalkway(ArrayList<Home> neighborhood) {
+		for (int i=0 ; i < neighborhood.size() ; i++ ) {
+			var leftBBoxWalkway = ;
+			var rightBBoxWalkway = ;
+			var topBBoxWalkway = ;
+			var bottomBBoxWalkway = neighborhood.get(i).getWalkway().getLocation();
+			var childFootX = getFeetLocation().getX();
+			var childFootY = getFeetLocation().getY();
+			if (  ) {
+				neighborhood.get(i).setHasChildOnWalkway(true);
+			} else {
+				neighborhood.get(i).setHasChildOnWalkway(false);
+			}
+		}
+	}
 	public void changeLocationTo(int x, int y){
 		this.person.setLocation(new Point(x,y));
 		this.person.changeLocationTo(x, y);
@@ -65,5 +82,8 @@ public class Child implements IChild{
 	}
 	public void setPerson(IAvatar a) {
 		this.person = a;
+	}
+	public IPoint getFeetLocation() {
+		return this.person.getBody().getBottomLocation();
 	}
 }

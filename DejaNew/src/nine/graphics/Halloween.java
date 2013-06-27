@@ -16,7 +16,7 @@ public class Halloween implements IHalloween {
 
 //	@Visible(false)
 //	TODO
-//	Awaiting Repsonse from Dewan
+//	Awaiting Response from Dewan
 //	Same problem with not showing and it doesn't show the homes in the neighborhood
 	public ArrayList<Home> getNeighborhood() {
 		return this.neighborhood;
@@ -29,6 +29,7 @@ public class Halloween implements IHalloween {
 	}
 	public void moveChildBy(int x, int y) {
 		child.changeLocationBy(x, y);
+		child.checkIfInWalkway(this.neighborhood);
 	}
 	public void moveChildTo(int x, int y) {
 		child.changeLocationTo(x, y);

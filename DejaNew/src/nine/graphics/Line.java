@@ -3,6 +3,7 @@ package nine.graphics;
 public class Line implements ILine{
 
 	private IPoint location;
+	private IPoint bottomLocation;
 	private int width;
 	private int height;
 	
@@ -10,6 +11,7 @@ public class Line implements ILine{
 		this.setLocation(x, y);
 		this.setWidth(width);
 		this.setHeight(height);
+		this.setBottomLocation(new Point(x, y+height));
 	}
 	
 	public void changeLocationBy(int x, int y) {
@@ -35,5 +37,11 @@ public class Line implements ILine{
 	}
 	public void setHeight(int newHeight) {
 		this.height = newHeight;
+	}
+	public IPoint getBottomLocation() {
+		return this.bottomLocation;
+	}
+	public void setBottomLocation(IPoint bottomLocation) {
+		this.bottomLocation = bottomLocation;
 	}
 }
