@@ -2,15 +2,17 @@ package nine.graphics;
 
 import java.util.ArrayList;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class Child implements IChild{
 
 	private int xDelta = 30;
 	private int yDelta = -35;
 	private ICandyContainer cC;
 	private IAvatar person;
-	private IPoint location = new Point();
+	private IPoint location;
 	
 	public Child(int x, int y) {
 		this.setLocation(new Point(x,y));
@@ -36,19 +38,29 @@ public class Child implements IChild{
 	public int getyDelta() {
 		return this.yDelta;
 	}
+	@Visible(false)
+	public IPoint getFeetLocation() {
+		return this.person.getBody().getBottomLocation();
+	}
 
 	public void checkIfInWalkway(ArrayList<Home> neighborhood) {
+		System.out.println("Checking!");
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
-			var leftBBoxWalkway = ;
-			var rightBBoxWalkway = ;
-			var topBBoxWalkway = ;
-			var bottomBBoxWalkway = neighborhood.get(i).getWalkway().getLocation();
-			var childFootX = getFeetLocation().getX();
-			var childFootY = getFeetLocation().getY();
-			if (  ) {
+			IPoint upperLeftBBoxWalkway = neighborhood.get(i).getWalkway().getUpperLeft();
+			IPoint upperRightBBoxWalkway = neighborhood.get(i).getWalkway().getUpperRight();
+			IPoint bottomLeftBBoxWalkway = neighborhood.get(i).getWalkway().getLowerLeft();
+			IPoint bottomRightBBoxWalkway = neighborhood.get(i).getWalkway().getLowerRight();
+			int childFootX = getFeetLocation().getX();
+			int childFootY = getFeetLocation().getY();
+			if ( (childFootX <= upperRightBBoxWalkway.getX() && childFootX >= upperLeftBBoxWalkway.getX()) && 
+				 (childFootY <= bottomLeftBBoxWalkway.getY() && childFootY >= upperLeftBBoxWalkway.getY())
+					) {
 				neighborhood.get(i).setHasChildOnWalkway(true);
+				System.out.println("Child in Home " + i + " Walkway true");
 			} else {
 				neighborhood.get(i).setHasChildOnWalkway(false);
+				System.out.println("Child in Walkway false");
+				break;
 			}
 		}
 	}
@@ -82,8 +94,5 @@ public class Child implements IChild{
 	}
 	public void setPerson(IAvatar a) {
 		this.person = a;
-	}
-	public IPoint getFeetLocation() {
-		return this.person.getBody().getBottomLocation();
 	}
 }

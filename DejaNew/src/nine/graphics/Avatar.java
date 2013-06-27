@@ -1,7 +1,9 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class Avatar implements IAvatar{
 
 	private IOval head;
@@ -24,7 +26,13 @@ public class Avatar implements IAvatar{
 		this.setBody(new Line(originX+(circleWidth/2), originY+circleHeight, postWidth, postHeight));
 	}
 
-	public void setLocation(int x, int y) {
+	@Override
+	public void setLocation(Point point) {
+		this.location = point;
+	}
+	@Visible(false)
+	public IPoint getFeetLocation() {
+		return this.body.getBottomLocation();
 	}
 	public void changeLocationTo(int x, int y) {
 		this.setHead(new Oval(x, y, this.getHead().getWidth(), this.getHead().getHeight()));
@@ -43,9 +51,6 @@ public class Avatar implements IAvatar{
 	public ILine getBody() {
 		return this.body;
 	}
-	public IPoint getFeet() {
-		return this.body.getBottomLocation();
-	}
 	public void setBody(ILine post) {
 		this.body = post;
 	}
@@ -55,9 +60,5 @@ public class Avatar implements IAvatar{
 	}
 	public void setLocation(IPoint location) {
 		this.location = location;
-	}
-	@Override
-	public void setLocation(Point point) {
-		this.location = point;
 	}
 }

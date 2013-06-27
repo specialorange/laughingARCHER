@@ -1,7 +1,9 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class CandyContainer implements ICandyContainer {
 
 	private IPoint 	location;

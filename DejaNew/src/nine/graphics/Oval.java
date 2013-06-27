@@ -1,5 +1,8 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
+
+@StructurePattern("Oval Pattern")
 public class Oval implements IOval {
 	private int width;
 	private int height;

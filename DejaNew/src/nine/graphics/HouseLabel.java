@@ -1,5 +1,8 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
+
+@StructurePattern("Label Pattern")
 public class HouseLabel implements IHouseLabel {
     private int width, height;
     private String text, imageFile;

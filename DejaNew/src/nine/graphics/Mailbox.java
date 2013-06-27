@@ -1,7 +1,9 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class Mailbox implements IMailbox {
 	private IPoint location;
 	private ILine post;

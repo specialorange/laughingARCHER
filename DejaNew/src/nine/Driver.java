@@ -1,10 +1,6 @@
 package nine;
-import eight.graphics.Child;
-import eight.graphics.Halloween;
-import eight.graphics.Home;
-import eight.graphics.IChild;
-import eight.graphics.IHalloween;
-import eight.graphics.IHome;
+import nine.graphics.Halloween;
+import nine.graphics.IHalloween;
 import bus.uigen.ObjectEditor;
 
 public class Driver {
@@ -28,4 +24,4 @@ public class Driver {
 
 // TODO
 
-
+//How to handle the passing of the neighborhood object to the child, so the child can check if it is in the walkway? 

@@ -1,7 +1,9 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class Home implements IHome {
 
 	private IPoint location;
@@ -57,6 +59,7 @@ public class Home implements IHome {
 	public void setLocation(IPoint location) {
 		this.location = location;
 	}
+	@Visible(false)
 	public boolean isHasChildOnWalkway() {
 		return this.hasChildOnWalkway;
 	}

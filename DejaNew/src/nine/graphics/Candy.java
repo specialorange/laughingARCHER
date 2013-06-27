@@ -1,9 +1,12 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
+
+@StructurePattern("Oval Pattern")
 public class Candy implements IOval {
 	private int width;
 	private int height;
-	private IPoint location = new Point();
+	private IPoint location;
 	
 	public Candy() {
 		this.setLocation(new Point(100,100));
@@ -45,5 +48,4 @@ public class Candy implements IOval {
 	public int getHeight() {
 		return this.height;
 	}
-
 }

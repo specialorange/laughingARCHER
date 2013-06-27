@@ -1,6 +1,6 @@
 package nine.graphics;
 
-import seven.graphics.Avatar;
+import nine.graphics.Avatar;
 
 public class AvatarTester {
 	private int unitCircleX;

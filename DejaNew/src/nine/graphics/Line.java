@@ -1,5 +1,9 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
+import util.annotations.Visible;
+
+@StructurePattern("Line Pattern")
 public class Line implements ILine{
 
 	private IPoint location;
@@ -14,6 +18,10 @@ public class Line implements ILine{
 		this.setBottomLocation(new Point(x, y+height));
 	}
 	
+	@Visible(false)
+	public IPoint getBottomLocation() {
+		return this.bottomLocation;
+	}
 	public void changeLocationBy(int x, int y) {
 		this.location = new Point(x+ this.getLocation().getX(), y+this.getLocation().getY());
 	}
@@ -37,9 +45,6 @@ public class Line implements ILine{
 	}
 	public void setHeight(int newHeight) {
 		this.height = newHeight;
-	}
-	public IPoint getBottomLocation() {
-		return this.bottomLocation;
 	}
 	public void setBottomLocation(IPoint bottomLocation) {
 		this.bottomLocation = bottomLocation;

@@ -1,6 +1,6 @@
 package nine;
 
-import seven.graphics.Candy;
+import nine.graphics.Candy;
 
 public class TakeWordToken extends WordToken implements IToken {
 

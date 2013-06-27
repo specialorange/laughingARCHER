@@ -2,8 +2,10 @@ package nine.graphics;
 
 import java.util.ArrayList;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class CandyList implements ICandyList {
 	private ArrayList<Candy> candyList;
 	private int candyContainerHeight, candyContainerWidth, candyHeight;

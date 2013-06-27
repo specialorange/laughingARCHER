@@ -1,5 +1,8 @@
 package nine.graphics;
 
+import util.annotations.StructurePattern;
+
+@StructurePattern("Rectangle Pattern")
 public class Rectangle implements IRectangle {
 
 	private IPoint point;

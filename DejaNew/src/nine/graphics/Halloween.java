@@ -2,8 +2,10 @@ package nine.graphics;
 
 import java.util.ArrayList;
 
+import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
+@StructurePattern("Bean Pattern")
 public class Halloween implements IHalloween {
 
 	private ArrayList<Home> neighborhood;
@@ -33,6 +35,7 @@ public class Halloween implements IHalloween {
 	}
 	public void moveChildTo(int x, int y) {
 		child.changeLocationTo(x, y);
+		child.checkIfInWalkway(this.neighborhood);
 	}
 	public void removeLastHome() {
 		neighborhood.remove(neighborhood.size()-1);

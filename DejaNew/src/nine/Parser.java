@@ -1,7 +1,7 @@
 package nine;
 
-import eight.graphics.Halloween;
-import eight.graphics.IHalloween;
+import nine.graphics.Halloween;
+import nine.graphics.IHalloween;
 
 public class Parser extends Scanner implements IParser {
 
