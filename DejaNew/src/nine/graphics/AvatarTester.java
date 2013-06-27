@@ -33,22 +33,22 @@ public class AvatarTester {
 	}
 	
 	public int compareAvatars(Avatar one, Avatar two) {
-		this.setUnitCircleX(one.getCircle().getLocation().getX());
-		this.setUnitCircleY(one.getCircle().getLocation().getY());
-		this.setUnitCircleWidth(one.getCircle().getWidth());
-		this.setUnitCircleHeight(one.getCircle().getHeight());
-		this.setUnitPostX(one.getPost().getLocation().getX());
-		this.setUnitPostY(one.getPost().getLocation().getY());
-		this.setUnitPostWidth(one.getPost().getWidth());
-		this.setUnitPostHeight(one.getPost().getHeight());
-		this.setBaseCircleX(two.getCircle().getLocation().getX());
-		this.setBaseCircleY(two.getCircle().getLocation().getY());
-		this.setBaseCircleWidth(two.getCircle().getWidth());
-		this.setBaseCircleHeight(two.getCircle().getHeight());
-		this.setBasePostX(two.getPost().getLocation().getX());
-		this.setBasePostY(two.getPost().getLocation().getY());
-		this.setBasePostWidth(two.getPost().getWidth());
-		this.setBasePostHeight(two.getPost().getHeight());
+		this.setUnitCircleX(one.getHead().getLocation().getX());
+		this.setUnitCircleY(one.getHead().getLocation().getY());
+		this.setUnitCircleWidth(one.getHead().getWidth());
+		this.setUnitCircleHeight(one.getHead().getHeight());
+		this.setUnitPostX(one.getBody().getLocation().getX());
+		this.setUnitPostY(one.getBody().getLocation().getY());
+		this.setUnitPostWidth(one.getBody().getWidth());
+		this.setUnitPostHeight(one.getBody().getHeight());
+		this.setBaseCircleX(two.getHead().getLocation().getX());
+		this.setBaseCircleY(two.getHead().getLocation().getY());
+		this.setBaseCircleWidth(two.getHead().getWidth());
+		this.setBaseCircleHeight(two.getHead().getHeight());
+		this.setBasePostX(two.getBody().getLocation().getX());
+		this.setBasePostY(two.getBody().getLocation().getY());
+		this.setBasePostWidth(two.getBody().getWidth());
+		this.setBasePostHeight(two.getBody().getHeight());
 
 		//compare post touching circle X | Y
 		if (unitPostX != unitCircleX+(unitCircleWidth/2)) {return 1;};
