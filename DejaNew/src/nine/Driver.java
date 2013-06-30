@@ -17,6 +17,7 @@ public class Driver {
 		parser.setOriginalString(args[0]);
 		System.out.println(parser.getConcatenation());
 
+		neighborhood.isChildInWalkwayOfHouse(1);
 		
 		ObjectEditor.edit(neighborhood);
 	}
@@ -24,4 +25,9 @@ public class Driver {
 
 // TODO
 
-//How to handle the passing of the neighborhood object to the child, so the child can check if it is in the walkway? 
+// It says in the assignment that:
+//As the function takes an avatar as an argument, it does not define a property of a house.
+//This means that I shouldn't have a boolean variable and set it, as it would "define" a property, right?
+//So all he wants is the method?
+
+//I have a problem in the CHild class where the avatar extends the Stick, but doesnt have access to its super methods

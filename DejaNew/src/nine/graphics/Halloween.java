@@ -16,6 +16,9 @@ public class Halloween implements IHalloween {
 		this.setChild(new Child(250,150,1,30,20,20));
 	}
 
+	public boolean isChildInWalkwayOfHouse(int number){
+		return this.neighborhood.get(number).isTresspassing(this.child);
+	}
 //	@Visible(false)
 //	TODO
 //	Awaiting Response from Dewan

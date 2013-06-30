@@ -1,7 +1,6 @@
 package nine.graphics;
 
 import java.util.ArrayList;
-
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -11,12 +10,12 @@ public class Child implements IChild{
 	private int xDelta = 30;
 	private int yDelta = -35;
 	private ICandyContainer cC;
-	private IAvatar person;
+	private IAvatar child;
 	private IPoint location;
 	
 	public Child(int x, int y) {
 		this.setLocation(new Point(x,y));
-		person = new Avatar();
+		child = new Avatar(x,y);
 		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
 	}
 	
@@ -40,16 +39,18 @@ public class Child implements IChild{
 	}
 	@Visible(false)
 	public IPoint getFeetLocation() {
-		return this.person.getBody().getBottomLocation();
+		//TODO, how do i call the super method of child (which is a Avatar, which extends  Stick
+//		One suggestion is to cast its type, but why does it need to know it?
+//		return ((Child) this.child).getFeetLocation();
+		return this.child.getFeetLocation();
 	}
 
 	public void checkIfInWalkway(ArrayList<Home> neighborhood) {
-		System.out.println("Checking!");
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
 			IPoint upperLeftBBoxWalkway = neighborhood.get(i).getWalkway().getUpperLeft();
 			IPoint upperRightBBoxWalkway = neighborhood.get(i).getWalkway().getUpperRight();
 			IPoint bottomLeftBBoxWalkway = neighborhood.get(i).getWalkway().getLowerLeft();
-			IPoint bottomRightBBoxWalkway = neighborhood.get(i).getWalkway().getLowerRight();
+//			IPoint bottomRightBBoxWalkway = neighborhood.get(i).getWalkway().getLowerRight();
 			int childFootX = getFeetLocation().getX();
 			int childFootY = getFeetLocation().getY();
 			if ( (childFootX <= upperRightBBoxWalkway.getX() && childFootX >= upperLeftBBoxWalkway.getX()) && 
@@ -65,13 +66,14 @@ public class Child implements IChild{
 		}
 	}
 	public void changeLocationTo(int x, int y){
-		this.person.setLocation(new Point(x,y));
-		this.person.changeLocationTo(x, y);
+		//Same here
+		this.child.setLocation(new Point(x,y));
+		this.child.changeLocationTo(x, y);
 		this.cC.changeLocationTo(x, y);
 	}
 	public void changeLocationBy(int x, int y){
 		this.setLocation(new Point(x,y));
-		this.person.changeLocationBy(x, y);
+		this.child.changeLocationBy(x, y);
 		this.cC.changeLocationBy(x, y);
 	}
 	public void setLocation(Point point) {
@@ -90,9 +92,9 @@ public class Child implements IChild{
 		this.cC = cC;
 	}
 	public IAvatar getPerson() {
-		return this.person;
+		return this.child;
 	}
 	public void setPerson(IAvatar a) {
-		this.person = a;
+		this.child = a;
 	}
 }

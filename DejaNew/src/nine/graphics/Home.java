@@ -63,7 +63,29 @@ public class Home implements IHome {
 	public boolean isHasChildOnWalkway() {
 		return this.hasChildOnWalkway;
 	}
+	@Visible(false)
+	public boolean isTresspassing(IChild child) {
+		IPoint upperLeftBBoxWalkway = this.getWalkway().getUpperLeft();
+		IPoint upperRightBBoxWalkway = this.getWalkway().getUpperRight();
+		IPoint bottomLeftBBoxWalkway = this.getWalkway().getLowerLeft();
+		IPoint bottomRightBBoxWalkway = this.getWalkway().getLowerRight();
+		int childFootX = child.getFeetLocation().getX();
+		int childFootY = child.getFeetLocation().getY();
+		if ( (childFootX <= upperRightBBoxWalkway.getX() && childFootX >= upperLeftBBoxWalkway.getX()) && 
+			 (childFootY <= bottomLeftBBoxWalkway.getY() && childFootY >= upperLeftBBoxWalkway.getY())
+				) {
+			setHasChildOnWalkway(true);
+			System.out.println("Child in this home's Walkway: true");
+		} else {
+			setHasChildOnWalkway(false);
+			System.out.println("Child not in Walkway");
+		}
+		return this.getHasChildOnWalkway();
+	}
 	public void setHasChildOnWalkway(boolean hasChildOnWalkway) {
 		this.hasChildOnWalkway = hasChildOnWalkway;
+	}
+	public boolean getHasChildOnWalkway() {
+		return this.hasChildOnWalkway;
 	}
 }

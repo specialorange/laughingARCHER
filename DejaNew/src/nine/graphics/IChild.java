@@ -13,9 +13,6 @@ public interface IChild {
 	public void setcC(ICandyContainer cC);
 	public IAvatar getPerson();
 	public void setPerson(IAvatar a);
-//	public void moveLeft(int x);
-//	public void moveRight(int x);
-//	public void moveUp(int y);
-//	public void moveDown(int y);
 	public void checkIfInWalkway(ArrayList<Home> neighborhood);
+	public IPoint getFeetLocation();
 }
