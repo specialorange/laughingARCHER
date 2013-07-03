@@ -25,30 +25,7 @@ public class Parser extends Scanner implements IParser {
 	    int startMarker = 0;
 	    if (!inACommand) {
 	    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
-	    		if (tokenCollection.getToken(index) instanceof MoveWordToken ){
-	    			System.out.println("Move: ");
-	    			if ( tokenCollection.size() <= index+2 ) {System.out.println("You need 2 arguments after the (last)move command");break;}
-	    			if ( !(tokenCollection.getToken(index+1) instanceof NumberToken) || !(tokenCollection.getToken(index+2) instanceof NumberToken)){
-	    				System.out.println("You have an incomplete parameter in the Move Command");
-	    				break;
-	    			} else {
-	    				int n1 = Integer.parseInt(tokenCollection.getToken(index+1).toString());
-	    				int n2 = Integer.parseInt(tokenCollection.getToken(index+2).toString());
-	    				getHalloweenNeighborhood().moveChildBy(n1, n2);
-	    				System.out.println("moved child by : "+ n1 + " x " + n2);
-	    				startMarker = index+2;
-	    			}
-	    		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {
-	    			getHalloweenNeighborhood().addHome();
-	    			System.out.println("added home");
-	    			startMarker ++;
-	    		} else if (tokenCollection.getToken(index) instanceof RemoveHouseWordToken) {
-	    			getHalloweenNeighborhood().removeLastHome();
-	    			System.out.println("removed home");
-	    			startMarker ++;
-	    		} else {
-	    			System.out.println("other");
-	    		}
+	    		wordOrNumberRD(tokenCollection, index);
 	    	}
 	    }
 	}
@@ -66,5 +43,42 @@ public class Parser extends Scanner implements IParser {
 	}
 	public String getConcatenation() {
 		return super.getConcatenation();
+	}
+	public void wordOrNumberRD(ITokenCollection tC, int index) {
+		if (tC.getToken(index) instanceof WordToken) {
+			wordParamCountRD(tC, index);
+		} else if (tC.getToken(index) instanceof NumberToken) {
+			System.out.println("Number Token");
+		} else {
+			System.out.println("Not a Word or Number Token");
+		}
+	}
+	public void wordParamCountRD(ITokenCollection tC, int index) {
+		System.out.println(index);
+		if (index+2 <= tC.size() && tC.getToken(index+1) instanceof NumberToken && tC.getToken(index+2) instanceof NumberToken) {
+			wordTwoParamRD(tC, index);
+		} else if (index+1 <= tC.size() && tC.getToken(index+1) instanceof NumberToken) {
+			wordOneParamRD();
+		} else {
+			wordZeroParamRD(tC, index);
+		}
+	}
+	public void wordZeroParamRD(ITokenCollection tC, int index) {
+		if (tC.getToken(index) instanceof AddHouseWordToken) {
+			getHalloweenNeighborhood().addHome();
+			System.out.println("added a house");
+		} else if (tC.getToken(index) instanceof RemoveHouseWordToken) {
+			getHalloweenNeighborhood().removeLastHome();
+			System.out.println("removed a house");			
+		}
+	}
+	public void wordOneParamRD(){
+//		dont have one yet
+	}
+	public void wordTwoParamRD(ITokenCollection tC, int index) {
+		if (tC.getToken(index) instanceof MoveWordToken) {
+			getHalloweenNeighborhood().moveChildBy(((NumberToken) tC.getToken(index+1)).toInt(), ((NumberToken) tC.getToken(index+2)).toInt());
+			System.out.println("moved Child by: "+ tC.getToken(index+1) + " by " + tC.getToken(index+2) );
+		}
 	}
 }

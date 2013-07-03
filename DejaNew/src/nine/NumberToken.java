@@ -21,6 +21,9 @@ public class NumberToken extends Token implements IToken {
 	public String getDescription() {
 		return this.description;
 	}
-
+	public int toInt() {
+		return this.getInteger();
+	}
+	
 }
 
