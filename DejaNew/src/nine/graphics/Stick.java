@@ -2,8 +2,9 @@ package nine.graphics;
 
 import nine.graphics.Line;
 
-public class Stick implements IStick {
+public abstract class Stick implements IStick {
 
+	private IPoint location;
 	private ILine bottom;
 	
 	public Stick(){
@@ -22,19 +23,10 @@ public class Stick implements IStick {
 	}
 	
 	public IPoint getLocation() {
-		return null;
+		return this.location;
 	}
 	public void setLocation(IPoint point) {
-	}
-	public int getWidth() {
-		return 0;
-	}
-	public void setWidth(int newVal) {
-	}
-	public int getHeight() {
-		return 0;
-	}
-	public void setHeight(int newVal) {
+		this.location = point;
 	}
 	public ILine getBottom() {
 		return this.bottom;
