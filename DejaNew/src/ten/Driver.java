@@ -1,4 +1,4 @@
-package nine;
+package ten;
 import nine.graphics.Halloween;
 import nine.graphics.IHalloween;
 import bus.uigen.ObjectEditor;
