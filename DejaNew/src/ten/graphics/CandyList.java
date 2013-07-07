@@ -1,12 +1,11 @@
 package ten.graphics;
 
 import java.util.ArrayList;
-
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
-public class CandyList implements ICandyList {
+public class CandyList extends GList<ICandyList> implements ICandyList {
 	private ArrayList<Candy> candyList;
 	private int candyContainerHeight, candyContainerWidth, candyHeight;
 	private IPoint candyContainerLocation;

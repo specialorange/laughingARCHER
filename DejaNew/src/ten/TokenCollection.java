@@ -1,8 +1,10 @@
 package ten;
 import java.util.ArrayList;
 
+import ten.graphics.GList;
+
 //How to make TokenCollection an ArrayList itself
-public class TokenCollection implements ITokenCollection{
+public class TokenCollection extends GList<ITokenCollection> implements ITokenCollection{
 
 	private ArrayList<Token> tC;		
 

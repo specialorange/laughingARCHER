@@ -1,4 +1,4 @@
-package ten.graphics;
+package nine.graphics;
 
 import util.annotations.StructurePattern;
 import util.annotations.Visible;

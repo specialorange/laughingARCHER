@@ -6,7 +6,7 @@ import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
-public class Halloween implements IHalloween {
+public class Halloween extends GList<IHalloween> implements IHalloween {
 
 	private ArrayList<Home> neighborhood;
 	private IChild child;
