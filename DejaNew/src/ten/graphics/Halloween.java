@@ -12,7 +12,7 @@ public class Halloween extends GList<IHalloween> implements IHalloween {
 	private IChild child;
 	
 	public Halloween() {
-		neighborhood = new ArrayList<Home>();
+		super.GList<IHalloween>();
 		this.setChild(new Child(250,150,1,30,20,20));
 	}
 
@@ -23,12 +23,7 @@ public class Halloween extends GList<IHalloween> implements IHalloween {
 //	TODO
 //	Awaiting Response from Dewan
 //	Same problem with not showing and it doesn't show the homes in the neighborhood
-	public ArrayList<Home> getNeighborhood() {
-		return this.neighborhood;
-	}
-	public void setNeighborhood(ArrayList<Home> neighborhood) {
-		this.neighborhood = neighborhood;
-	}
+	
 	public void addHome() {		
 		neighborhood.add(new Home(350*neighborhood.size()));
 	}
