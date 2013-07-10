@@ -5,7 +5,7 @@ import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
-public class CandyList extends GList<ICandyList> implements ICandyList {
+public class CandyList extends Stack<ICandyList> implements ICandyList {
 	private ArrayList<Candy> candyList;
 	private int candyContainerHeight, candyContainerWidth, candyHeight;
 	private IPoint candyContainerLocation;
@@ -17,7 +17,7 @@ public class CandyList extends GList<ICandyList> implements ICandyList {
 		this.candyList = new ArrayList<Candy>();
 		this.setCandyContainerLocation(candyContainerLocation);
 		for (int i=0; i<defaultCandyCount; i++) {
-			this.addCandy();
+			this.addItem();
 		}
 	};
 	
@@ -33,24 +33,16 @@ public class CandyList extends GList<ICandyList> implements ICandyList {
 			this.candyList.get(i).changeLocationBy(x, y);
 		}
 	}
-	public void addCandy(Candy candy){
-		this.candyList.add(candy);
-	}
-	public void addCandy(){
+	public void addItem(){
 		int verticalSpaceLeft = candyContainerHeight - candyHeight;
 		int newYLocation = candyContainerLocation.getY()+verticalSpaceLeft;
 		this.setCandyHeight(this.getCandyHeight()+(new Candy().getHeight()));
 		this.candyList.add(new Candy(this.getCandyContainerLocation().getX(), newYLocation));
 	}	
-	public void removeLastCandy(){
+	@Override
+	public void removeLastItem(){
 		this.setCandyHeight(this.getCandyHeight()-candyList.get(candyList.size()-1).getHeight());
-		this.candyList.remove(candyList.size()-1);
-	}
-	public ArrayList<Candy> getCandyList() {
-		return this.candyList;
-	}
-	public void setCandyList(ArrayList<Candy> candyList) {
-		this.candyList = candyList;
+		super.removeLastItem();
 	}
 	@Visible(false)
 	public int getCandyContainerHeight() {

@@ -2,12 +2,11 @@ package ten.graphics;
 
 import java.util.ArrayList;
 
-public interface IGlist<T> {
+public interface IStack<T> {
 	
-	public void addType(T e);
-	public void removeLastType();
-	public T getTypeAt(int i);	
+	public void addItem(T e);
+	public void removeLastItem();
 	public ArrayList<T> getArrayList();
 	public void setArrayList(ArrayList<T> list);
-
+	public T get(int number);
 }

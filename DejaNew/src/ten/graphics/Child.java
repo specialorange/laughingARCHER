@@ -35,8 +35,10 @@ public class Child extends Avatar implements IChild{
 		return this.yDelta;
 	}
 
-	public void checkIfInWalkway(ArrayList<Home> neighborhood) {
+	public void checkIfInWalkway(ArrayList<INeighborhood> neighborhood) {
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
+//			TODO same problem as in the Neighborhood Class
+//			The get(n) should return the Home form the list of the neighborhood
 			IPoint upperLeftBBoxWalkway = neighborhood.get(i).getWalkway().getUpperLeft();
 			IPoint upperRightBBoxWalkway = neighborhood.get(i).getWalkway().getUpperRight();
 			IPoint bottomLeftBBoxWalkway = neighborhood.get(i).getWalkway().getLowerLeft();
@@ -46,10 +48,11 @@ public class Child extends Avatar implements IChild{
 			if ( (childFootX <= upperRightBBoxWalkway.getX() && childFootX >= upperLeftBBoxWalkway.getX()) && 
 				 (childFootY <= bottomLeftBBoxWalkway.getY() && childFootY >= upperLeftBBoxWalkway.getY())
 					) {
-				neighborhood.get(i).setHasChildOnWalkway(true);
+//				Todo why do I have to cast this as a neighborhood? it know it is a INeghborhood form the parameter?
+				((INeighborhood) neighborhood).setHasChildOnWalkway(true);
 				System.out.println("Child in Home " + i + " Walkway true");
 			} else {
-				neighborhood.get(i).setHasChildOnWalkway(false);
+				((INeighborhood) neighborhood).setHasChildOnWalkway(false);
 				System.out.println("Child in Walkway false");
 				break;
 			}

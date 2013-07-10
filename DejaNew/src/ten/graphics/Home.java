@@ -64,7 +64,7 @@ public class Home implements IHome {
 		return this.hasChildOnWalkway;
 	}
 	@Visible(false)
-	public boolean isTresspassing(IChild child) {
+	public boolean isChildTrespassing(IChild child) {
 		IPoint upperLeftBBoxWalkway = this.getWalkway().getUpperLeft();
 		IPoint upperRightBBoxWalkway = this.getWalkway().getUpperRight();
 		IPoint bottomLeftBBoxWalkway = this.getWalkway().getLowerLeft();
