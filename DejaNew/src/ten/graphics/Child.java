@@ -11,6 +11,8 @@ public class Child extends Avatar implements IChild{
 	private int yDelta = -35;
 	private ICandyContainer cC;
 	private IPoint location;
+	private int houseConnectedTo;
+	private boolean connected;
 	
 	public Child(int x, int y) {
 		this.setLocation(new Point(x,y));
@@ -72,5 +74,38 @@ public class Child extends Avatar implements IChild{
 	}
 	public void setcC(ICandyContainer cC) {
 		this.cC = cC;
+	}
+	public void connectToHome(int index) {
+		this.setHouseConnectedTo(index);
+		this.setConnected(true);
+	}
+	public void disconnectFromHome() {
+		this.setHouseConnectedTo((Integer) null);
+		this.setConnected(false);
+	}
+	public int getHouseConnectedTo() {
+		return this.houseConnectedTo;
+	}
+	public void setHouseConnectedTo(int houseConnectedTo) {
+		this.houseConnectedTo = houseConnectedTo;
+	}
+	public boolean isConnected() {
+		return this.connected;
+	}
+	public void setConnected(boolean connected) {
+		this.connected = connected;
+	}
+	public void take(int numberOfCandies) {
+//	Add to child's candyContainer
+		this.getcC().getCandyList().addItem();
+//	Add to Home's candyContainer
+//		TODO
+		//		How to access the neighborhood or home?
+	}
+	public void give(int numberOfCandies) {
+//		Remove from child's candyContainer
+		this.getcC().getCandyList().removeLastItem();
+//		Add to Home's candyContainer
+//		TODO Same
 	}
 }

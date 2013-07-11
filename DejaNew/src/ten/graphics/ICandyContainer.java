@@ -6,4 +6,5 @@ public interface ICandyContainer {
 	public void changeLocationBy(int x, int y);
 	public int getWidth();
 	public int getHeight();
+	public ICandyList getCandyList();
 }
