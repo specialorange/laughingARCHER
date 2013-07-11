@@ -35,7 +35,7 @@ public class Child extends Avatar implements IChild{
 		return this.yDelta;
 	}
 
-	public void checkIfInWalkway(ArrayList<INeighborhood> neighborhood) {
+	public void checkIfInWalkway(ArrayList<IHome> neighborhood) {
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
 //			TODO same problem as in the Neighborhood Class
 //			The get(n) should return the Home form the list of the neighborhood

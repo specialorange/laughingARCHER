@@ -23,7 +23,9 @@ public class Driver {
 }
 
 // TODO
+// Stack<Type> is declared in the Class definition of Neighborhood and CandyList
 
+//Notes:
 //I am unsure of how to do RD, this is how i think I should have it set up
 //Im lost on RD:
 //  Tokens

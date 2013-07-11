@@ -5,7 +5,7 @@ import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
-public class CandyList extends Stack<ICandyList> implements ICandyList {
+public class CandyList extends Stack<IOval> implements ICandyList {
 	private ArrayList<Candy> candyList;
 	private int candyContainerHeight, candyContainerWidth, candyHeight;
 	private IPoint candyContainerLocation;
@@ -33,11 +33,14 @@ public class CandyList extends Stack<ICandyList> implements ICandyList {
 			this.candyList.get(i).changeLocationBy(x, y);
 		}
 	}
+	@Override
 	public void addItem(){
 		int verticalSpaceLeft = candyContainerHeight - candyHeight;
-		int newYLocation = candyContainerLocation.getY()+verticalSpaceLeft;
-		this.setCandyHeight(this.getCandyHeight()+(new Candy().getHeight()));
-		this.candyList.add(new Candy(this.getCandyContainerLocation().getX(), newYLocation));
+		if (verticalSpaceLeft >= new Candy().getHeight()) {
+			int newYLocation = candyContainerLocation.getY()+verticalSpaceLeft;			
+			this.setCandyHeight(this.getCandyHeight()+(new Candy().getHeight()));
+			super.addItem(new Candy(this.getCandyContainerLocation().getX(), newYLocation));
+		}
 	}	
 	@Override
 	public void removeLastItem(){

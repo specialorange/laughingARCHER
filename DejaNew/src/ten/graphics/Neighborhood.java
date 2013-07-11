@@ -6,7 +6,7 @@ import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
-public class Neighborhood extends Stack<INeighborhood> implements INeighborhood {
+public class Neighborhood extends Stack<IHome> implements INeighborhood {
 
 	private IChild child;
 	private boolean hasChildOnAWalkway;
@@ -14,16 +14,12 @@ public class Neighborhood extends Stack<INeighborhood> implements INeighborhood 
 	public Neighborhood() {
 //		 TODO why wont it let me create the array list of type Homes,   It wants me to change the method in Stack
 //		or the type Home to T in the constructor
-		super.setArrayList( new ArrayList<Home>());
+		super.setArrayList( new ArrayList<IHome>());
 		this.setChild(new Child(250,150,1,30,20,20));
 	}
 
 	public boolean isChildInWalkwayOfHome(int number){
-		return super.getArrayList().get(number).isTrespassing(this.child);
-//		TODO
-//		the above method doesn't work, and Eclipse wants me to create it in the neighborhood class (this one).   but
-//		I explicitly made sure that the method is in the Interface for IHome, which is what the Stack ArrayList<Home> 
-//		should be made of.
+		return super.getArrayList().get(number).isChildTrespassing(this.child);
 	}
 //	@Visible(false)
 //	TODO

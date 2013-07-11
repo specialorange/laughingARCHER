@@ -9,7 +9,7 @@ public interface IChild {
 	public void setyDelta(int yDelta);
 	public ICandyContainer getcC();
 	public void setcC(ICandyContainer cC);
-	public void checkIfInWalkway(ArrayList<INeighborhood> homeList);
+	public void checkIfInWalkway(ArrayList<IHome> arrayList);
 	public void changeLocationBy(int x, int y);
 	public void changeLocationTo(int x, int y);
 	public IPoint getFeetLocation();
