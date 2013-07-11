@@ -5,24 +5,25 @@ import java.util.ArrayList;
 import nine.graphics.Halloween;
 import nine.graphics.IHalloween;
 
-public class Parser extends Scanner implements IParser {
+public class Parser implements IParser {
 
 	private ITokenCollection tokenCollection;
 	private ArrayList commandCollection;
 	private IHalloween halloweenNeighborhood;
+	protected Scanner scanner;
 	
 	public Parser(String input) {
+		scanner = new Scanner();
 		setHalloweenNeighborhood(new Halloween());
-		super.setTokenCollection(new TokenCollection());
+		scanner.setTokenCollection(new TokenCollection());
 		this.setOriginalString(input);
 	}
 
-	@Override
 	public void setOriginalString(String input) {
-	  super.setOriginalString(input);
-	  super.tokensInArray(super.getTokenCollection());
+	  scanner.setOriginalString(input);
+	  scanner.tokensInArray(scanner.getTokenCollection());
 //	  setting here to not get confused
-	  this.tokenCollection = super.getTokenCollection();
+	  this.tokenCollection = scanner.getTokenCollection();
 	  processCommands(tokenCollection);
 	}
 	public void processCommands(ITokenCollection tokenCollection){
@@ -30,7 +31,7 @@ public class Parser extends Scanner implements IParser {
 	    int startMarker = 0;
 	    if (!inACommand) {
 	    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
-	    		wordOrNumberRD(tokenCollection, index);
+	    		scanner.wordOrNumberRD(tokenCollection, index);
 	    	}
 	    }
 	}
@@ -47,6 +48,6 @@ public class Parser extends Scanner implements IParser {
 		this.halloweenNeighborhood = halloweenNeighborhood;
 	}
 	public String getConcatenation() {
-		return super.getConcatenation();
+		return scanner.getConcatenation();
 	}
 }
