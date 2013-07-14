@@ -1,10 +1,12 @@
 package ten.graphics;
 
+import java.util.ArrayList;
+
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
-public class Home implements IHome {
+public class Home extends Stack<Home> implements IHome {
 
 	private IPoint location;
 	private IWalkway walkway;
@@ -27,7 +29,9 @@ public class Home implements IHome {
 		this.setMailbox(new Mailbox(x+25, 250, 0, 20, 10, 10));
 		this.setcC(new CandyContainer(x+95, 145, 15, 51, 3));
 	}
-	
+	public ArrayList<Home> getArrayList() {
+		return super.getArrayList();
+	}
 	public IWalkway getWalkway() {
 		return this.walkway;
 	}
@@ -75,9 +79,11 @@ public class Home implements IHome {
 			 (childFootY <= bottomLeftBBoxWalkway.getY() && childFootY >= upperLeftBBoxWalkway.getY())
 				) {
 			setHasChildOnWalkway(true);
+			child.connect();
 			System.out.println("Child in this home's Walkway: true");
 		} else {
 			setHasChildOnWalkway(false);
+			child.disconnect();
 			System.out.println("Child not in Walkway");
 		}
 		return this.getHasChildOnWalkway();
@@ -87,5 +93,11 @@ public class Home implements IHome {
 	}
 	public boolean getHasChildOnWalkway() {
 		return this.hasChildOnWalkway;
+	}
+	public void take(int numberOfCandies) {
+		this.getcC().getCandyList().addItem();
+	}
+	public void give(int numberOfCandies) {
+		this.getcC().getCandyList().removeLastItem();
 	}
 }

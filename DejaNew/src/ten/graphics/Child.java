@@ -36,8 +36,7 @@ public class Child extends Avatar implements IChild{
 	public int getyDelta() {
 		return this.yDelta;
 	}
-
-	public void checkIfInWalkway(ArrayList<IHome> neighborhood) {
+	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> neighborhood) {
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
 //			TODO same problem as in the Neighborhood Class
 //			The get(n) should return the Home form the list of the neighborhood
@@ -77,11 +76,11 @@ public class Child extends Avatar implements IChild{
 	}
 	public void connectToHome(int index) {
 		this.setHouseConnectedTo(index);
-		this.setConnected(true);
+		this.connect();
 	}
 	public void disconnectFromHome() {
 		this.setHouseConnectedTo((Integer) null);
-		this.setConnected(false);
+		this.disconnect();
 	}
 	public int getHouseConnectedTo() {
 		return this.houseConnectedTo;
@@ -89,23 +88,19 @@ public class Child extends Avatar implements IChild{
 	public void setHouseConnectedTo(int houseConnectedTo) {
 		this.houseConnectedTo = houseConnectedTo;
 	}
-	public boolean isConnected() {
+	public boolean getConnectionStatus() {
 		return this.connected;
 	}
-	public void setConnected(boolean connected) {
-		this.connected = connected;
+	public void connect() {
+		this.connected = true;
+	}
+	public void disconnect() {
+		this.connected = false;
 	}
 	public void take(int numberOfCandies) {
-//	Add to child's candyContainer
 		this.getcC().getCandyList().addItem();
-//	Add to Home's candyContainer
-//		TODO
-		//		How to access the neighborhood or home?
 	}
 	public void give(int numberOfCandies) {
-//		Remove from child's candyContainer
 		this.getcC().getCandyList().removeLastItem();
-//		Add to Home's candyContainer
-//		TODO Same
 	}
 }

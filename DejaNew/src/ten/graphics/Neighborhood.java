@@ -12,9 +12,9 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	private boolean hasChildOnAWalkway;
 	
 	public Neighborhood() {
-//		 TODO why wont it let me create the array list of type Homes,   It wants me to change the method in Stack
-//		or the type Home to T in the constructor
-		super.setArrayList( new ArrayList<IHome>());
+//	TODO why wont it let me create the array list of type Homes,   It wants me to change the method in Stack
+//	or the type Home to T in the constructor
+		setArrayList(new ArrayList<IHome>());
 		this.setChild(new Child(250,150,1,30,20,20));
 	}
 
@@ -29,11 +29,19 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	
 	public void moveChildBy(int x, int y) {
 		child.changeLocationBy(x, y);
-		child.checkIfInWalkway(super.getArrayList());
+		for (int i = 0 ; i < super.getArrayList().size()-1 ; i++) {
+			if(this.isChildInWalkwayOfHome(i)) {
+				this.child.connectToHome(i);
+			}
+		}
 	}
 	public void moveChildTo(int x, int y) {
 		child.changeLocationTo(x, y);
-		child.checkIfInWalkway(super.getArrayList());
+		for (int i = 0 ; i < super.getArrayList().size()-1 ; i++) {
+			if(this.isChildInWalkwayOfHome(i)) {
+				this.child.connectToHome(i);
+			}
+		}
 	}
 	public IChild getPerson() {
 		return this.child;
@@ -48,4 +56,8 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public void setHasChildOnWalkway(boolean value) {
 		this.hasChildOnAWalkway = value;
 	}
+	public void fromHomeToChild(){
+		
+	};
+	public void fromChildToHome(){};
 }

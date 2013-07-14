@@ -106,10 +106,10 @@ public class Scanner implements IScanner {
 	}
 	public void wordParamCountRD(ITokenCollection tC, int index) {
 		System.out.println(index);
-		if (index+2 <= tC.size() && tC.getToken(index+1) instanceof NumberToken && tC.getToken(index+2) instanceof NumberToken) {
+		if (index+2 < tC.size() && tC.getToken(index+1) instanceof NumberToken && tC.getToken(index+2) instanceof NumberToken) {
 			wordTwoParamRD(tC, index);
 		//Todo, no clue why I am getting out of bounds error
-		} else if (index+1 <= tC.size() && tC.getToken(index+1) instanceof NumberToken) {
+		} else if (index+1 < tC.size() && tC.getToken(index+1) instanceof NumberToken) {
 			wordOneParamRD();
 		} else {
 			wordZeroParamRD(tC, index);
