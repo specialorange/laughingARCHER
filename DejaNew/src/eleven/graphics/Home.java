@@ -1,7 +1,6 @@
-package ten.graphics;
+package eleven.graphics;
 
 import java.util.ArrayList;
-
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -68,7 +67,7 @@ public class Home extends Stack<Home> implements IHome {
 		return this.hasChildOnWalkway;
 	}
 	@Visible(false)
-	public boolean isChildTrespassing(IChild child, int number) {
+	public boolean isChildTrespassing(IChild child) {
 		IPoint upperLeftBBoxWalkway = this.getWalkway().getUpperLeft();
 		IPoint upperRightBBoxWalkway = this.getWalkway().getUpperRight();
 		IPoint bottomLeftBBoxWalkway = this.getWalkway().getLowerLeft();
@@ -80,7 +79,6 @@ public class Home extends Stack<Home> implements IHome {
 				) {
 			setHasChildOnWalkway(true);
 			child.connect();
-			child.setHouseConnectedTo(number);
 			System.out.println("Child in this home's Walkway: true");
 		} else {
 			setHasChildOnWalkway(false);
