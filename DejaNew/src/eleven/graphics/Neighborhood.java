@@ -1,6 +1,10 @@
 package eleven.graphics;
 
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+
+import eleven.IListener;
+import eleven.IListenerList;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -9,12 +13,19 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 
 	private IChild child;
 	private boolean hasChildOnAWalkway;
+	private IListenerList listeners;
 	
 	public Neighborhood() {
 //	TODO why wont it let me create the array list of type Homes,   It wants me to change the method in Stack
 //	or the type Home to T in the constructor
 		setArrayList(new ArrayList<IHome>());
 		this.setChild(new Child(250,150,1,30,20,20));
+	}
+
+//	Am I supposed to use the import to take advantage of Object Editors version of handling listeners?
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+//Do I have to make another IListenerList to accommodate the type PCL, or cast the PCL listener as type Listener? 
+		listeners.addListener(listener);
 	}
 
 	public boolean isChildInWalkwayOfHome(int number){
