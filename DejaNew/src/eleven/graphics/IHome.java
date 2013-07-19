@@ -5,4 +5,5 @@ public interface IHome {
 	public IHouseLabel getHouse();
 	public boolean isChildTrespassing(IChild child);
 	public IWalkway getWalkway();
+	public IPoint getLocation();
 }
