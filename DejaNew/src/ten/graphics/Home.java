@@ -1,7 +1,6 @@
 package ten.graphics;
 
 import java.util.ArrayList;
-
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -80,7 +79,7 @@ public class Home extends Stack<Home> implements IHome {
 				) {
 			setHasChildOnWalkway(true);
 			child.connect();
-			child.setHouseConnectedTo(number);
+			child.connectToHome(number);
 			System.out.println("Child in this home's Walkway: true");
 		} else {
 			setHasChildOnWalkway(false);

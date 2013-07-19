@@ -19,7 +19,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	}
 
 	public boolean isChildInWalkwayOfHome(int number){
-		return super.getArrayList().get(number).isChildTrespassing(this.child);
+		return super.getArrayList().get(number).isChildTrespassing(this.child, number);
 	}
 //	@Visible(false)
 //	TODO
