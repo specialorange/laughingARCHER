@@ -82,7 +82,6 @@ public class Scanner implements IScanner {
         }
       }
     }
-    this.processCommands(tokenCollection);
   }
 	public void processCommands(ITokenCollection tokenCollection){
 	    boolean inACommand = false;
