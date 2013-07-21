@@ -71,7 +71,7 @@ public class Home extends Stack<Home> implements IHome {
 		IPoint upperLeftBBoxWalkway = this.getWalkway().getUpperLeft();
 		IPoint upperRightBBoxWalkway = this.getWalkway().getUpperRight();
 		IPoint bottomLeftBBoxWalkway = this.getWalkway().getLowerLeft();
-		IPoint bottomRightBBoxWalkway = this.getWalkway().getLowerRight();
+//		IPoint bottomRightBBoxWalkway = this.getWalkway().getLowerRight();
 		int childFootX = child.getFeetLocation().getX();
 		int childFootY = child.getFeetLocation().getY();
 		if ( (childFootX <= upperRightBBoxWalkway.getX() && childFootX >= upperLeftBBoxWalkway.getX()) && 

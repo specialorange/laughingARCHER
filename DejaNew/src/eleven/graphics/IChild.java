@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 public interface IChild {
 	public IPoint getLocation();
-	public int getxDelta();
-	public void setxDelta(int xDelta);
-	public int getyDelta();
-	public void setyDelta(int yDelta);
 	public ICandyContainer getcC();
 	public void setcC(ICandyContainer cC);
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> arrayList);

@@ -2,10 +2,8 @@ package eleven.graphics;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-
-import eleven.HomeListener;
+import eleven.ListenerHome;
 import eleven.IListener;
-import eleven.Listener;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 import bus.uigen.ObjectEditor;
@@ -18,31 +16,27 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	private ArrayList<IListener> listenerList;
 	private ArrayList<PropertyChangeListener> pclList = new ArrayList<PropertyChangeListener>();
 	
+//	Using this one in Driver
 	public Neighborhood() {
-//	TODO why wont it let me create the array list of type Homes,   It wants me to change the method in Stack
-//	or the type Home to T in the constructor
 		setArrayList(new ArrayList<IHome>());
-		this.setChild(new Child(250,150,1,30,20,20, this.listenerList));
 		this.listenerList = new ArrayList<IListener>();
+		this.setChild(new Child(250,150,1,30,20,20, this.listenerList));
+//	add a listener to start
+		this.listenerList.add(new ListenerHome());
 	}
 
 	public Neighborhood(ArrayList<IListener> listenerList) {
-//	TODO why wont it let me create the array list of type Homes,   It wants me to change the method in Stack
-//	or the type Home to T in the constructor
 		setArrayList(new ArrayList<IHome>());
-		this.setChild(new Child(250,150,1,30,20,20, listenerList));
 		this.listenerList = listenerList;
-//		add a listener to start
-		this.listenerList.add(new HomeListener());
+		this.setChild(new Child(250,150,1,30,20,20, listenerList));
+//	add a listener to start
+		this.listenerList.add(new ListenerHome());
 	}
 
-//	Am I supposed to use the import to take advantage of Object Editors version of handling listeners?
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
-//Do I have to make another IListenerList to accommodate the type PCL, or cast the PCL listener as type Listener? 
 		this.pclList.add(listener);
 	}
 	public void addListenerToNeighborhood(IListener listener) {
-	//Do I have to make another IListenerList to accommodate the type PCL, or cast the PCL listener as type Listener? 
 			this.listenerList.add(listener);
 		}
 
@@ -57,19 +51,9 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	
 	public void moveChildBy(int x, int y) {
 		child.changeLocationBy(x, y);
-		for (int i = 0 ; i < super.getArrayList().size()-1 ; i++) {
-			if(this.isChildInWalkwayOfHome(i)) {
-				this.child.connectToHome(i);
-			}
-		}
 	}
 	public void moveChildTo(int x, int y) {
 		child.changeLocationTo(x, y);
-		for (int i = 0 ; i < super.getArrayList().size()-1 ; i++) {
-			if(this.isChildInWalkwayOfHome(i)) {
-				this.child.connectToHome(i);
-			}
-		}
 	}
 	public IChild getPerson() {
 		return this.child;

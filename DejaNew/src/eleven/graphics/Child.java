@@ -1,11 +1,9 @@
 package eleven.graphics;
 
 import java.util.ArrayList;
-
-import eleven.ChildListener;
+import eleven.ListenerChild;
 import eleven.IListener;
 import util.annotations.StructurePattern;
-import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
 public class Child extends Avatar implements IChild{
@@ -13,36 +11,22 @@ public class Child extends Avatar implements IChild{
 	private int xDelta = 30;
 	private int yDelta = -35;
 	private ICandyContainer cC;
-	private IPoint location;
 	private int houseConnectedTo;
 	private boolean connected;
 	private ArrayList<IListener> listenerList;
-	
-	public Child(int x, int y, ArrayList<IListener> listenerList) {
-		this.setLocation(new Point(x,y));
-		this.listenerList = listenerList;
-		this.listenerList.add(new ChildListener());
-		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
-	}
-	
-	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<IListener> listenerList) {
-		this.setLocation(new Point(originX, originY));
-		this.listenerList = listenerList;
-		this.listenerList.add(new ChildListener());
-		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
-	}
 
-	@Visible(false)
-	public IPoint getLocation() {
-		return this.location;
-	}
-	@Visible(false)
-	public int getxDelta() {
-		return this.xDelta;
-	}
-	@Visible(false)
-	public int getyDelta() {
-		return this.yDelta;
+//	public Child(int x, int y, ArrayList<IListener> listenerList) {
+//		this.listenerList = listenerList;
+//		this.listenerList.add(new ListenerChild());
+//		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
+//	}
+//Using this on in Neighborhood
+	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<IListener> listenerList) {
+		super(originX, originY, bodyWidth, bodyHeight, headWidth, headHeight, listenerList);
+		super.setLocation(new Point(originX, originY));
+		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
+		this.listenerList = listenerList;
+		this.listenerList.add(new ListenerChild());
 	}
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> neighborhood) {
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
@@ -66,15 +50,6 @@ public class Child extends Avatar implements IChild{
 				break;
 			}
 		}
-	}
-	public void setLocation(Point point) {
-		this.location = point;
-	}
-	public void setxDelta(int xDelta) {
-		this.xDelta = xDelta;
-	}
-	public void setyDelta(int yDelta) {
-		this.yDelta = yDelta;
 	}
 	public ICandyContainer getcC() {
 		return this.cC;

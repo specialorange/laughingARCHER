@@ -10,7 +10,7 @@ import eleven.graphics.IPoint;
 //home listens for adding a house
 
 public class Listener implements IListener {
-	public void update(Observed observed) {
+	public void update(IObserved observed) {
 		
 	}
 
