@@ -7,5 +7,4 @@ public interface IStick {
 	public void setLocation(IPoint point);
 	public ILine getBottom();
 	public void setBottom(ILine bottom);
-	public IPoint getFeetLocation();
 }

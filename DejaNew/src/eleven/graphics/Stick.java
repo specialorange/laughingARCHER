@@ -1,5 +1,6 @@
 package eleven.graphics;
 
+import util.annotations.Visible;
 import eleven.graphics.Line;
 
 public abstract class Stick implements IStick {
@@ -21,7 +22,7 @@ public abstract class Stick implements IStick {
 		this.setLocation(new Point(width/2, y));
 		this.setBottom(new Line(x, y, width, height));
 	}
-	
+	@Visible(false)
 	public IPoint getLocation() {
 		return this.location;
 	}
@@ -33,8 +34,5 @@ public abstract class Stick implements IStick {
 	}
 	public void setBottom(ILine bottom) {
 		this.bottom = bottom;
-	}
-	public IPoint getFeetLocation() {
-		return this.getBottom().getBottomLocation();
 	}
 }

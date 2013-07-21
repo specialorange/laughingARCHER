@@ -62,6 +62,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public void setChild(IChild child) {
 		this.child = child;
 	}
+	@Visible(false)
 	public boolean getHasChildOnWalkway() {
 		return this.hasChildOnAWalkway;
 	}

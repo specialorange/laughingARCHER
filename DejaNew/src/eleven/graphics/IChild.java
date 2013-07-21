@@ -9,7 +9,6 @@ public interface IChild {
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> arrayList);
 	public void changeLocationBy(int x, int y);
 	public void changeLocationTo(int x, int y);
-	public IPoint getFeetLocation();
 	public void connectToHome(int index);
 	public void connect();
 	public void disconnect();

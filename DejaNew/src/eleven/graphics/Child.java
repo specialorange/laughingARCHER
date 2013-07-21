@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import eleven.ListenerChild;
 import eleven.IListener;
 import util.annotations.StructurePattern;
+import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
 public class Child extends Avatar implements IChild{
@@ -36,8 +37,8 @@ public class Child extends Avatar implements IChild{
 			IPoint upperRightBBoxWalkway = neighborhood.get(i).getWalkway().getUpperRight();
 			IPoint bottomLeftBBoxWalkway = neighborhood.get(i).getWalkway().getLowerLeft();
 //			IPoint bottomRightBBoxWalkway = neighborhood.get(i).getWalkway().getLowerRight();
-			int childFootX = getFeetLocation().getX();
-			int childFootY = getFeetLocation().getY();
+			int childFootX = getLocation().getX();
+			int childFootY = getLocation().getY();
 			if ( (childFootX <= upperRightBBoxWalkway.getX() && childFootX >= upperLeftBBoxWalkway.getX()) && 
 				 (childFootY <= bottomLeftBBoxWalkway.getY() && childFootY >= upperLeftBBoxWalkway.getY())
 					) {
@@ -65,12 +66,14 @@ public class Child extends Avatar implements IChild{
 		this.setHouseConnectedTo((Integer) null);
 		this.disconnect();
 	}
+	@Visible(false)
 	public int getHouseConnectedTo() {
 		return this.houseConnectedTo;
 	}
 	public void setHouseConnectedTo(int houseConnectedTo) {
 		this.houseConnectedTo = houseConnectedTo;
 	}
+	@Visible(false)
 	public boolean getConnectionStatus() {
 		return this.connected;
 	}
