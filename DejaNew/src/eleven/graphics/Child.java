@@ -1,6 +1,9 @@
 package eleven.graphics;
 
 import java.util.ArrayList;
+
+import eleven.ChildListener;
+import eleven.IListener;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -13,14 +16,19 @@ public class Child extends Avatar implements IChild{
 	private IPoint location;
 	private int houseConnectedTo;
 	private boolean connected;
+	private ArrayList<IListener> listenerList;
 	
-	public Child(int x, int y) {
+	public Child(int x, int y, ArrayList<IListener> listenerList) {
 		this.setLocation(new Point(x,y));
+		this.listenerList = listenerList;
+		this.listenerList.add(new ChildListener());
 		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
 	}
 	
-	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight) {
+	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<IListener> listenerList) {
 		this.setLocation(new Point(originX, originY));
+		this.listenerList = listenerList;
+		this.listenerList.add(new ChildListener());
 		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
 	}
 

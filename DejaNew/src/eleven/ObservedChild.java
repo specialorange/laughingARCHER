@@ -1,6 +1,6 @@
 package eleven;
 
-public class PointObserved extends Observed implements IObserved{
+public class ObservedChild extends Observed implements IObserved{
 	private boolean attached;
 	
 	public boolean isAttached(){

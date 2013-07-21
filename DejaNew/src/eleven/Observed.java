@@ -6,13 +6,6 @@ public class Observed implements IObserved{
 	TokenCollection tC = new TokenCollection();
 	ArrayList<Listener> listenerList = new ArrayList<Listener>();
 
-	public void addListener(Listener listener) {
-		listenerList.add(listener);
-		listener.update(this);
-	}
-	public void removeListener(Listener listener) {
-		listenerList.remove(listener);
-	}
 	public void addCommandToken(Token token) {
 		this.tC.addToken(token);
 		this.notifyListeners();

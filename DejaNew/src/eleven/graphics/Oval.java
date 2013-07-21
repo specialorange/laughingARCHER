@@ -9,9 +9,9 @@ public class Oval implements IOval {
 	private IPoint location;
 	
 	public Oval() {
-		this.setLocation(new Point(100,100));
-		this.setWidth(100);
-		this.setHeight(100);
+		this.setLocation(new Point(150,150));
+		this.setWidth(75);
+		this.setHeight(75);
 	}
 	
 	public Oval(int x, int y, int width, int height) {

@@ -30,6 +30,7 @@ public class PointController implements IPointController{
 //	|     |
 //	|     |
 //	LL----LR
+		
 		int xMoved = 0;
 		int YMoved = 0;
 		
@@ -48,7 +49,10 @@ public class PointController implements IPointController{
 			} else if (finalDestination.getY() < child.getLocation().getY() ) {
 				moveY = -1;
 			}
+//		Move the child
 			child.changeLocationBy(moveX, moveY);
+			xMoved ++;
+			YMoved ++;
 			
 //		If we are in the walkway
 			if ( !(cX >= wWULX && cX <= wWURX) || !(cY >= wWULY && cY <= wWLLY) ) {
