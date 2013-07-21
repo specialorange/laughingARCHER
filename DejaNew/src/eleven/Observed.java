@@ -1,15 +1,17 @@
 package eleven;
 
+import java.util.ArrayList;
+
 public class Observed implements IObserved{
 	TokenCollection tC = new TokenCollection();
-	ListenerList listenerList = new ListenerList();
+	ArrayList<Listener> listenerList = new ArrayList<Listener>();
 
 	public void addListener(Listener listener) {
-		listenerList.addListener(listener);
+		listenerList.add(listener);
 		listener.update(this);
 	}
 	public void removeListener(Listener listener) {
-		listenerList.removeListener(listener);
+		listenerList.remove(listener);
 	}
 	public void addCommandToken(Token token) {
 		this.tC.addToken(token);
