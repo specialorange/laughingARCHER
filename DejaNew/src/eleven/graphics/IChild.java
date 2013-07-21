@@ -3,6 +3,7 @@ package eleven.graphics;
 import java.util.ArrayList;
 
 public interface IChild {
+	public IPoint getLocation();
 	public int getxDelta();
 	public void setxDelta(int xDelta);
 	public int getyDelta();

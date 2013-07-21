@@ -2,7 +2,6 @@ package eleven.graphics;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-
 import eleven.IListener;
 import eleven.Listener;
 import util.annotations.StructurePattern;
