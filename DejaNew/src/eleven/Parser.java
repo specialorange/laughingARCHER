@@ -1,39 +1,32 @@
 package eleven;
 
-import java.util.ArrayList;
-
-import nine.graphics.Halloween;
-import nine.graphics.IHalloween;
+import eleven.graphics.INeighborhood;
+import eleven.graphics.Neighborhood;
 
 public class Parser implements IParser {
 
-	private ITokenCollection tokenCollection;
-	private ArrayList commandCollection;
-	private IHalloween halloweenNeighborhood;
-	protected Scanner scanner;
+	private ITokenCollection tokenCollection = new TokenCollection();
+	private INeighborhood neighborhood;
+	protected Scanner scanner = new Scanner();
 	
-	public Parser(String input) {
-		scanner = new Scanner();
-		setHalloweenNeighborhood(new Halloween());
-		scanner.setTokenCollection(new TokenCollection());
-		this.setOriginalString(input);
+	public Parser(String input, INeighborhood neighborhood) {
+		setNeighborhood(new Neighborhood());
+//		scanner.setTokenCollection(new TokenCollection());
+		this.process(input);
 	}
 
-	public void setOriginalString(String input) {
-	  scanner.setOriginalString(input);
-	  scanner.tokensInArray(scanner.getTokenCollection());
-//	  setting here to not get confused
-	  this.tokenCollection = scanner.getTokenCollection();
-	  processCommands(tokenCollection);
+	public void process(String input) {
+	  this.tokenCollection = scanner.setAndProcess(input, this.tokenCollection);
+	  processCommands(this.tokenCollection);
 	}
 	public void processCommands(ITokenCollection tokenCollection){
-	    boolean inACommand = false;
-	    int startMarker = 0;
-	    if (!inACommand) {
-	    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
-	    		scanner.wordOrNumberRD(tokenCollection, index);
-	    	}
-	    }
+    boolean inACommand = false;
+    int startMarker = 0;
+    if (!inACommand) {
+    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
+    		scanner.wordOrNumberRD(tokenCollection, index);
+    	}
+    }
 	}
 	public ITokenCollection getTokenCollection() {
 		return this.tokenCollection;
@@ -41,11 +34,11 @@ public class Parser implements IParser {
 	public void setTokenCollection(ITokenCollection tokenCollection) {
 		this.tokenCollection = tokenCollection;
 	}
-	public IHalloween getHalloweenNeighborhood() {
-		return this.halloweenNeighborhood;
+	public INeighborhood getNeighborhood() {
+		return this.neighborhood;
 	}
-	public void setHalloweenNeighborhood(IHalloween halloweenNeighborhood) {
-		this.halloweenNeighborhood = halloweenNeighborhood;
+	public void setNeighborhood(INeighborhood neighborhood) {
+		this.neighborhood = neighborhood;
 	}
 	public String getConcatenation() {
 		return scanner.getConcatenation();

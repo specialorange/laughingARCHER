@@ -1,6 +1,6 @@
 package eleven;
 
 public interface IParser {
-	void setOriginalString(String string);
+	void process(String string);
 	String getConcatenation();
 }

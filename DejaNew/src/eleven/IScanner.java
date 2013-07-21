@@ -1,6 +1,6 @@
 package eleven;
 
 public interface IScanner {
-	public void setOriginalString(String input);
+	public ITokenCollection setAndProcess(String input, ITokenCollection tC);
 	public String getConcatenation();
 }

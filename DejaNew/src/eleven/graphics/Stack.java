@@ -21,7 +21,7 @@ import java.util.ArrayList;
 		this.list = list;
 	}
 	public T get(int number) {
+//	I am forcing a return type of the item in the ArrayList<T> list;
 		return (T) list.get(number);
-//	TODO 		I am forcing a return type of the item in the ArrayList<T> list;
 	}
 }

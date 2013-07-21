@@ -1,5 +1,6 @@
 package eleven.graphics;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import eleven.ListenerHome;
@@ -21,6 +22,8 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		setArrayList(new ArrayList<IHome>());
 		this.listenerList = new ArrayList<IListener>();
 		this.setChild(new Child(250,150,1,30,20,20, this.listenerList));
+//	A Neighborhood has at least one house
+		super.addItem(new Home(0));
 //	add a listener to start
 		this.listenerList.add(new ListenerHome());
 	}
@@ -31,6 +34,12 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		this.setChild(new Child(250,150,1,30,20,20, listenerList));
 //	add a listener to start
 		this.listenerList.add(new ListenerHome());
+		this.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				// TODO Auto-generated method stub
+			}
+		});
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

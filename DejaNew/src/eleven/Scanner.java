@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import nine.graphics.IHalloween;
-
 public class Scanner implements IScanner {
   
   private String originalString;
@@ -108,7 +106,6 @@ public class Scanner implements IScanner {
 		System.out.println(index);
 		if (index+2 < tC.size() && tC.getToken(index+1) instanceof NumberToken && tC.getToken(index+2) instanceof NumberToken) {
 			wordTwoParamRD(tC, index);
-		//Todo, no clue why I am getting out of bounds error
 		} else if (index+1 < tC.size() && tC.getToken(index+1) instanceof NumberToken) {
 			wordOneParamRD();
 		} else {
@@ -117,11 +114,9 @@ public class Scanner implements IScanner {
 	}
 	public void wordZeroParamRD(ITokenCollection tC, int index) {
 		if (tC.getToken(index) instanceof AddHouseWordToken) {
-//			getNeighborhood().addHome();
-			System.out.println("added a house");
+			System.out.println("Scanner(RD[0]): added a house");
 		} else if (tC.getToken(index) instanceof RemoveHouseWordToken) {
-//			getNeighborhood().removeLastHome();
-			System.out.println("removed a house");			
+			System.out.println("Scanner(RD[0]): removed a house");			
 		}
 	}
 	public void wordOneParamRD(){
@@ -130,12 +125,14 @@ public class Scanner implements IScanner {
 	public void wordTwoParamRD(ITokenCollection tC, int index) {
 		if (tC.getToken(index) instanceof MoveWordToken) {
 //			getNeighborhood().moveChildBy(((NumberToken) tC.getToken(index+1)).toInt(), ((NumberToken) tC.getToken(index+2)).toInt());
-			System.out.println("moved Child by: "+ tC.getToken(index+1) + " by " + tC.getToken(index+2) );
+			System.out.println("Scanner(RD[2]): moved Child by: "+ tC.getToken(index+1) + " by " + tC.getToken(index+2) );
 		}
 	}
-  public void setOriginalString(String input) {
+  public ITokenCollection setAndProcess(String input, ITokenCollection tC) {
 	  this.originalString = input;
-	  this.tokensInArray(this.getTokenCollection());
+	  this.tokenCollection = tC;
+	  this.tokensInArray(this.tokenCollection);
+	  return this.tokenCollection;
   } 
   public String getConcatenation() {
     return this.concatenation;
