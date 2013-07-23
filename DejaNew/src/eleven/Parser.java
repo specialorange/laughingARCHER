@@ -20,13 +20,16 @@ public class Parser implements IParser {
 	  processCommands(this.tokenCollection);
 	}
 	public void processCommands(ITokenCollection tokenCollection){
-    boolean inACommand = false;
-    int startMarker = 0;
-    if (!inACommand) {
-    	for ( int index = startMarker; index < tokenCollection.size(); index++ ) {
-    		scanner.wordOrNumberRD(tokenCollection, index);
-    	}
-    }
+  	for ( int index = 0; index < tokenCollection.size(); index++ ) {
+  		if (tokenCollection.getToken(index) instanceof MoveWordToken) {
+  			neighborhood.moveChildBy(Integer.parseInt(tokenCollection.getToken(index+1).toString()), Integer.parseInt(tokenCollection.getToken(index+1).toString()));
+  			index = index+2;
+  		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {
+  			neighborhood.addHome();
+  		} else if (tokenCollection.getToken(index) instanceof RemoveHouseWordToken) {
+  			neighborhood.removeLastHome();
+  		} else { }
+  	}
 	}
 	public ITokenCollection getTokenCollection() {
 		return this.tokenCollection;

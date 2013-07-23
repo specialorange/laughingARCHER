@@ -20,7 +20,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		this.listenerList = new ArrayList<PropertyChangeListener>();
 		this.setChild(new Child(250,150,1,30,20,20, this.listenerList));
 //	A Neighborhood has at least one house
-		this.addHome(new Home(this.getArrayList().size()*350, this.listenerList));
+		this.addHome();
 	}
 
 	public Neighborhood(ArrayList<PropertyChangeListener> listenerList) {
@@ -36,11 +36,11 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		this.listenerList.add(listener);
 	}
-	public void addHome(IHome home) {
-		super.addItem(home);
+	public void addHome() {
+		super.addItem(new Home(this.getArrayList().size()*350, this.listenerList));
 		notifyAllListeners(new PropertyChangeEvent(this, "home", null, new Home(this.getArrayList().size()*350, this.listenerList)));
 	}
-	public void removeLastHome(IHome home) {
+	public void removeLastHome() {
 		super.removeLastItem();
 		notifyAllListeners(new PropertyChangeEvent(this, "home", this.getArrayList().get(this.getArrayList().size()-1), null));
 	}

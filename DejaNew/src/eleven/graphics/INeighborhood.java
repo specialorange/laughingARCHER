@@ -8,6 +8,8 @@ public interface INeighborhood {
 	public void moveChildBy(int x, int y);
 	public boolean isChildInWalkwayOfHome(int number);
 	public void setHasChildOnWalkway(boolean value);
+	public void addHome();
+	public void removeLastHome();
 	
 //	public IWalkway getWalkway();
 //	public void setHasChildOnWalkway(boolean b);
