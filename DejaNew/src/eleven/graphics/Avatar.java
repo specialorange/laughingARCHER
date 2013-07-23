@@ -1,5 +1,6 @@
 package eleven.graphics;
 
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import eleven.IListener;
 import util.annotations.StructurePattern;
@@ -20,7 +21,7 @@ public class Avatar extends Stick implements IAvatar{
 //		super.setBottom(new Line(x, y-this.getHead().getHeight(), this.getBottom().getWidth(), this.getBottom().getHeight()));
 //		this.setHead(new Oval(x-this.getHead().getWidth()/2, y-this.getBottom().getHeight()-this.getHead().getHeight(), this.getHead().getWidth(), this.getHead().getHeight()));
 //	}
-	public Avatar(int originX, int originY, int postWidth, int postHeight, int circleWidth, int circleHeight, ArrayList<IListener> listenerList) {
+	public Avatar(int originX, int originY, int postWidth, int postHeight, int circleWidth, int circleHeight, ArrayList<PropertyChangeListener> listenerList) {
 		super.setLocation(new Point(originX, originY));
 		super.setBottom(new Line(originX, originY-postHeight, postWidth, postHeight));
 		this.setHead(new Oval(originX-circleHeight/2, originY-postHeight-circleHeight, circleWidth, circleHeight));
@@ -29,6 +30,7 @@ public class Avatar extends Stick implements IAvatar{
 		this.setLocation(new Point(x, y));
 		this.setHead(new Oval(x-this.getHead().getWidth()/2, y-this.getBottom().getHeight()-this.getHead().getHeight(), this.getHead().getWidth(), this.getHead().getHeight()));
 		this.setBottom(new Line(x, y-this.getBottom().getHeight(), this.getBottom().getWidth(), this.getBottom().getHeight()));		
+//		for each PCL.update(this);
 	}
 	public void changeLocationBy(int x, int y) {
 		this.setLocation(new Point(x, y));

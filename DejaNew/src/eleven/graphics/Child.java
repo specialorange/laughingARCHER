@@ -1,5 +1,7 @@
 package eleven.graphics;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import eleven.ListenerChild;
 import eleven.IListener;
@@ -14,7 +16,7 @@ public class Child extends Avatar implements IChild{
 	private ICandyContainer cC;
 	private int houseConnectedTo;
 	private boolean connected;
-	private ArrayList<IListener> listenerList;
+	private ArrayList<PropertyChangeListener> listenerList;
 
 //	public Child(int x, int y, ArrayList<IListener> listenerList) {
 //		this.listenerList = listenerList;
@@ -22,12 +24,28 @@ public class Child extends Avatar implements IChild{
 //		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
 //	}
 //Using this on in Neighborhood
-	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<IListener> listenerList) {
+	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<PropertyChangeListener> listenerList) {
 		super(originX, originY, bodyWidth, bodyHeight, headWidth, headHeight, listenerList);
 		super.setLocation(new Point(originX, originY));
 		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
 		this.listenerList = listenerList;
-		this.listenerList.add(new ListenerChild());
+	}
+	
+	public void changeLocationTo(int x, int y) {
+		super.changeLocationTo(x, y);
+		notifyAllListeners(new PropertyChangeEvent(this, "location", new Point(this.getLocation().getX(),this.getLocation().getY()), new Point(x,y)));
+	}
+	public void changeLocationBy(int x, int y) {
+		super.changeLocationBy(x, y);
+		notifyAllListeners(new PropertyChangeEvent(this, "location", new Point(this.getLocation().getX(),this.getLocation().getY()), new Point(x,y)));
+	}
+	public void notifyAllListeners(PropertyChangeEvent event) {
+		for (int index = 0; index < listenerList.size(); index++) {
+			listenerList.get(index).propertyChange(event);
+		}
+	}
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.listenerList.add(listener);
 	}
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> neighborhood) {
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {

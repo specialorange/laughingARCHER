@@ -1,5 +1,7 @@
 package eleven.graphics;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
@@ -13,20 +15,31 @@ public class Home extends Stack<Home> implements IHome {
 	private IHouseLabel house;
 	private ICandyContainer cC;
 	private boolean hasChildOnWalkway;
-	
-	public Home() {	
+	private ArrayList<PropertyChangeListener> listenerList;
+
+	public Home(ArrayList<PropertyChangeListener> listenerList) {	
 		this.setLocation(new Point(0,0));
 		this.setWalkway(new Walkway(87,205,30,75));
 		this.setHouse(new HouseLabel(0,0));
 		this.setMailbox(new Mailbox(25, 250, 0, 20, 10, 10));
 		this.setcC(new CandyContainer(95, 145, 15, 51, 3));
+		this.listenerList = listenerList;
 	}
-	public Home(int x) {	
+	public Home(int x, ArrayList<PropertyChangeListener> listenerList) {	
 		this.setLocation(new Point(x,0));
 		this.setWalkway(new Walkway(x+87,205,30,75));
 		this.setHouse(new HouseLabel(x,0));
 		this.setMailbox(new Mailbox(x+25, 250, 0, 20, 10, 10));
 		this.setcC(new CandyContainer(x+95, 145, 15, 51, 3));
+		this.listenerList = listenerList;
+	}
+	public void notifyAllListeners(PropertyChangeEvent event) {
+		for (int index = 0; index < listenerList.size(); index++) {
+			listenerList.get(index).propertyChange(event);
+		}
+	}
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.listenerList.add(listener);
 	}
 	public ArrayList<Home> getArrayList() {
 		return super.getArrayList();

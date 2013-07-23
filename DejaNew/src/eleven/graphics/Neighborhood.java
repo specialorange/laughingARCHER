@@ -3,52 +3,47 @@ package eleven.graphics;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import eleven.ListenerHome;
-import eleven.IListener;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
-import bus.uigen.ObjectEditor;
 
 @StructurePattern("Bean Pattern")
 public class Neighborhood extends Stack<IHome> implements INeighborhood {
 
 	private IChild child;
 	private boolean hasChildOnAWalkway;
-	private ArrayList<IListener> listenerList;
-	private ArrayList<PropertyChangeListener> pclList = new ArrayList<PropertyChangeListener>();
+//	private ArrayList<IListener> listenerList;
+	private ArrayList<PropertyChangeListener> listenerList = new ArrayList<PropertyChangeListener>();
 	
 //	Using this one in Driver
 	public Neighborhood() {
 		setArrayList(new ArrayList<IHome>());
-		this.listenerList = new ArrayList<IListener>();
+		this.listenerList = new ArrayList<PropertyChangeListener>();
 		this.setChild(new Child(250,150,1,30,20,20, this.listenerList));
 //	A Neighborhood has at least one house
-		super.addItem(new Home(0));
-//	add a listener to start
-		this.listenerList.add(new ListenerHome());
+		this.addHome(new Home(this.getArrayList().size()*350, this.listenerList));
 	}
 
-	public Neighborhood(ArrayList<IListener> listenerList) {
+	public Neighborhood(ArrayList<PropertyChangeListener> listenerList) {
 		setArrayList(new ArrayList<IHome>());
-		this.listenerList = listenerList;
+//		this.listenerList = listenerList;
 		this.setChild(new Child(250,150,1,30,20,20, listenerList));
-//	add a listener to start
-		this.listenerList.add(new ListenerHome());
-		this.addPropertyChangeListener(new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				// TODO Auto-generated method stub
-			}
-		});
 	}
-
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.pclList.add(listener);
-	}
-	public void addListenerToNeighborhood(IListener listener) {
-			this.listenerList.add(listener);
+	public void notifyAllListeners(PropertyChangeEvent event) {
+		for (int index = 0; index < listenerList.size(); index++) {
+			listenerList.get(index).propertyChange(event);
 		}
-
+	}
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.listenerList.add(listener);
+	}
+	public void addHome(IHome home) {
+		super.addItem(home);
+		notifyAllListeners(new PropertyChangeEvent(this, "home", null, new Home(this.getArrayList().size()*350, this.listenerList)));
+	}
+	public void removeLastHome(IHome home) {
+		super.removeLastItem();
+		notifyAllListeners(new PropertyChangeEvent(this, "home", this.getArrayList().get(this.getArrayList().size()-1), null));
+	}
 	public boolean isChildInWalkwayOfHome(int number){
 		return super.getArrayList().get(number).isChildTrespassing(this.child);
 	}
@@ -64,7 +59,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public void moveChildTo(int x, int y) {
 		child.changeLocationTo(x, y);
 	}
-	public IChild getPerson() {
+	public IChild getChild() {
 		return this.child;
 	}
 	@Visible(false)
@@ -78,8 +73,6 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public void setHasChildOnWalkway(boolean value) {
 		this.hasChildOnAWalkway = value;
 	}
-	public void fromHomeToChild(){
-		
-	};
+	public void fromHomeToChild(){};
 	public void fromChildToHome(){};
 }
