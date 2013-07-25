@@ -33,11 +33,17 @@ public class Child extends Avatar implements IChild{
 	
 	public void changeLocationTo(int x, int y) {
 		super.changeLocationTo(x, y);
-		notifyAllListeners(new PropertyChangeEvent(this, "location", new Point(this.getLocation().getX(),this.getLocation().getY()), new Point(x,y)));
+		IPoint oldLocation = this.getLocation();
+		IPoint newLocation = new Point(x,y);
+		this.changeLocationBy(x, y);
+		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
 	}
 	public void changeLocationBy(int x, int y) {
 		super.changeLocationBy(x, y);
-		notifyAllListeners(new PropertyChangeEvent(this, "location", new Point(this.getLocation().getX(),this.getLocation().getY()), new Point(x,y)));
+		IPoint oldLocation = this.getLocation();
+		IPoint newLocation = new Point(x,y);
+		this.changeLocationBy(x, y);
+		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
 	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
 		for (int index = 0; index < listenerList.size(); index++) {
@@ -62,10 +68,12 @@ public class Child extends Avatar implements IChild{
 					) {
 //				Todo why do I have to cast this as a neighborhood? it know it is a INeghborhood form the parameter?
 				((INeighborhood) neighborhood).setHasChildOnWalkway(true);
+				this.connectToHome(i);
 				System.out.println("Child in Home " + i + " Walkway true");
 			} else {
 				((INeighborhood) neighborhood).setHasChildOnWalkway(false);
 				System.out.println("Child in Walkway false");
+				this.disconnectFromHome();
 				break;
 			}
 		}

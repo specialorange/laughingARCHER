@@ -12,7 +12,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	private IChild child;
 	private boolean hasChildOnAWalkway;
 //	private ArrayList<IListener> listenerList;
-	private ArrayList<PropertyChangeListener> listenerList = new ArrayList<PropertyChangeListener>();
+	private ArrayList<PropertyChangeListener> listenerList;
 	
 //	Using this one in Driver
 	public Neighborhood() {
@@ -25,7 +25,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 
 	public Neighborhood(ArrayList<PropertyChangeListener> listenerList) {
 		setArrayList(new ArrayList<IHome>());
-//		this.listenerList = listenerList;
+		this.listenerList = listenerList;
 		this.setChild(new Child(250,150,1,30,20,20, listenerList));
 	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
@@ -38,11 +38,13 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	}
 	public void addHome() {
 		super.addItem(new Home(this.getArrayList().size()*350, this.listenerList));
-		notifyAllListeners(new PropertyChangeEvent(this, "home", null, new Home(this.getArrayList().size()*350, this.listenerList)));
+		IHome newHome = new Home(this.getArrayList().size()*350, this.listenerList);
+		notifyAllListeners(new PropertyChangeEvent(this, "homeList", null, newHome));
 	}
 	public void removeLastHome() {
 		super.removeLastItem();
-		notifyAllListeners(new PropertyChangeEvent(this, "home", this.getArrayList().get(this.getArrayList().size()-1), null));
+		IHome oldHome = this.getArrayList().get(this.getArrayList().size()-1);
+		notifyAllListeners(new PropertyChangeEvent(this, "home", oldHome, null));
 	}
 	public boolean isChildInWalkwayOfHome(int number){
 		return super.getArrayList().get(number).isChildTrespassing(this.child);
@@ -71,7 +73,10 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		return this.hasChildOnAWalkway;
 	}
 	public void setHasChildOnWalkway(boolean value) {
+		boolean oldVal = this.getHasChildOnWalkway();
+		boolean newVal = value;
 		this.hasChildOnAWalkway = value;
+		notifyAllListeners(new PropertyChangeEvent(this, "hasChildOnWalkway", oldVal, newVal));
 	}
 	public void fromHomeToChild(){};
 	public void fromChildToHome(){};
