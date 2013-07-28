@@ -28,14 +28,16 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		this.listenerList = listenerList;
 		this.setChild(new Child(250,150,1,30,20,20, listenerList));
 	}
+//Observers
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.listenerList.add(listener);
+	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
 		for (int index = 0; index < listenerList.size(); index++) {
 			listenerList.get(index).propertyChange(event);
 		}
 	}
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.listenerList.add(listener);
-	}
+
 	public void addHome() {
 		super.addItem(new Home(this.getArrayList().size()*350, this.listenerList));
 		IHome newHome = new Home(this.getArrayList().size()*350, this.listenerList);

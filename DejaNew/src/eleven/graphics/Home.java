@@ -38,9 +38,11 @@ public class Home extends Stack<Home> implements IHome {
 			listenerList.get(index).propertyChange(event);
 		}
 	}
+// Observers
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		this.listenerList.add(listener);
 	}
+
 	public ArrayList<Home> getArrayList() {
 		return super.getArrayList();
 	}

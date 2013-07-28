@@ -2,9 +2,7 @@ package eleven.graphics;
 
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import eleven.IListener;
 import util.annotations.StructurePattern;
-
 
 @StructurePattern("Bean Pattern")
 public class Avatar extends Stick implements IAvatar{
@@ -27,15 +25,15 @@ public class Avatar extends Stick implements IAvatar{
 		this.setHead(new Oval(originX-circleHeight/2, originY-postHeight-circleHeight, circleWidth, circleHeight));
 	}
 	public void changeLocationTo(int x, int y) {
-		this.setLocation(new Point(x, y));
-		this.setHead(new Oval(x-this.getHead().getWidth()/2, y-this.getBottom().getHeight()-this.getHead().getHeight(), this.getHead().getWidth(), this.getHead().getHeight()));
-		this.setBottom(new Line(x, y-this.getBottom().getHeight(), this.getBottom().getWidth(), this.getBottom().getHeight()));		
+		this.getLocation().changeLocationTo(x, y);
+		this.getHead().changeLocationTo(x, y);
+		this.getBottom().changeLocationTo(x, y);		
 //		for each PCL.update(this);
 	}
 	public void changeLocationBy(int x, int y) {
-		this.setLocation(new Point(x, y));
-		this.setHead(new Oval(x+this.getHead().getLocation().getX(), y+this.getHead().getLocation().getY(), this.getHead().getWidth(), this.getHead().getHeight()));
-		this.setBottom(new Line(x+this.getBottom().getLocation().getX(), y+this.getBottom().getLocation().getY(), this.getBottom().getWidth(), this.getBottom().getHeight()));
+		this.getLocation().changeLocationBy(x, y);
+		this.getHead().changeLocationBy(x, y);
+		this.getBottom().changeLocationBy(x, y);
 	}
 	public void setHead(IOval circle) {
 		this.head = circle;

@@ -1,7 +1,6 @@
 package eleven.graphics;
 
 import util.annotations.StructurePattern;
-import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
 public class Mailbox extends Stick implements IMailbox {
@@ -19,6 +18,17 @@ public class Mailbox extends Stick implements IMailbox {
 		this.setBox(new Rectangle( originX, originY, boxWidth, boxHeight));
 	}
 	
+	public void changeLocationTo(int x, int y) {
+		this.getLocation().changeLocationTo(x, y);
+		this.getBox().changeLocationTo(x, y);
+		this.getBottom().changeLocationTo(x, y);		
+	}
+	@Override
+	public void changeLocationBy(int x, int y) {
+		this.getLocation().changeLocationTo(x, y);
+		this.getBox().changeLocationTo(x, y);
+		this.getBottom().changeLocationTo(x, y);		
+	}
 	public IRectangle getBox() {
 		return this.box;
 	}

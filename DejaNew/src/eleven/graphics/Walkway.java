@@ -69,4 +69,12 @@ public class Walkway implements IRectangle, IWalkway {
 	public int getHeight() {
 		return this.height;
 	}
+	@Override
+	public void changeLocationTo(int x, int y) {
+		this.location.changeLocationTo(x, y);
+	}
+	@Override
+	public void changeLocationBy(int x, int y) {
+		this.location.changeLocationBy(x, y);
+	}
 }

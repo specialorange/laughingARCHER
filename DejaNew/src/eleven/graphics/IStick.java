@@ -1,10 +1,10 @@
 package eleven.graphics;
 
-import java.util.ArrayList;
-
 public interface IStick {
-	public IPoint getLocation(); 
+	public IPoint getLocation();
 	public void setLocation(IPoint point);
+	public void changeLocationTo(int x, int y);
+	public void changeLocationBy(int x, int y);
 	public ILine getBottom();
 	public void setBottom(ILine bottom);
 }

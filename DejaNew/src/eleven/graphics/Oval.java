@@ -19,7 +19,10 @@ public class Oval implements IOval {
 		this.setWidth(width);
 		this.setHeight(height);
 	}
-	public void changeLocation(int x, int y) {
+	public void changeLocationBy(int x, int y) {
+		this.location = new Point(this.getLocation().getX()+x,this.getLocation().getY()+y);
+	}
+	public void changeLocationTo(int x, int y) {
 		this.location = new Point(x,y);
 	}
 	public IPoint getLocation() {

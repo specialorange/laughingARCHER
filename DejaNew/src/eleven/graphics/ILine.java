@@ -8,5 +8,6 @@ public interface ILine {
 	public void setWidth(int width);
 	public int getHeight();
 	public void setHeight(int height);
+	public void changeLocationTo(int x, int y);
 	public void changeLocationBy(int x, int y);
 }	
