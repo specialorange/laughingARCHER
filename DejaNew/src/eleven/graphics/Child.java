@@ -3,14 +3,11 @@ package eleven.graphics;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import eleven.ListenerChild;
-import eleven.IListener;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
 @StructurePattern("Bean Pattern")
 public class Child extends Avatar implements IChild{
-
 	private int xDelta = 30;
 	private int yDelta = -35;
 	private ICandyContainer cC;
@@ -35,24 +32,24 @@ public class Child extends Avatar implements IChild{
 		super.changeLocationTo(x, y);
 		IPoint oldLocation = this.getLocation();
 		IPoint newLocation = new Point(x,y);
-		this.changeLocationBy(x, y);
 		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
 	}
 	public void changeLocationBy(int x, int y) {
 		super.changeLocationBy(x, y);
 		IPoint oldLocation = this.getLocation();
 		IPoint newLocation = new Point(x,y);
-		this.changeLocationBy(x, y);
 		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
+	}
+//Observers
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.listenerList.add(listener);
 	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
 		for (int index = 0; index < listenerList.size(); index++) {
 			listenerList.get(index).propertyChange(event);
 		}
 	}
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.listenerList.add(listener);
-	}
+
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> neighborhood) {
 		for (int i=0 ; i < neighborhood.size() ; i++ ) {
 //			TODO same problem as in the Neighborhood Class
