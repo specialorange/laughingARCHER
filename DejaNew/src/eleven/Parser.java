@@ -12,22 +12,33 @@ public class Parser implements IParser {
 	public Parser(String input, INeighborhood neighborhood) {
 		setNeighborhood(new Neighborhood());
 //		scanner.setTokenCollection(new TokenCollection());
-		this.process(input);
+		this.processInput(input);
 	}
 
-	public void process(String input) {
+	public void processInput(String input) {
 	  this.tokenCollection = scanner.setAndProcess(input, this.tokenCollection);
 	  processCommands(this.tokenCollection);
 	}
 	public void processCommands(ITokenCollection tokenCollection){
   	for ( int index = 0; index < tokenCollection.size(); index++ ) {
   		if (tokenCollection.getToken(index) instanceof MoveWordToken) {
-  			neighborhood.moveChildBy(Integer.parseInt(tokenCollection.getToken(index+1).toString()), Integer.parseInt(tokenCollection.getToken(index+1).toString()));
+  			// Move in L shape
+  			int nextToken = Integer.parseInt(tokenCollection.getToken(index+1).toString());
+  			int secondToken = Integer.parseInt(tokenCollection.getToken(index+2).toString());
+  			for (int x = 0 ; x < nextToken ; x++) {
+  				neighborhood.moveChildBy(1,0);
+  			}
+  			for (int y = 0 ; y < secondToken ; y++) {
+  				neighborhood.moveChildBy(0,1);
+  			}
   			index = index+2;
+  			System.out.println("ONLY IN PARSER moving child");
   		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {
   			neighborhood.addHome();
+  			System.out.println("adding house");
   		} else if (tokenCollection.getToken(index) instanceof RemoveHouseWordToken) {
   			neighborhood.removeLastHome();
+  			System.out.println("removing house");
   		} else { }
   	}
 	}

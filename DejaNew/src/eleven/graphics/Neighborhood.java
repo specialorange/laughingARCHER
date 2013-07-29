@@ -29,6 +29,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		this.setChild(new Child(250,150,1,30,20,20, listenerList));
 	}
 //Observers
+//																			string, listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		this.listenerList.add(listener);
 	}
@@ -66,7 +67,6 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public IChild getChild() {
 		return this.child;
 	}
-	@Visible(false)
 	public void setChild(IChild child) {
 		this.child = child;
 	}

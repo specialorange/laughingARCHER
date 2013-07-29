@@ -8,7 +8,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		INeighborhood neighborhood = new Neighborhood();
-						
+		
 		IParser parser = new Parser(args[0], neighborhood);
 		System.out.println("PARSER CONCATENATION :>" + parser.getConcatenation());
 		
