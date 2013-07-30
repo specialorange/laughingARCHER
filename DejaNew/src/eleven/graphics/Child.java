@@ -13,7 +13,6 @@ public class Child extends Avatar implements IChild{
 	private ICandyContainer cC;
 	private int houseConnectedTo;
 	private boolean connected;
-	private ArrayList<PropertyChangeListener> listenerList;
 
 //	public Child(int x, int y, ArrayList<IListener> listenerList) {
 //		this.listenerList = listenerList;
@@ -24,30 +23,14 @@ public class Child extends Avatar implements IChild{
 	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<PropertyChangeListener> listenerList) {
 		super(originX, originY, bodyWidth, bodyHeight, headWidth, headHeight, listenerList);
 		super.setLocation(new Point(originX, originY));
-		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0));
-		this.listenerList = listenerList;
+		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0, listenerList));
 	}
 	
 	public void changeLocationTo(int x, int y) {
 		super.changeLocationTo(x, y);
-		IPoint oldLocation = this.getLocation();
-		IPoint newLocation = new Point(x,y);
-		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
 	}
 	public void changeLocationBy(int x, int y) {
 		super.changeLocationBy(x, y);
-		IPoint oldLocation = this.getLocation();
-		IPoint newLocation = new Point(x,y);
-		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
-	}
-//Observers
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.listenerList.add(listener);
-	}
-	public void notifyAllListeners(PropertyChangeEvent event) {
-		for (int index = 0; index < listenerList.size(); index++) {
-			listenerList.get(index).propertyChange(event);
-		}
 	}
 
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> neighborhood) {
