@@ -1,8 +1,8 @@
 package eleven.graphics;
 
-public interface INeighborhood {
+import java.beans.PropertyChangeListener;
 
-//	public void addItem();
+public interface INeighborhood {
 	public void removeLastItem();
 	public void moveChildTo(int x, int y);
 	public void moveChildBy(int x, int y);
@@ -10,8 +10,7 @@ public interface INeighborhood {
 	public void setHasChildOnWalkway(boolean value);
 	public void addHome();
 	public void removeLastHome();
-	
-//	public IWalkway getWalkway();
-//	public void setHasChildOnWalkway(boolean b);
-//	public boolean isTresspassing(IChild child);
+	public void addPropertyChangeListener(PropertyChangeListener listener);	
+	public void setAnimate(boolean animate);
+	public boolean isAnimate();
 }

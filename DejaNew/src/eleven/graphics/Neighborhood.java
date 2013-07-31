@@ -12,6 +12,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	private IChild child;
 	private boolean hasChildOnAWalkway;
 	private ArrayList<PropertyChangeListener> listenerList;
+	private boolean animate;
 	
 //	Using this one in Driver
 	public Neighborhood() {
@@ -47,10 +48,10 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 //	Awaiting Response from Dewan
 //	Same problem with not showing and it doesn't show the homes in the neighborhood	
 	public void moveChildBy(int x, int y) {
-		child.changeLocationBy(x, y);
+		child.changeLocationBy(x, y, isAnimate());
 	}
 	public void moveChildTo(int x, int y) {
-		child.changeLocationTo(x, y);
+		child.changeLocationTo(x, y, isAnimate());
 	}
 	public IChild getChild() {
 		return this.child;
@@ -67,5 +68,11 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		boolean newVal = value;
 		this.hasChildOnAWalkway = value;
 		notifyAllListeners(new PropertyChangeEvent(this, "hasChildOnWalkway", oldVal, newVal));
+	}
+	public boolean isAnimate() {
+		return this.animate;
+	}
+	public void setAnimate(boolean animate) {
+		this.animate = animate;
 	}
 }

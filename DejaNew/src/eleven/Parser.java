@@ -22,15 +22,7 @@ public class Parser implements IParser {
 	public void processCommands(ITokenCollection tokenCollection){
   	for ( int index = 0; index < tokenCollection.size(); index++ ) {
   		if (tokenCollection.getToken(index) instanceof MoveWordToken) {
-  			// Move in L shape
-  			int nextToken = Integer.parseInt(tokenCollection.getToken(index+1).toString());
-  			int secondToken = Integer.parseInt(tokenCollection.getToken(index+2).toString());
-  			for (int x = 0 ; x < nextToken ; x++) {
-  				neighborhood.moveChildBy(1,0);
-  			}
-  			for (int y = 0 ; y < secondToken ; y++) {
-  				neighborhood.moveChildBy(0,1);
-  			}
+				neighborhood.moveChildBy(Integer.parseInt(tokenCollection.getToken(index+1).toString()),Integer.parseInt(tokenCollection.getToken(index+2).toString()));
   			index = index+2;
   			System.out.println("ONLY IN PARSER moving child");
   		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {
@@ -39,6 +31,9 @@ public class Parser implements IParser {
   		} else if (tokenCollection.getToken(index) instanceof RemoveHouseWordToken) {
   			neighborhood.removeLastHome();
   			System.out.println("removing house");
+  		} else if (tokenCollection.getToken(index) instanceof AnimateWordToken) {
+  			neighborhood.setAnimate(!(neighborhood.isAnimate()));
+  			System.out.println("Toggle Animation");
   		} else { }
   	}
 	}

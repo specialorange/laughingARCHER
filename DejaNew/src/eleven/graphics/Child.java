@@ -20,11 +20,26 @@ public class Child extends Avatar implements IChild{
 		this.setcC(new CandyContainer(originX+xDelta, originY+yDelta, 12, 51, 0, listenerList));
 	}
 	
-	public void changeLocationTo(int x, int y) {
-		super.changeLocationTo(x, y);
+	public void changeLocationTo(int x, int y, boolean animate) {
+		if (animate) {
+//		This really should get location and do some math....
+			super.changeLocationTo(x, y);
+		} else {
+			super.changeLocationTo(x, y);
+		}
 	}
-	public void changeLocationBy(int x, int y) {
-		super.changeLocationBy(x, y);
+	public void changeLocationBy(int x, int y, boolean animate) {
+		if (animate) {
+			// Move in L shape
+			for (int i = 0 ; i < x ; i++) {
+				super.changeLocationBy(1, 0);
+			}
+			for (int j = 0 ; j < y ; j++) {
+				super.changeLocationBy(0, 1);
+			}
+		} else {
+			super.changeLocationBy(x, y);
+		}
 	}
 
 	public void checkIfInWalkwayOfAllHomes(ArrayList<IHome> neighborhood) {
@@ -41,6 +56,7 @@ public class Child extends Avatar implements IChild{
 				 (childFootY <= bottomLeftBBoxWalkway.getY() && childFootY >= upperLeftBBoxWalkway.getY())
 					) {
 //				Todo why do I have to cast this as a neighborhood? it know it is a INeghborhood form the parameter?
+//				This should be set form an observer, as the var neighborhood is really a home, not a collection of homes
 				((INeighborhood) neighborhood).setHasChildOnWalkway(true);
 				this.connectToHome(i);
 				System.out.println("Child in Home " + i + " Walkway true");
