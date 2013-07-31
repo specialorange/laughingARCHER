@@ -1,5 +1,7 @@
 package eleven;
 
+import java.util.ArrayList;
+
 import eleven.graphics.INeighborhood;
 import eleven.graphics.Neighborhood;
 
@@ -8,10 +10,10 @@ public class Parser implements IParser {
 	private ITokenCollection tokenCollection = new TokenCollection();
 	private INeighborhood neighborhood;
 	protected Scanner scanner = new Scanner();
-	
+  private ArrayList<String> commandCollection;
+
 	public Parser(String input, INeighborhood neighborhood) {
 		setNeighborhood(new Neighborhood());
-//		scanner.setTokenCollection(new TokenCollection());
 		this.processInput(input);
 	}
 
@@ -24,15 +26,19 @@ public class Parser implements IParser {
   		if (tokenCollection.getToken(index) instanceof MoveWordToken) {
 				neighborhood.moveChildBy(Integer.parseInt(tokenCollection.getToken(index+1).toString()),Integer.parseInt(tokenCollection.getToken(index+2).toString()));
   			index = index+2;
+  			commandCollection.add( tokenCollection.getToken(index) + " " + tokenCollection.getToken(index+1) + " " + tokenCollection.getToken(index+2) + " " );
   			System.out.println("ONLY IN PARSER moving child");
   		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {
   			neighborhood.addHome();
+  			commandCollection.add( tokenCollection.getToken(index) + " " );
   			System.out.println("adding house");
   		} else if (tokenCollection.getToken(index) instanceof RemoveHouseWordToken) {
   			neighborhood.removeLastHome();
+  			commandCollection.add( tokenCollection.getToken(index) + " " );
   			System.out.println("removing house");
   		} else if (tokenCollection.getToken(index) instanceof AnimateWordToken) {
   			neighborhood.setAnimate(!(neighborhood.isAnimate()));
+  			commandCollection.add( tokenCollection.getToken(index) + " " );
   			System.out.println("Toggle Animation");
   		} else { }
   	}
@@ -51,5 +57,11 @@ public class Parser implements IParser {
 	}
 	public String getConcatenation() {
 		return scanner.getConcatenation();
+	}
+	public ArrayList<String> getCommandCollection() {
+		return this.commandCollection;
+	}
+	public void setCommandCollection(ArrayList<String> commandCollection) {
+		this.commandCollection = commandCollection;
 	}
 }
