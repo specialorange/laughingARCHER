@@ -1,6 +1,5 @@
 package eleven.graphics;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import util.annotations.StructurePattern;
@@ -14,12 +13,7 @@ public class Child extends Avatar implements IChild{
 	private int houseConnectedTo;
 	private boolean connected;
 
-//	public Child(int x, int y, ArrayList<IListener> listenerList) {
-//		this.listenerList = listenerList;
-//		this.listenerList.add(new ListenerChild());
-//		cC = new CandyContainer(x+xDelta, y+yDelta, 25, 80, 0);
-//	}
-//Using this on in Neighborhood
+//Using this one in Neighborhood
 	public Child(int originX, int originY, int bodyWidth, int bodyHeight, int headWidth, int headHeight, ArrayList<PropertyChangeListener> listenerList) {
 		super(originX, originY, bodyWidth, bodyHeight, headWidth, headHeight, listenerList);
 		super.setLocation(new Point(originX, originY));
