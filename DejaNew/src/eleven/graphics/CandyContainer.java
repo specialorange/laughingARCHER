@@ -2,8 +2,7 @@ package eleven.graphics;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-
+import eleven.Global;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -14,23 +13,21 @@ public class CandyContainer implements ICandyContainer {
 	private ILine 	left, right, bottom;
 	private int 	width, height;
 	private ICandyList candyList;
-	private ArrayList<PropertyChangeListener> listenerList;
 
-	public CandyContainer(int x, int y, int width, int height, int defaultCandyCount, ArrayList<PropertyChangeListener> listenerList) {
+	public CandyContainer(int x, int y, int width, int height, int defaultCandyCount) {
 		this.setLocation(new Point(x, y));
-		this.setLeft(new Line(x, y, 0, height, listenerList));
-		this.setRight(new Line(x+width, y, 0, height, listenerList));
-		this.setBottom(new Line(x, y+height, width, 0, listenerList));
+		this.setLeft(new Line(x, y, 0, height));
+		this.setRight(new Line(x+width, y, 0, height));
+		this.setBottom(new Line(x, y+height, width, 0));
 		this.setCandyList(new CandyList(width, height, this.getLocation(), defaultCandyCount));
-		this.setListenerList(listenerList);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.listenerList.add(listener);
+		Global.getListenerList().add(listener);
 	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
-		for (int index = 0; index < this.listenerList.size(); index++) {
-			this.listenerList.get(index).propertyChange(event);
+		for (int index = 0; index < Global.getListenerList().size(); index++) {
+			Global.getListenerList().get(index).propertyChange(event);
 		}
 	}
 
@@ -90,13 +87,5 @@ public class CandyContainer implements ICandyContainer {
 	}
 	public void setCandyList(ICandyList candyList) {
 		this.candyList = candyList;
-	}
-
-	public ArrayList<PropertyChangeListener> getListenerList() {
-		return listenerList;
-	}
-
-	public void setListenerList(ArrayList<PropertyChangeListener> listenerList) {
-		this.listenerList = listenerList;
 	}
 }

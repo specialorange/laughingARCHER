@@ -2,8 +2,7 @@ package eleven.graphics;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-
+import eleven.Global;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -14,26 +13,20 @@ public class Line implements ILine{
 	private IPoint bottomLocation;
 	private int width;
 	private int height;
-	private ArrayList<PropertyChangeListener> listenerList;
 	
-	public Line (int x, int y, int width, int height, ArrayList<PropertyChangeListener> listenerList) {
+	public Line (int x, int y, int width, int height) {
 		this.setLocation(x, y);
 		this.setWidth(width);
 		this.setHeight(height);
-		this.setBottomLocation(new Point(x, y+height));
-		this.setListenerList(listenerList);
+		this.setBottomLocation(new Point(x+width/2, y+height));
 	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
-		for (int index = 0; index < this.listenerList.size(); index++) {
-			this.listenerList.get(index).propertyChange(event);
+		for (int index = 0; index < Global.getListenerList().size(); index++) {
+			Global.getListenerList().get(index).propertyChange(event);
 		}
 	}
-	
-	public ArrayList<PropertyChangeListener> getListenerList() {
-		return listenerList;
-	}
-	public void setListenerList(ArrayList<PropertyChangeListener> listenerList) {
-		this.listenerList = listenerList;
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		Global.getListenerList().add(listener);
 	}
 	@Visible(false)
 	public IPoint getBottomLocation() {

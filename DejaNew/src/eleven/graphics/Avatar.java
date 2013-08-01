@@ -1,7 +1,7 @@
 package eleven.graphics;
 
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
+import eleven.Global;
 import util.annotations.StructurePattern;
 
 @StructurePattern("Bean Pattern")
@@ -9,12 +9,12 @@ public class Avatar extends Stick implements IAvatar{
 
 	private IOval head;
 
-	public Avatar(int originX, int originY, int postWidth, int postHeight, int circleWidth, int circleHeight, ArrayList<PropertyChangeListener> listenerList) {
-		super(originX, originY, circleWidth, circleHeight+postHeight, listenerList);
-		this.setHead(new Oval(originX-circleHeight/2, originY-postHeight-circleHeight, circleWidth, circleHeight, listenerList));
+	public Avatar(int originX, int originY, int postWidth, int postHeight, int circleWidth, int circleHeight) {
+		super(originX, originY, circleWidth, circleHeight+postHeight);
+		this.setHead(new Oval(originX-circleHeight/2, originY-postHeight-circleHeight, circleWidth, circleHeight));
 	}
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.getListenerList().add(listener);
+		Global.getListenerList().add(listener);
 	}
 	public void changeLocationTo(int x, int y) {
 		this.getLocation().changeLocationTo(x, y);

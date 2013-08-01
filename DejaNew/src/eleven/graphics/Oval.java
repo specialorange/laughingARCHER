@@ -13,7 +13,7 @@ public class Oval implements IOval {
 	private IPoint location;
 	private ArrayList<PropertyChangeListener> listenerList;
 	
-	public Oval(int x, int y, int width, int height, ArrayList<PropertyChangeListener> listenerList) {
+	public Oval(int x, int y, int width, int height) {
 		this.setLocation(new Point(x,y));
 		this.setWidth(width);
 		this.setHeight(height);

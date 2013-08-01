@@ -1,8 +1,9 @@
 package eleven.graphics;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+
+import eleven.Global;
 import util.annotations.StructurePattern;
 import util.annotations.Visible;
 
@@ -11,31 +12,25 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 
 	private IChild child;
 	private boolean hasChildOnAWalkway;
-	private ArrayList<PropertyChangeListener> listenerList;
 	private boolean animate;
 	
 //	Using this one in Driver
 	public Neighborhood() {
 		setArrayList(new ArrayList<IHome>());
-		this.listenerList = new ArrayList<PropertyChangeListener>();
-		this.setChild(new Child(250,150,1,30,20,20, this.listenerList));
-//	A Neighborhood has at least one house
+		this.setChild(new Child(250,150,1,30,20,20));
+		Global.setListenerList(new ArrayList<PropertyChangeListener>());
+		//	A Neighborhood has at least one house
 		this.addHome();
 	}
 
 //Observers
 //																			string, listener
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		this.listenerList.add(listener);
-	}
-	public void notifyAllListeners(PropertyChangeEvent event) {
-		for (int index = 0; index < listenerList.size(); index++) {
-			listenerList.get(index).propertyChange(event);
-		}
+		Global.getListenerList().add(listener);
 	}
 
 	public void addHome() {
-		super.addItem(new Home(this.getArrayList().size()*350, this.listenerList));
+		super.addItem(new Home(this.getArrayList().size()*350));
 	}
 	public void removeLastHome() {
 		super.removeLastItem();
@@ -64,10 +59,7 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 		return this.hasChildOnAWalkway;
 	}
 	public void setHasChildOnWalkway(boolean value) {
-		boolean oldVal = this.getHasChildOnWalkway();
-		boolean newVal = value;
 		this.hasChildOnAWalkway = value;
-		notifyAllListeners(new PropertyChangeEvent(this, "hasChildOnWalkway", oldVal, newVal));
 	}
 	public boolean isAnimate() {
 		return this.animate;
