@@ -8,39 +8,39 @@ import eleven.graphics.Neighborhood;
 public class Parser implements IParser {
 
 	private ITokenCollection tokenCollection = new TokenCollection();
+  private ArrayList<Command> cC = new ArrayList<Command>();
 	private INeighborhood neighborhood;
-	protected Scanner scanner = new Scanner();
-  private ArrayList<Command> commandCollection = new ArrayList<Command>();
+	protected Scanner scanner;
 
 	public Parser(String input, INeighborhood neighborhood) {
 		setNeighborhood(new Neighborhood());
+		setScanner(new Scanner(getTokenCollection(), getCommandCollection()));
 		this.processInput(input);
 	}
 
 	public void processInput(String input) {
-	  this.tokenCollection = scanner.setAndProcess(input, this.tokenCollection);
-	  processCommands(this.tokenCollection);
+	  this.tokenCollection = scanner.setAndProcess(input);
+	  processCommands(getCommandCollection());
 	}
-	public void processCommands(ITokenCollection tokenCollection){
-  	for ( int index = 0; index < tokenCollection.size(); index++ ) {
-  		if (tokenCollection.getToken(index) instanceof MoveWordToken) {
-				neighborhood.moveChildBy(Integer.parseInt(tokenCollection.getToken(index+1).toString()),Integer.parseInt(tokenCollection.getToken(index+2).toString()));
-  			commandCollection.add(new Command(tokenCollection.getToken(index), tokenCollection.getToken(index+1), tokenCollection.getToken(index+2)));
+	public void processCommands(ArrayList<Command> cC){
+  	for ( int i = 0; i < cC.size(); i++ ) {
+  		if (cC.get(i).getCurrentToken() instanceof MoveWordToken) {
+				neighborhood.moveChildBy(Integer.parseInt(cC.get(i).getPrevNum1().toString()),Integer.parseInt(cC.get(i).getPrevNum2().toString()));
   			System.out.println("ONLY IN PARSER moving child");
-  			index = index+2;
-  		} else if (tokenCollection.getToken(index) instanceof AddHouseWordToken) {
+  		} else if (cC.get(i).getCurrentToken() instanceof AddHouseWordToken) {
   			neighborhood.addHome();
-  			commandCollection.add(new Command(tokenCollection.getToken(index)));
   			System.out.println("adding house");
-  		} else if (tokenCollection.getToken(index) instanceof RemoveHouseWordToken) {
+  		} else if (cC.get(i).getCurrentToken() instanceof RemoveHouseWordToken) {
   			neighborhood.removeLastHome();
-  			commandCollection.add(new Command(tokenCollection.getToken(index)));
   			System.out.println("removing house");
-  		} else if (tokenCollection.getToken(index) instanceof AnimateWordToken) {
+  		} else if (cC.get(i).getCurrentToken() instanceof AnimateWordToken) {
   			neighborhood.setAnimate(!(neighborhood.isAnimate()));
-  			commandCollection.add(new Command(tokenCollection.getToken(index)));
   			System.out.println("Toggle Animation");
-  		} else { }
+  		} else if (cC.get(i).getCurrentToken() instanceof UndoWordToken) {
+  			System.out.println("Toggle Animation");
+  		} else if (cC.get(i).getCurrentToken() instanceof RedoWordToken) {
+  			System.out.println("Toggle Animation");
+  		}
   	}
 	}
 	public ITokenCollection getTokenCollection() {
@@ -59,9 +59,15 @@ public class Parser implements IParser {
 		return scanner.getConcatenation();
 	}
 	public ArrayList<Command> getCommandCollection() {
-		return this.commandCollection;
+		return this.cC;
 	}
-	public void setCommandCollection(ArrayList<Command> commandCollection) {
-		this.commandCollection = commandCollection;
+	public void setCommandCollection(ArrayList<Command> cC) {
+		this.cC = cC;
+	}
+	public Scanner getScanner() {
+		return this.scanner;
+	}
+	public void setScanner(Scanner scanner) {
+		this.scanner = scanner;
 	}
 }
