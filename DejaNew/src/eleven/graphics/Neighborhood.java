@@ -18,7 +18,6 @@ public class Neighborhood extends Stack<IHome> implements INeighborhood {
 	public Neighborhood() {
 		setArrayList(new ArrayList<IHome>());
 		this.setChild(new Child(250,150,1,30,20,20));
-		Global.setListenerList(new ArrayList<PropertyChangeListener>());
 		//	A Neighborhood has at least one house
 		this.addHome();
 	}

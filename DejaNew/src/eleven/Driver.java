@@ -1,5 +1,8 @@
 package eleven;
 
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+
 import eleven.graphics.Neighborhood;
 import eleven.graphics.INeighborhood;
 import bus.uigen.ObjectEditor;
@@ -7,6 +10,7 @@ import bus.uigen.ObjectEditor;
 public class Driver {
 
 	public static void main(String[] args) {
+		Global.setListenerList(new ArrayList<PropertyChangeListener>());
 		INeighborhood neighborhood = new Neighborhood();
 		ObjectEditor.edit(neighborhood);
 		

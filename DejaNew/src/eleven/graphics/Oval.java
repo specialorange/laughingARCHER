@@ -1,8 +1,8 @@
 package eleven.graphics;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
+
+import eleven.Global;
 
 import util.annotations.StructurePattern;
 
@@ -11,24 +11,16 @@ public class Oval implements IOval {
 	private int width;
 	private int height;
 	private IPoint location;
-	private ArrayList<PropertyChangeListener> listenerList;
 	
 	public Oval(int x, int y, int width, int height) {
 		this.setLocation(new Point(x,y));
 		this.setWidth(width);
 		this.setHeight(height);
-		this.setListenerList(listenerList);
 	}
 	public void notifyAllListeners(PropertyChangeEvent event) {
-		for (int index = 0; index < this.listenerList.size(); index++) {
-			this.listenerList.get(index).propertyChange(event);
+		for (int index = 0; index < Global.getListenerList().size(); index++) {
+			Global.getListenerList().get(index).propertyChange(event);
 		}
-	}
-	public ArrayList<PropertyChangeListener> getListenerList() {
-		return listenerList;
-	}
-	public void setListenerList(ArrayList<PropertyChangeListener> listenerList) {
-		this.listenerList = listenerList;
 	}
 	public void changeLocationBy(int x, int y) {
 		this.location = new Point(this.getLocation().getX()+x,this.getLocation().getY()+y);

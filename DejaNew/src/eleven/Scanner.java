@@ -116,6 +116,8 @@ public class Scanner implements IScanner {
 			System.out.println("Scanner(RD[0]): added a house");
 		} else if (tC.getToken(index) instanceof RemoveHouseWordToken) {
 			System.out.println("Scanner(RD[0]): removed a house");			
+		} else if (tC.getToken(index) instanceof AnimateWordToken) {
+			System.out.println("Scanner(RD[0]): toggel animation");			
 		}
 	}
 	public void wordOneParamRD(){
