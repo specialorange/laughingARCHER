@@ -3,9 +3,12 @@ package eleven;
 public class NumberToken extends Token implements IToken {
 
 	private final String description = "Number";
-
+	private int oppositeNumber;
+	
 	public NumberToken(String substring) {	
 		this.setStringValue(substring);
+		int opposite = Integer.parseInt(substring)*-1;
+		setOppositeNumber(opposite);
 	}
 	
 	//StringValue
@@ -23,6 +26,14 @@ public class NumberToken extends Token implements IToken {
 	}
 	public int toInt() {
 		return this.getInteger();
+	}
+
+	public int getOppositeNumber() {
+		return oppositeNumber;
+	}
+
+	public void setOppositeNumber(int oppositeNumber) {
+		this.oppositeNumber = oppositeNumber;
 	}
 	
 }

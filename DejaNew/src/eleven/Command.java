@@ -27,8 +27,8 @@ public class Command {
 		setOppositeToken(token);
 		setPrevNum1(num1);
 		setPrevNum2(num2);
-		setOppositeNum1( new NumberToken( Integer.toString( (((NumberToken) num1 ).toInt())*(-1))) );
-		setOppositeNum2( new NumberToken( Integer.toString( (((NumberToken) num2 ).toInt())*(-1))) );
+		setOppositeNum1( new NumberToken( Integer.toString( (((NumberToken) num1 ).getOppositeNumber()))) );
+		setOppositeNum2( new NumberToken( Integer.toString( (((NumberToken) num2 ).getOppositeNumber()))) );
 		setOppositeCommand(new Command(getOppositeToken(), getOppositeNum1(), getOppositeNum2()));
 	}
 
