@@ -1,7 +1,6 @@
 package eleven;
 
 import java.util.ArrayList;
-
 import eleven.graphics.INeighborhood;
 import eleven.graphics.Neighborhood;
 
