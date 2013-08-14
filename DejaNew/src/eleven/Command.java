@@ -23,6 +23,9 @@ public class Command {
 //		setOppositeCommand(new Command(getOppositeToken()));
 	}
 	public Command(Token token, Token num1, Token num2) {
+		System.out.println(token);
+		System.out.println(num1);
+		System.out.println(num2);
 		setPrevToken(token);
 		setOppositeToken(token);
 		setPrevNum1(num1);

@@ -62,7 +62,7 @@ public class Scanner implements IScanner {
                 int followingNumberTokens = 0;
                 int j = sM;
                 while (followingNumberTokens < 2 && j < originalString.length()) {
-                  char newerChar = originalString.charAt(j);
+                	char newerChar = originalString.charAt(j);
                   if (Character.isDigit(newerChar) || newerChar == "+".charAt(0) || newerChar == "-".charAt(0)) {
                     if (!inAToken) {
                       sM = j;

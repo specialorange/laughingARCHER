@@ -10,8 +10,8 @@ public class Avatar extends Stick implements IAvatar{
 	private IOval head;
 
 	public Avatar(int originX, int originY, int postWidth, int postHeight, int circleWidth, int circleHeight) {
-		super(originX, originY, circleWidth, circleHeight+postHeight);
-		this.setHead(new Oval(originX-circleHeight/2, originY-postHeight-circleHeight, circleWidth, circleHeight));
+		super(originX, originY, postWidth, postHeight);
+		this.setHead(new Oval(originX-circleHeight/2, originY-circleHeight, circleWidth, circleHeight));
 	}
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		Global.getListenerList().add(listener);
