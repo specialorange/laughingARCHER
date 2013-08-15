@@ -32,12 +32,15 @@ public class Child extends Avatar implements IChild{
 			// Move in L shape
 			for (int i = 0 ; i < x ; i++) {
 				super.changeLocationBy(1, 0);
+				cC.changeLocationBy(1, 0);
 			}
 			for (int j = 0 ; j < y ; j++) {
 				super.changeLocationBy(0, 1);
+				cC.changeLocationBy(0, 1);
 			}
 		} else {
 			super.changeLocationBy(x, y);
+			cC.changeLocationBy(x, y);
 		}
 	}
 

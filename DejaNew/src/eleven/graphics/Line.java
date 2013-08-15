@@ -33,15 +33,15 @@ public class Line implements ILine{
 		return this.bottomLocation;
 	}
 	public void changeLocationBy(int x, int y) {
+		IPoint oldLocation = this.location;
 		this.location = new Point(x+ this.getLocation().getX(), y+this.getLocation().getY());
-		IPoint oldLocation = this.getLocation();
-		IPoint newLocation = new Point(x,y);
+		IPoint newLocation = this.location;
 		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
 	}
 	public void changeLocationTo(int x, int y) {
+		IPoint oldLocation = this.location;
 		this.location = new Point(x, y);
-		IPoint oldLocation = this.getLocation();
-		IPoint newLocation = new Point(x,y);
+		IPoint newLocation = this.location;
 		notifyAllListeners(new PropertyChangeEvent(this, "location", oldLocation, newLocation));
 	}
 	public IPoint getLocation() {
