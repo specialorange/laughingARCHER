@@ -5,13 +5,13 @@ import eleven.graphics.Stack;
 //How to make TokenCollection an ArrayList itself
 public class TokenCollection extends Stack<ITokenCollection> implements ITokenCollection{
 
-	private ArrayList<Token> tC;		
+	private ArrayList<IToken> tC;		
 
 	public TokenCollection() {
-		this.tC = new ArrayList<Token>();
+		this.tC = new ArrayList<IToken>();
 	}
 	
-	public void addToken(Token token) {
+	public void addToken(IToken token) {
 		tC.add(token);
 	}
 
@@ -19,17 +19,17 @@ public class TokenCollection extends Stack<ITokenCollection> implements ITokenCo
 		tC.remove(index);
 	}
 
-	public Token getToken(int index){
+	public IToken getToken(int index){
 		return tC.get(index);
 	}
 	
-	public ArrayList<Token> getTC() {
+	public ArrayList<IToken> getTC() {
 		return this.tC;
 	}
 	public int size() {
 		return this.tC.size();
 	}
-	public Token getLastToken() {
+	public IToken getLastToken() {
 		return tC.get(tC.size()-1);
 	}
 	public String getLastTokenStringConcatenation() {

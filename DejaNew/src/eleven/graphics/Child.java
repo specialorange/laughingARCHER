@@ -30,13 +30,25 @@ public class Child extends Avatar implements IChild{
 	public void changeLocationBy(int x, int y, boolean animate) {
 		if (animate) {
 			// Move in L shape
-			for (int i = 0 ; i < x ; i++) {
-				super.changeLocationBy(1, 0);
-				cC.changeLocationBy(1, 0);
+			int absX = Math.abs(x);
+			int absY = Math.abs(y);
+			for (int i = 0 ; i < absX ; i++) {
+				if(x<0) {
+					super.changeLocationBy(-1, 0);
+					cC.changeLocationBy(-1, 0);					
+				} else {
+					super.changeLocationBy(1, 0);
+					cC.changeLocationBy(1, 0);
+				}
 			}
-			for (int j = 0 ; j < y ; j++) {
-				super.changeLocationBy(0, 1);
-				cC.changeLocationBy(0, 1);
+			for (int j = 0 ; j < absY ; j++) {
+				if(y<0) {
+					super.changeLocationBy(0, -1);
+					cC.changeLocationBy(0, -1);					
+				} else {
+					super.changeLocationBy(0, 1);
+					cC.changeLocationBy(0, 1);
+				}
 			}
 		} else {
 			super.changeLocationBy(x, y);

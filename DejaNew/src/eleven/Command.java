@@ -2,27 +2,25 @@ package eleven;
 
 public class Command {
 
-	private Token currentToken;
-	private Token prevNum1;
-	private Token prevNum2;
-	private Token oppositeToken;
-	private Token oppositeNum1;
-	private Token oppositeNum2;
+	private IToken currentToken;
+	private IToken prevNum1;
+	private IToken prevNum2;
+	private IToken oppositeToken;
+	private IToken oppositeNum1;
+	private IToken oppositeNum2;
 	private	Command oppositeCommand;
 	
-	public Command(Token token) {
-		setPrevToken(token);
-		if (token instanceof AddHouseWordToken) {
+	public Command(IToken nextToken) {
+		setPrevToken(nextToken);
+		if (nextToken instanceof AddHouseWordToken) {
 			setOppositeToken(new RemoveHouseWordToken("rm"));
-		} else if (token instanceof RemoveHouseWordToken) {
+		} else if (nextToken instanceof RemoveHouseWordToken) {
 			setOppositeToken(new AddHouseWordToken("ah"));
-		} else if (token instanceof AnimateWordToken) {
+		} else if (nextToken instanceof AnimateWordToken) {
 			setOppositeToken(new AnimateWordToken("am"));
 		}
-//		TODO HOW TO prevent cyclical error
-//		setOppositeCommand(new Command(getOppositeToken()));
 	}
-	public Command(Token token, Token num1, Token num2) {
+	public Command(IToken token, IToken num1, IToken num2) {
 		System.out.println(token);
 		System.out.println(num1);
 		System.out.println(num2);
@@ -32,43 +30,48 @@ public class Command {
 		setPrevNum2(num2);
 		setOppositeNum1( new NumberToken( Integer.toString( (((NumberToken) num1 ).getOppositeNumber()))) );
 		setOppositeNum2( new NumberToken( Integer.toString( (((NumberToken) num2 ).getOppositeNumber()))) );
-		setOppositeCommand(new Command(getOppositeToken(), getOppositeNum1(), getOppositeNum2()));
+		setOppositeCommand(new Command(getOppositeToken(), getOppositeNum1(), getOppositeNum2(), true));
 	}
-
-	public Token getOppositeNum1() {
+// Opposite Token without an opposite
+	public Command(IToken token, IToken num1, IToken num2, boolean opposite) {
+		setPrevToken(token);
+		setPrevNum1(num1);
+		setPrevNum2(num2);
+	}
+	public IToken getOppositeNum1() {
 		return this.oppositeNum1;
 	}
-	public void setOppositeNum1(Token int1) {
+	public void setOppositeNum1(IToken int1) {
 		this.oppositeNum1 = int1;
 	}
-	public Token getOppositeNum2() {
+	public IToken getOppositeNum2() {
 		return this.oppositeNum2;
 	}
-	public void setOppositeNum2(Token int2) {
+	public void setOppositeNum2(IToken int2) {
 		this.oppositeNum2 = int2;
 	}
-	public Token getCurrentToken() {
+	public IToken getCurrentToken() {
 		return this.currentToken;
 	}
-	public void setPrevToken(Token token) {
-		this.currentToken = token;
+	public void setPrevToken(IToken nextToken) {
+		this.currentToken = nextToken;
 	}
-	public Token getOppositeToken() {
+	public IToken getOppositeToken() {
 		return this.oppositeToken;
 	}
-	public void setOppositeToken(Token oppositeToken) {
-		this.oppositeToken = oppositeToken;
+	public void setOppositeToken(IToken token) {
+		this.oppositeToken = token;
 	}
-	public Token getPrevNum2() {
+	public IToken getPrevNum2() {
 		return prevNum2;
 	}
-	public void setPrevNum2(Token prevNum2) {
+	public void setPrevNum2(IToken prevNum2) {
 		this.prevNum2 = prevNum2;
 	}
-	public Token getPrevNum1() {
+	public IToken getPrevNum1() {
 		return prevNum1;
 	}
-	public void setPrevNum1(Token prevNum1) {
+	public void setPrevNum1(IToken prevNum1) {
 		this.prevNum1 = prevNum1;
 	}
 	public Command getOppositeCommand() {

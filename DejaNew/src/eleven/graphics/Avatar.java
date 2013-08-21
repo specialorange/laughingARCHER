@@ -25,7 +25,6 @@ public class Avatar extends Stick implements IAvatar{
 	public void changeLocationBy(int x, int y) {
 		this.getLocation().changeLocationBy(x, y);
 		this.getHead().changeLocationBy(x, y);
-		System.out.println("after moved head");
 		this.getBottom().changeLocationBy(x, y);
 	}
 	public void setHead(IOval circle) {
