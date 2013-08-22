@@ -7,7 +7,7 @@ import eleven.graphics.Neighborhood;
 public class Parser implements IParser {
 
 	private ITokenCollection tokenCollection = new TokenCollection();
-  private ArrayList<Command> cC = new ArrayList<Command>();
+  private ICommandCollection cC = new CommandCollection();
 	private INeighborhood neighborhood;
 	protected Scanner scanner;
 
@@ -36,9 +36,9 @@ public class Parser implements IParser {
   			neighborhood.setAnimate(!(neighborhood.isAnimate()));
   			System.out.println("Toggle Animation");
   		} else if (cC.get(i).getCurrentToken() instanceof UndoWordToken) {
-  			System.out.println("Toggle Animation");
+  			System.out.println("UNDO!!");
   		} else if (cC.get(i).getCurrentToken() instanceof RedoWordToken) {
-  			System.out.println("Toggle Animation");
+  			System.out.println("REDO!!");
   		}
   	}
 	}
@@ -57,10 +57,10 @@ public class Parser implements IParser {
 	public String getConcatenation() {
 		return scanner.getConcatenation();
 	}
-	public ArrayList<Command> getCommandCollection() {
+	public ICommandCollection getCommandCollection() {
 		return this.cC;
 	}
-	public void setCommandCollection(ArrayList<Command> cC) {
+	public void setCommandCollection(ICommandCollection cC) {
 		this.cC = cC;
 	}
 	public Scanner getScanner() {
