@@ -1,6 +1,5 @@
 package eleven;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +9,7 @@ public class Scanner implements IScanner {
   private String originalString;
   private String concatenation = "";
   private ITokenCollection tokenCollection;
-  private ArrayList<Command> commandCollection;
+  private ICommandCollection commandCollection;
   private final Set<String> wordMoveTokens = new HashSet<String>(Arrays.asList("move", "mv", "moov"));
   private final Set<String> wordRedoTokens = new HashSet<String>(Arrays.asList("redo", "rd", "reedoo"));
   private final Set<String> wordGiveTokens = new HashSet<String>(Arrays.asList("give", "gv"));
@@ -24,7 +23,7 @@ public class Scanner implements IScanner {
   public Scanner() {  	
   }
   
-  public Scanner(ITokenCollection tC, ArrayList<Command> cC) {
+  public Scanner(ITokenCollection tC, ICommandCollection cC) {
     setTokenCollection(tC);
     setCommandCollection(cC);
   }
@@ -60,8 +59,8 @@ public class Scanner implements IScanner {
   			IToken tokenParam2 = nextToken();
   			if (tokenParam1 instanceof NumberToken ) {
   				if (tokenParam2 instanceof NumberToken) {
-  					Command command = new Command(nextToken, tokenParam1, tokenParam2);
-  					commandCollection.add(command);
+  					ICommand command = new Command(nextToken, tokenParam1, tokenParam2);
+  					commandCollection.addCommand(command);
   				} else {
   					System.out.println("input argument 2 is not a valid token");
   				}
@@ -69,8 +68,8 @@ public class Scanner implements IScanner {
   				System.out.println("input argument 1 is not a valid token");
   			}
   		} else if (isTokenZeroParamCommand(nextToken) ) {
-  			Command command = new Command(nextToken);
-  			commandCollection.add(command);
+  			ICommand command = new Command(nextToken);
+  			commandCollection.addCommand(command);
   		} else {
   			System.out.println("input is not a valid token");
   		}
@@ -97,11 +96,11 @@ public class Scanner implements IScanner {
   public void setTokenCollection(ITokenCollection tC) {
     this.tokenCollection = tC;
   }
-  public ArrayList<Command> getCommandCollection() {
+  public ICommandCollection getCommandCollection() {
     return commandCollection;
   }
-  public void setCommandCollection(ArrayList<Command> commandCollection) {
-    this.commandCollection = commandCollection;
+  public void setCommandCollection(ICommandCollection cC) {
+    this.commandCollection = cC;
   }
   public boolean isCharNumberKind(char c){
   	if (Character.isDigit(c) || c == "+".charAt(0) || c == "-".charAt(0) ) {

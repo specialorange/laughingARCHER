@@ -1,6 +1,6 @@
 package eleven;
 
-public class Command {
+public class Command implements ICommand {
 
 	private IToken currentToken;
 	private IToken prevNum1;

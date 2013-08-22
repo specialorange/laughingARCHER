@@ -21,23 +21,24 @@ public class Parser implements IParser {
 	  this.tokenCollection = scanner.setAndProcess(input);
 	  processCommands(getCommandCollection());
 	}
-	public void processCommands(ArrayList<Command> cC){
-  	for ( int i = 0; i < cC.size(); i++ ) {
-  		if (cC.get(i).getCurrentToken() instanceof MoveWordToken) {
-				neighborhood.moveChildBy(Integer.parseInt(cC.get(i).getPrevNum1().toString()),Integer.parseInt(cC.get(i).getPrevNum2().toString()));
+	public void processCommands(ICommandCollection commandCollection){
+  	for ( int i = 0; i < commandCollection.size(); i++ ) {
+  		if (commandCollection.getCommand(i).getCurrentToken() instanceof MoveWordToken) {
+				neighborhood.moveChildBy( Integer.parseInt(commandCollection.getCommand(i).getPrevNum1().toString()),
+						                      Integer.parseInt(commandCollection.getCommand(i).getPrevNum2().toString())  );
   			System.out.println("ONLY IN PARSER moving child");
-  		} else if (cC.get(i).getCurrentToken() instanceof AddHouseWordToken) {
+  		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof AddHouseWordToken) {
   			neighborhood.addHome();
   			System.out.println("adding house");
-  		} else if (cC.get(i).getCurrentToken() instanceof RemoveHouseWordToken) {
+  		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof RemoveHouseWordToken) {
   			neighborhood.removeLastHome();
   			System.out.println("removing house");
-  		} else if (cC.get(i).getCurrentToken() instanceof AnimateWordToken) {
+  		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof AnimateWordToken) {
   			neighborhood.setAnimate(!(neighborhood.isAnimate()));
   			System.out.println("Toggle Animation");
-  		} else if (cC.get(i).getCurrentToken() instanceof UndoWordToken) {
+  		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof UndoWordToken) {
   			System.out.println("UNDO!!");
-  		} else if (cC.get(i).getCurrentToken() instanceof RedoWordToken) {
+  		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof RedoWordToken) {
   			System.out.println("REDO!!");
   		}
   	}
