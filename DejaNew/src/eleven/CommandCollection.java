@@ -6,7 +6,7 @@ import eleven.graphics.Stack;
 public class CommandCollection extends Stack<ICommandCollection> implements ICommandCollection{
 
 	private ArrayList<ICommand> cC;		
-	private int currentCommand = (Integer) null;
+	private int currentCommandIndex = (Integer) null;
 	
 	public CommandCollection() {
 		this.cC = new ArrayList<ICommand>();
@@ -29,20 +29,20 @@ public class CommandCollection extends Stack<ICommandCollection> implements ICom
 	public void removeCommand(int index) {
 		this.cC.remove(index);
 	}
-	public int getCurrentCommand() {
-		return currentCommand;
+	public int getCurrentCommandIndex() {
+		return currentCommandIndex;
 	}
-	public void setCurrentCommand(int currentCommand) {
-		this.currentCommand = currentCommand;
+	public void setCurrentCommandIndex(int currentCommand) {
+		this.currentCommandIndex = currentCommand;
 	}
 	public void incrementCurrentCommand() {
-		if (currentCommand < this.cC.size()){			
-			this.currentCommand += 1;
+		if (currentCommandIndex < this.cC.size()){			
+			this.currentCommandIndex += 1;
 		}
 	}
 	public void decrementCurrentCommand() {
-		if (currentCommand > 0) {			
-			this.currentCommand += -1;
+		if (currentCommandIndex > 0) {			
+			this.currentCommandIndex += -1;
 		}
 	}
 }

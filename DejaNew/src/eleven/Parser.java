@@ -26,19 +26,27 @@ public class Parser implements IParser {
   		if (commandCollection.getCommand(i).getCurrentToken() instanceof MoveWordToken) {
 				neighborhood.moveChildBy( Integer.parseInt(commandCollection.getCommand(i).getPrevNum1().toString()),
 						                      Integer.parseInt(commandCollection.getCommand(i).getPrevNum2().toString())  );
+  			commandCollection.incrementCurrentCommand();
   			System.out.println("ONLY IN PARSER moving child");
   		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof AddHouseWordToken) {
   			neighborhood.addHome();
+  			commandCollection.incrementCurrentCommand();
   			System.out.println("adding house");
   		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof RemoveHouseWordToken) {
   			neighborhood.removeLastHome();
+  			commandCollection.incrementCurrentCommand();
   			System.out.println("removing house");
   		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof AnimateWordToken) {
   			neighborhood.setAnimate(!(neighborhood.isAnimate()));
+  			commandCollection.incrementCurrentCommand();
   			System.out.println("Toggle Animation");
   		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof UndoWordToken) {
+  			commandCollection.decrementCurrentCommand();
+  			IToken undo = commandCollection.getCommand(commandCollection.getCurrentCommandIndex()).getOppositeToken();
   			System.out.println("UNDO!!");
   		} else if (commandCollection.getCommand(i).getCurrentToken() instanceof RedoWordToken) {
+  			commandCollection.incrementCurrentCommand();
+  			IToken redo = commandCollection.getCommand(commandCollection.getCurrentCommandIndex()).getCurrentToken();
   			System.out.println("REDO!!");
   		}
   	}
